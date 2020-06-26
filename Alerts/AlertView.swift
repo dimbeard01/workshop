@@ -140,6 +140,7 @@ final class AlertView: UIView {
     private func setupViews() {
         alpha = 0
         
+        backgroundColor = UIColor.init(white: 0, alpha: 0.3)
         addSubview(customAlertView)
         customAlertView.addSubview(alertTitle)
         customAlertView.addSubview(alertDescription)

@@ -12,8 +12,11 @@ final class AlertViewController: UIViewController {
     
     // MARK: - LifeCycle
     
+    var alertViewLight: AlertView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .white
         
         let alertViewDark = AlertView(title: "Вы не заполнили обязательные поля",
                                       description: "Для того что-бы пользоваться сервисом у вас должы быть заполнены все поля. Вы также можете выйти, но ваша анкета будет скрыта.",
@@ -21,13 +24,17 @@ final class AlertViewController: UIViewController {
                                                     ButtonType.cancel({ print("CANCEL")})],
                                       theme: Themes.dark)
         
-        let alertViewLight = AlertView(title: "Удалить анкету",
+        alertViewLight = AlertView(title: "Удалить анкету",
                                        description: "Вы уверены что хотите удалить анкету. Вы так же можете скрыть анкету, ее не увидят другие пользователи.",
-                                       buttonTypes: [ButtonType.base("УДАЛИТЬ", { print("REMOVE") }),
+                                       buttonTypes: [ButtonType.base("УДАЛИТЬ", { self.remove() }),
                                                      ButtonType.hide({print("HIDE")}),
-                                                     ButtonType.cancel({ print("CANCEL")})],
+                                                     ButtonType.cancel({ print("CANCEL")}),],
                                        theme: Themes.light)
         view.addSubview(alertViewLight)
         alertViewLight.show()
+    }
+    
+    func remove() {
+        alertViewLight.hide()
     }
 }
