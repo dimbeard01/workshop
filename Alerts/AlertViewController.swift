@@ -22,7 +22,7 @@ final class AlertViewController: UIViewController {
         
         view.addSubview(alertView)
         alertView.edgesToSuperview()
-        hideAlert()
+//        hideAlert()
     }
     
     // MARK: - Support
