@@ -22,22 +22,9 @@ final class AlertViewController: UIViewController {
         
         view.addSubview(alertView)
         alertView.edgesToSuperview()
-//        hideAlert()
+        alertView.show()
     }
     
     // MARK: - Support
-    
-    private func showAlert() {
-        UIView.animate(withDuration: 1) {
-            self.alertView.alpha = 1
-        }
-    }
-    
-    private func hideAlert() {
-        UIView.animate(withDuration: 1, animations: {
-            self.alertView.alpha = 0
-        }, completion: { _ in
-            self.alertView.removeFromSuperview()
-        })
-    }
+
 }

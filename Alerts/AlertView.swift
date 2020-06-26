@@ -13,12 +13,6 @@ final class AlertView: UIView {
     
     // MARK: - Properties
     
-//    var isHide: CGFloat = 0 {
-//        didSet {
-//            self.isHide = 1
-//        }
-//    }
-    
     enum ButtonType {
         case base(String, UIColor, UIColor)
         case cancel
@@ -61,7 +55,7 @@ final class AlertView: UIView {
         button.layer.cornerRadius = 22
         button.layer.masksToBounds = true
         button.backgroundColor = .red
-//        button.setTitle("ВЫЙТИ И СКРЫТЬ АНКЕТУ", for: .normal)
+        button.setTitle("ВЫЙТИ И СКРЫТЬ АНКЕТУ", for: .normal)
         button.tintColor = .white
         button.tag = 0
         button.addTarget(self, action: #selector(exitOrCancelButtonsPressed), for: .touchUpInside)
@@ -109,19 +103,7 @@ final class AlertView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        
-        backgroundColor = .black
-        alpha = 1
-        
-        addSubview(customAlertView)
-        customAlertView.addSubview(alertTitle)
-        customAlertView.addSubview(alertDescription)
-        customAlertView.addSubview(conteinerView)
-
-        conteinerView.addArrangedSubview(exitAndHideButton)
-        conteinerView.addArrangedSubview(cancelButton)
-        exitAndHideButton.height(44)
-        
+        setupViews()
         setupButtons()
     }
     
@@ -142,6 +124,20 @@ final class AlertView: UIView {
     
     // MARK: - Layout
     
+    private func setupViews() {
+        backgroundColor = .black
+        alpha = 1
+        
+        addSubview(customAlertView)
+        customAlertView.addSubview(alertTitle)
+        customAlertView.addSubview(alertDescription)
+        customAlertView.addSubview(conteinerView)
+        
+        conteinerView.addArrangedSubview(exitAndHideButton)
+        conteinerView.addArrangedSubview(cancelButton)
+        exitAndHideButton.height(44)
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -152,6 +148,22 @@ final class AlertView: UIView {
         conteinerView.edgesToSuperview(insets: .top(159) + .left(12) + .right(12) + .bottom(12))
     }
     
+    // MARK: - Public
+
+    func show() {
+        UIView.animate(withDuration: 1) {
+            self.alpha = 1
+        }
+    }
+    
+    func hide() {
+        UIView.animate(withDuration: 1, animations: {
+            self.alpha = 0
+        }, completion: { _ in
+            self.removeFromSuperview()
+        })
+    }
+
     // MARK: - Actions
     
     @objc private func exitOrCancelButtonsPressed(sender: UIButton) {
