@@ -10,6 +10,7 @@ import UIKit
 import TinyConstraints
 
 final class AlertView: UIView {
+    var onCancel: (() -> Void)?
     
     // MARK: - Properties
     
@@ -62,15 +63,23 @@ final class AlertView: UIView {
         return button
     }()
     
-    private lazy var cancelButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.layer.cornerRadius = 22
-        button.layer.masksToBounds = true
-        button.backgroundColor = .black
-        button.setTitle("ОТМЕНА", for: .normal)
-        button.tintColor = .white
-        button.tag = 1
-        button.addTarget(self, action: #selector(exitOrCancelButtonsPressed), for: .touchUpInside)
+    private lazy var cancelButton: BaseTextButton = {
+        let button = BaseTextButton()
+        button.setTitle(title: "ОТМЕНА")
+            .setTextColor(color: .green)
+            .setButtonColor(color: .white)
+    
+        button.action = { [weak self] in
+            self?.exitOrCancelButtonsPressed()
+//            self?.onCancel?()
+        }
+//        button.layer.cornerRadius = 22
+//        button.layer.masksToBounds = true
+//        button.backgroundColor = .black
+//        button.setTitle("ОТМЕНА", for: .normal)
+//        button.tintColor = .white
+//        button.tag = 1
+//        button.addTarget(self, action: #selector(exitOrCancelButtonsPressed), for: .touchUpInside)
         return button
     }()
     
@@ -166,15 +175,16 @@ final class AlertView: UIView {
 
     // MARK: - Actions
     
-    @objc private func exitOrCancelButtonsPressed(sender: UIButton) {
-        switch sender.tag {
-        case 0:
-            print("EXIT AND HIDE PRESSED")
-        case 1:
-            print("CANCEL PRESSED")
-        default:
-            return
-        }
+    @objc private func exitOrCancelButtonsPressed() {
+        print("action")
+//        switch sender.tag {
+//        case 0:
+//            print("EXIT AND HIDE PRESSED")
+//        case 1:
+//            print("CANCEL PRESSED")
+//        default:
+//            return
+//        }
     }
     
     var buttonTitleColor: UIColor {
