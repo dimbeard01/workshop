@@ -7,24 +7,27 @@
 //
 
 import UIKit
-import TinyConstraints
 
 final class AlertViewController: UIViewController {
     
-   // MARK: - Properties
-    
-    private let alertView = AlertView()
-    
     // MARK: - LifeCycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(alertView)
-        alertView.edgesToSuperview()
-        alertView.show()
+        let alertViewDark = AlertView(title: "Вы не заполнили обязательные поля",
+                                      description: "Для того что-бы пользоваться сервисом у вас должы быть заполнены все поля. Вы также можете выйти, но ваша анкета будет скрыта.",
+                                      buttonTypes: [ButtonType.base("ВЫЙТИ И СКРЫТЬ АНКЕТУ", { print("EXIT") }),
+                                                    ButtonType.cancel({ print("CANCEL")})],
+                                      theme: Themes.dark)
+        
+        let alertViewLight = AlertView(title: "Удалить анкету",
+                                       description: "Вы уверены что хотите удалить анкету. Вы так же можете скрыть анкету, ее не увидят другие пользователи.",
+                                       buttonTypes: [ButtonType.base("УДАЛИТЬ", { print("REMOVE") }),
+                                                     ButtonType.hide({print("HIDE")}),
+                                                     ButtonType.cancel({ print("CANCEL")})],
+                                       theme: Themes.light)
+        view.addSubview(alertViewLight)
+        alertViewLight.show()
     }
-    
-    // MARK: - Support
-
 }

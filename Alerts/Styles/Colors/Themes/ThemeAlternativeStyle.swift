@@ -1,5 +1,3 @@
-//	Created by boris on 25.02.2020.
-//	Copyright © 2020 Anonym. All rights reserved.
 
 import Foundation
 

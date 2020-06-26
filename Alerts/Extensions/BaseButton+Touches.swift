@@ -1,20 +1,12 @@
+//
+//  BaseButton+Touches.swift
+//  Alerts
+//
+//  Created by Dima on 26.06.2020.
+//  Copyright © 2020 Dima. All rights reserved.
+//
 
 import UIKit
-
-class BaseButton: ViewWithTouchArea, BaseButtonActionProtocol {
-    enum ButtonStatus {
-        case busy
-        case normal
-        case deactive
-    }
-    
-    var action: (() -> Void)?
-    
-    var needAnimationTap: Bool = true
-    
-    private var _startFrame: CGRect = .zero
-    
-}
 
 extension BaseButton {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

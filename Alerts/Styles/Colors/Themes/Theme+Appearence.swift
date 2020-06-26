@@ -1,5 +1,3 @@
-//	Created by boris on 09/07/2019.
-//	Copyright © 2019 Anonym. All rights reserved.
 
 import UIKit
 
