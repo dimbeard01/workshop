@@ -12,6 +12,7 @@
 		3214803A24A5CE38005DAECA /* UIView+SetCornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3214803924A5CE38005DAECA /* UIView+SetCornerRadius.swift */; };
 		3214803D24A5CEC5005DAECA /* UIView+MakeRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3214803C24A5CEC5005DAECA /* UIView+MakeRound.swift */; };
 		3214803F24A5CEFA005DAECA /* UIView+ScaleDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3214803E24A5CEFA005DAECA /* UIView+ScaleDown.swift */; };
+		3235521224A73ACB00D97F0D /* UIView+AddGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3235521124A73ACB00D97F0D /* UIView+AddGradient.swift */; };
 		327629C924A4BDFA001A0CFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327629C824A4BDFA001A0CFF /* AppDelegate.swift */; };
 		327629CB24A4BDFA001A0CFF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327629CA24A4BDFA001A0CFF /* SceneDelegate.swift */; };
 		327629D224A4BDFB001A0CFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 327629D124A4BDFB001A0CFF /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		3214803924A5CE38005DAECA /* UIView+SetCornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SetCornerRadius.swift"; sourceTree = "<group>"; };
 		3214803C24A5CEC5005DAECA /* UIView+MakeRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+MakeRound.swift"; sourceTree = "<group>"; };
 		3214803E24A5CEFA005DAECA /* UIView+ScaleDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ScaleDown.swift"; sourceTree = "<group>"; };
+		3235521124A73ACB00D97F0D /* UIView+AddGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddGradient.swift"; sourceTree = "<group>"; };
 		327629C524A4BDFA001A0CFF /* Alerts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alerts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		327629C824A4BDFA001A0CFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		327629CA24A4BDFA001A0CFF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				3214803724A5CDD1005DAECA /* CGRect+HitFrame.swift */,
 				3214803524A5CD6C005DAECA /* UIEdgeInsets+Inverted.swift */,
 				3214803C24A5CEC5005DAECA /* UIView+MakeRound.swift */,
+				3235521124A73ACB00D97F0D /* UIView+AddGradient.swift */,
 				3214803924A5CE38005DAECA /* UIView+SetCornerRadius.swift */,
 				3214803E24A5CEFA005DAECA /* UIView+ScaleDown.swift */,
 			);
@@ -362,6 +365,7 @@
 				58A5F28E24A5C8FA007561E5 /* Colors+Palette.swift in Sources */,
 				3214803D24A5CEC5005DAECA /* UIView+MakeRound.swift in Sources */,
 				58A5F28D24A5C8FA007561E5 /* Sizes.swift in Sources */,
+				3235521224A73ACB00D97F0D /* UIView+AddGradient.swift in Sources */,
 				58A5F29324A5C8FA007561E5 /* ThemeStyle.swift in Sources */,
 				58A5F29E24A5C9BF007561E5 /* ActivityIndicatorProtocol.swift in Sources */,
 				327629CB24A4BDFA001A0CFF /* SceneDelegate.swift in Sources */,

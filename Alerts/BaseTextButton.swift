@@ -57,6 +57,9 @@ class BaseTextButton: BaseButton {
                                             bottom: Styles.Sizes.VPaddingMedium,
                                             right: Styles.Sizes.HPaddingMedium * 2)
     
+    var gradientColors: [UIColor] = []
+    var needGradient: Bool = false
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -91,11 +94,19 @@ class BaseTextButton: BaseButton {
         
         activityIndicatorView.centerInSuperview()
     }
+  
+    func applyGradient() {
+        self.addGradient(colors: gradientColors, locations: [0.0, 1.0])
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
         self.makeRound()
+        
+        if needGradient {
+            applyGradient()
+        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

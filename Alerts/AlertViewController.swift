@@ -14,29 +14,41 @@ final class AlertViewController: UIViewController {
     
     var alertViewLight: AlertView!
     var alertViewDark: AlertView!
-    
+    var cardAlertView: AlertView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
         
+        let cardImage = UIImage(named: "light")
+        
+        
+        
         alertViewDark = AlertView(title: "Вы не заполнили обязательные поля",
                                       description: "Для того что-бы пользоваться сервисом у вас должы быть заполнены все поля. Вы также можете выйти, но ваша анкета будет скрыта.",
-                                      buttonTypes: [ButtonType.base("ВЫЙТИ И СКРЫТЬ АНКЕТУ", { self.remove(); print("EXIT") }),
+                                      buttonTypes: [ButtonType.base("ВЫЙТИ И СКРЫТЬ АНКЕТУ", Styles.Colors.Palette.error1, { self.remove(); print("EXIT") }),
                                                     ButtonType.cancel({ print("CANCEL")})],
                                       theme: Themes.light)
         
         alertViewLight = AlertView(title: "Удалить анкету",
                                        description: "Вы уверены что хотите удалить анкету. Вы так же можете скрыть анкету, ее не увидят другие пользователи.",
-                                       buttonTypes: [ButtonType.base("УДАЛИТЬ", { self.remove() }),
+                                       buttonTypes: [ButtonType.base("УДАЛИТЬ", Styles.Colors.Palette.error1, { self.remove() }),
                                                      ButtonType.hide({ print("HIDE")}),
                                                      ButtonType.cancel({ print("CANCEL")}),],
-                                       theme: Themes.light)
-        view.addSubview(alertViewDark)
-        alertViewDark.show()
+                                       theme: Themes.dark)
+        
+        cardAlertView = AlertView(image: cardImage!,
+                                  title: "Ваша анкета скрыта",
+                                  description: "Чтобы отправлять запросы на общение и ставить лайки, откройте свою анкету.",
+                                  buttonTypes: [ButtonType.base("ОТКРЫТЬ АНКЕТУ", Styles.Colors.Palette.pink1, { print("OPEN")})],
+                                  theme: Themes.light)
+        
+        view.addSubview(cardAlertView)
+        cardAlertView.show()
     }
     
     func remove() {
-        alertViewDark.hide()
+        cardAlertView.hide()
     }
 }

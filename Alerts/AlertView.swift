@@ -10,7 +10,8 @@ import UIKit
 import TinyConstraints
 
 enum ButtonType {
-    case base(String, () -> Void)
+    case base(String, UIColor, () -> Void)
+    case gradient(String, [UIColor], () -> Void)
     case hide(() -> Void)
     case cancel(() -> Void)
 }
@@ -32,9 +33,14 @@ final class AlertView: UIView {
         return view
     }()
     
+    private let cardImageView: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Styles.Colors.Palette.white
         label.numberOfLines = 0
         label.font = Styles.Fonts.Body1
         label.textAlignment = .center
@@ -95,35 +101,63 @@ final class AlertView: UIView {
         self.setupButtons()
     }
     
+    init(image: UIImage, title: String, description: String, buttonTypes: [ButtonType], theme: Themes) {
+        self.titleLabel.text = title
+        self.titleLabel.textColor = theme == Themes.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
+        self.descriptionLabel.text = description
+        self.buttonTypes = buttonTypes
+        self.theme = theme
+        self.containerView.backgroundColor = theme == Themes.dark ? Styles.Colors.Palette.gray2 : Styles.Colors.Palette.white
+        self.cardImageView.image = image
+        
+        super.init(frame: UIScreen.main.bounds)
+        
+        self.setupViewsWithImage()
+        self.setupButtons()
+    }
+    
+//    convenience init(image: UIImageView?, title: String, description: String, buttonTypes: [ButtonType], theme: Themes) {
+//        self.init(title: title, description: description, buttonTypes: buttonTypes, theme: theme)
+//    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - Support
     
     private func makeButton(_ type: ButtonType) -> BaseTextButton {
         switch type {
-        case .base(let title, let action):
+        case .base(let title, let color, let action):
             let button = BaseTextButton()
-            button.setTitle(title: title)
-            button.setTextColor(color: Styles.Colors.Palette.white)
-            button.setButtonColor(color: Styles.Colors.Palette.error1)
+                .setTitle(title: title)
+                .setTextColor(color: Styles.Colors.Palette.white)
+                .setButtonColor(color: color)
+            button.action = action
+            return button
+            
+        case .gradient(let title, let colors, let action):
+            let button = BaseTextButton()
+                .setTitle(title: title)
+                .setTextColor(color: Styles.Colors.Palette.white)
+            button.gradientColors = colors
+            button.needGradient = true
             button.action = action
             return button
             
         case .hide(let action):
             let button = BaseTextButton()
-            button.setTitle(title: "СКРЫТЬ")
-            button.setTextColor(color: buttonTextColor)
-            button.setButtonColor(color: buttonBackgroundColor)
+                .setTitle(title: "СКРЫТЬ")
+                .setTextColor(color: buttonTextColor)
+                .setButtonColor(color: buttonBackgroundColor)
             button.action = action
             return button
             
         case .cancel(let action):
             let button = BaseTextButton()
-            button.setTitle(title: "ОТМЕНА")
-            button.setTextColor(color: buttonTextColor)
-            button.setButtonColor(color: buttonBackgroundColor)
+                .setTitle(title: "ОТМЕНА")
+                .setTextColor(color: buttonTextColor)
+                .setButtonColor(color: buttonBackgroundColor)
             button.action = action
             return button
         }
@@ -138,12 +172,39 @@ final class AlertView: UIView {
     }
     
     // MARK: - Layout
-    
+      
     private func setupViews() {
+          alpha = 0
+          
+          backgroundColor = UIColor.init(white: 0, alpha: 0.3)
+          addSubview(containerView)
+          containerView.addSubview(titleLabel)
+          containerView.addSubview(descriptionLabel)
+          containerView.addSubview(buttonStackView)
+          
+          containerView.centerInSuperview()
+          containerView.widthToSuperview(multiplier: 0.87)
+          
+          titleLabel.topToSuperview(offset: Styles.Sizes.VPaddingBase)
+          titleLabel.leftToSuperview(offset: Styles.Sizes.HPaddingBase)
+          titleLabel.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
+          
+          descriptionLabel.topToBottom(of: titleLabel, offset: Styles.Sizes.VPaddingMedium)
+          descriptionLabel.leftToSuperview(offset: Styles.Sizes.HPaddingBase)
+          descriptionLabel.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
+          
+          buttonStackView.topToBottom(of: descriptionLabel, offset: 15)
+          buttonStackView.leftToSuperview(offset: Styles.Sizes.HPaddingBase)
+          buttonStackView.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
+          buttonStackView.bottomToSuperview(offset: -Styles.Sizes.VPaddingBase)
+      }
+    
+    private func setupViewsWithImage() {
         alpha = 0
         
         backgroundColor = UIColor.init(white: 0, alpha: 0.3)
         addSubview(containerView)
+        containerView.addSubview(cardImageView)
         containerView.addSubview(titleLabel)
         containerView.addSubview(descriptionLabel)
         containerView.addSubview(buttonStackView)
@@ -151,7 +212,11 @@ final class AlertView: UIView {
         containerView.centerInSuperview()
         containerView.widthToSuperview(multiplier: 0.87)
         
-        titleLabel.topToSuperview(offset: Styles.Sizes.VPaddingBase)
+        cardImageView.topToSuperview(offset: Styles.Sizes.VPaddingBase)
+        cardImageView.leftToSuperview(offset: Styles.Sizes.VPaddingBase)
+        cardImageView.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
+        
+        titleLabel.topToBottom(of: cardImageView, offset: 15)
         titleLabel.leftToSuperview(offset: Styles.Sizes.HPaddingBase)
         titleLabel.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
         
@@ -166,7 +231,7 @@ final class AlertView: UIView {
     }
     
     // MARK: - Internal
-    
+
     func show() {
         UIView.animate(withDuration: Styles.Constants.animationDurationBase) {
             self.alpha = 1
