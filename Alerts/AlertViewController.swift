@@ -15,14 +15,15 @@ final class AlertViewController: UIViewController {
     var alertViewLight: AlertView!
     var alertViewDark: AlertView!
     var cardAlertView: AlertView!
+    var subscriptionAlertView: AlertView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
         
-        let cardImage = UIImage(named: "light")
-        
+        let cardImage = UIImage(named: "lightHidden")
+        let subscriptionImage = UIImage(named: "Star")
         
         
         alertViewDark = AlertView(title: "Вы не заполнили обязательные поля",
@@ -44,11 +45,18 @@ final class AlertViewController: UIViewController {
                                   buttonTypes: [ButtonType.base("ОТКРЫТЬ АНКЕТУ", Styles.Colors.Palette.pink1, { print("OPEN")})],
                                   theme: Themes.light)
         
-        view.addSubview(cardAlertView)
-        cardAlertView.show()
+        subscriptionAlertView = AlertView(image: subscriptionImage!,
+                                  color: Styles.Colors.Gradients.findsGradientColors,
+                                  title: "Вы достигли лимита на отправку запросов на общение",
+                                  description: "С подпиской Finds+ ограничений не существует, попробуйте прямо сейчас",
+                                  buttonTypes: [ButtonType.gradient("ПОДРОБНЕЕ", Styles.Colors.Gradients.findsGradientColors, { print("OPEN")})],
+                                  theme: Themes.light)
+        
+        view.addSubview(subscriptionAlertView)
+        subscriptionAlertView.show()
     }
     
     func remove() {
-        cardAlertView.hide()
+        subscriptionAlertView.hide()
     }
 }
