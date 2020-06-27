@@ -23,15 +23,16 @@ enum Themes {
 final class AlertView: UIView {
         
     // MARK: - Properties
-    
-    private let customAlertView: UIView = {
+
+    private let containerView: UIView = {
         let view = UIView()
         view.backgroundColor = Styles.Colors.Palette.gray2
         view.layer.cornerRadius = Styles.Sizes.cornerRadiusBase
+        view.layer.masksToBounds = true
         return view
     }()
     
-    private let alertTitle: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = Styles.Colors.Palette.white
         label.numberOfLines = 0
@@ -40,7 +41,7 @@ final class AlertView: UIView {
         return label
     }()
     
-    private let alertDescription: UILabel = {
+    private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = Styles.Colors.Palette.gray4
         label.numberOfLines = 0
@@ -49,7 +50,7 @@ final class AlertView: UIView {
         return label
     }()
     
-    private let conteinerView: UIStackView = {
+    private let buttonStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.distribution = .fillEqually
@@ -79,14 +80,15 @@ final class AlertView: UIView {
     private var theme: Themes
     
     // MARK: - Init
-    
+
     init(title: String, description: String, buttonTypes: [ButtonType], theme: Themes) {
-        self.alertTitle.text = title
-        self.alertTitle.textColor = theme == Themes.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
-        self.alertDescription.text = description
+        self.titleLabel.text = title
+        self.titleLabel.textColor = theme == Themes.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
+        self.descriptionLabel.text = description
         self.buttonTypes = buttonTypes
         self.theme = theme
-        self.customAlertView.backgroundColor = theme == Themes.dark ? Styles.Colors.Palette.gray2 : Styles.Colors.Palette.white
+        self.containerView.backgroundColor = theme == Themes.dark ? Styles.Colors.Palette.gray2 : Styles.Colors.Palette.white
+        
         super.init(frame: UIScreen.main.bounds)
         
         self.setupViews()
@@ -128,9 +130,9 @@ final class AlertView: UIView {
     }
     
     private func setupButtons() {
-        let buttons = buttonTypes.map { self.makeButton($0) }
+        let buttons = buttonTypes.map { makeButton($0) }
         buttons.forEach { button in
-            conteinerView.addArrangedSubview(button)
+            buttonStackView.addArrangedSubview(button)
             button.height(Styles.Sizes.buttonMedium)
         }
     }
@@ -141,29 +143,29 @@ final class AlertView: UIView {
         alpha = 0
         
         backgroundColor = UIColor.init(white: 0, alpha: 0.3)
-        addSubview(customAlertView)
-        customAlertView.addSubview(alertTitle)
-        customAlertView.addSubview(alertDescription)
-        customAlertView.addSubview(conteinerView)
+        addSubview(containerView)
+        containerView.addSubview(titleLabel)
+        containerView.addSubview(descriptionLabel)
+        containerView.addSubview(buttonStackView)
         
-        customAlertView.center(in: self)
-        customAlertView.width(to: self, multiplier: 0.87)
+        containerView.centerInSuperview()
+        containerView.widthToSuperview(multiplier: 0.87)
         
-        alertTitle.topToSuperview(offset: Styles.Sizes.VPaddingBase)
-        alertTitle.leftToSuperview(offset: Styles.Sizes.HPaddingBase)
-        alertTitle.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
-        alertTitle.bottomToTop(of: alertDescription, offset: -Styles.Sizes.VPaddingMedium)
+        titleLabel.topToSuperview(offset: Styles.Sizes.VPaddingBase)
+        titleLabel.leftToSuperview(offset: Styles.Sizes.HPaddingBase)
+        titleLabel.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
         
-        alertDescription.leftToSuperview(offset: Styles.Sizes.HPaddingBase)
-        alertDescription.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
-        alertDescription.bottomToTop(of: conteinerView, offset: -15)
+        descriptionLabel.topToBottom(of: titleLabel, offset: Styles.Sizes.VPaddingMedium)
+        descriptionLabel.leftToSuperview(offset: Styles.Sizes.HPaddingBase)
+        descriptionLabel.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
         
-        conteinerView.leftToSuperview(offset: Styles.Sizes.HPaddingBase)
-        conteinerView.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
-        conteinerView.bottomToSuperview(offset: -Styles.Sizes.VPaddingBase)
+        buttonStackView.topToBottom(of: descriptionLabel, offset: 15)
+        buttonStackView.leftToSuperview(offset: Styles.Sizes.HPaddingBase)
+        buttonStackView.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
+        buttonStackView.bottomToSuperview(offset: -Styles.Sizes.VPaddingBase)
     }
     
-    // MARK: - Public
+    // MARK: - Internal
     
     func show() {
         UIView.animate(withDuration: Styles.Constants.animationDurationBase) {
@@ -178,7 +180,5 @@ final class AlertView: UIView {
             self.removeFromSuperview()
         })
     }
-    
-    
-    
+
 }
