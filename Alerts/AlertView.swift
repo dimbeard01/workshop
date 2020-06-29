@@ -89,22 +89,52 @@ final class AlertView: UIView {
         }
     }
     
+    private var hiddenProfileImageName: String {
+        switch theme {
+        case .dark: return "darkHidden"
+        case .light: return "lightHidden"
+        }
+    }
+    
+    private var noProfileImageName: String {
+        switch theme {
+        case .dark: return "dark"
+        case .light: return "light"
+        }
+    }
+    
+    private var buttonBackgroundHiddenProfile: UIColor {
+        switch theme {
+        case .dark: return Styles.Colors.Palette.purple1
+        case .light: return Styles.Colors.Palette.pink1
+        }
+    }
+    
+    private var buttonBackgroundNoProfile: UIColor {
+        switch theme {
+        case .dark: return Styles.Colors.Palette.orange1
+        case .light: return  Styles.Colors.Palette.green1
+        }
+    }
+    
     private var buttonTypes: [ButtonType] = []
     private var theme: Themes
     private var baseGradientColor: [UIColor] = []
+    private let type: AlertType
     
     // MARK: - Init
     
-    init(image: UIImage?, userPhoto: UIImage?, gradient: [UIColor]?, title: String, description: String, buttonTypes: [ButtonType], theme: Themes) {
-        self.titleLabel.text = title
-        self.descriptionLabel.text = description
-        self.buttonTypes = buttonTypes
+    init(type: AlertType, theme: Themes) {
+        self.type = type
+        self.titleLabel.text = type.title
+        self.descriptionLabel.text = type.description
+        self.buttonTypes = type.buttonType
         self.theme = theme
         self.containerView.backgroundColor = theme == Themes.dark ? Styles.Colors.Palette.gray2 : Styles.Colors.Palette.white
         
         super.init(frame: UIScreen.main.bounds)
         
-        self.setupViews(gradient: gradient, image: image, userPhoto: userPhoto)
+        self.setupViews()
         self.setupButtons()
     }
     
@@ -170,108 +200,142 @@ final class AlertView: UIView {
                                endPoint: CGPoint(x: 0, y: 1))
     }
    
-    private func setupViews(gradient: [UIColor]?, image: UIImage?, userPhoto: UIImage?) {
-        
-        if let userPhoto = userPhoto, let gradient = gradient, let image = image {
-            baseGradientColor = gradient
+    private func setupViews() {
+        switch type {
+        case .message, .like, .interestingYou, .seeMore:
+            setupLimitAlert()
             
-            let backgroundImageView = UIImageView()
-            backgroundImageView.contentMode = .scaleAspectFit
-            let backgroundImage = UIImage(named: "group")
-            backgroundImageView.image = backgroundImage
-            backgroundImageView.alpha = 0.7
+        case .boostActivated:
+            setupBoostActivatedAlert()
             
-            containerView.addSubview(backgroundImageView)
+        case .hiddenProfile:
+            setupHiddenProfileAlert()
             
-            backgroundImageView.topToSuperview()
-            backgroundImageView.leftToSuperview()
-            backgroundImageView.rightToSuperview()
+        case .noProfile:
+            setupNoProfileAlert()
             
-            setupContainerView()
-            
-            let userPhotoImageView = UIImageView()
-            userPhotoImageView.image = userPhoto
-            
-            addSubview(userPhotoImageView)
-            
-            let sizeUserPhoto: CGFloat = 104
-            userPhotoImageView.width(sizeUserPhoto)
-            userPhotoImageView.height(sizeUserPhoto)
-            userPhotoImageView.centerXToSuperview()
-            userPhotoImageView.bottomToTop(of: containerView, offset: sizeUserPhoto / 2)
-            
-            let sizeCircleView: CGFloat = 40
-            addSubview(circleView)
-            circleView.bottom(to: userPhotoImageView)
-            circleView.trailing(to: userPhotoImageView)
-            circleView.height(sizeCircleView)
-            circleView.width(sizeCircleView)
-            circleView.layer.cornerRadius = sizeCircleView / 2
-            
-            circleView.addSubview(cardImageView)
-            cardImageView.image = image
-            cardImageView.topToSuperview(offset: Styles.Sizes.HPaddingMedium)
-            cardImageView.leftToSuperview(offset: Styles.Sizes.VPaddingMedium)
-            cardImageView.rightToSuperview(offset: -Styles.Sizes.VPaddingMedium)
-            cardImageView.bottomToSuperview(offset: -Styles.Sizes.HPaddingMedium)
-            
-            titleLabel.textColor = gradient.first
-            titleLabel.topToBottom(of: userPhotoImageView, offset: 16)
-
-        } else if let gradient = gradient, let image = image {
-            baseGradientColor = gradient
-
-            let backgroundImageView = UIImageView()
-            backgroundImageView.contentMode = .scaleAspectFit
-            let backgroundImage = UIImage(named: "group")
-            backgroundImageView.image = backgroundImage
-            backgroundImageView.alpha = 0.7
-            
-            containerView.addSubview(backgroundImageView)
-            
-            backgroundImageView.topToSuperview()
-            backgroundImageView.leftToSuperview()
-            backgroundImageView.rightToSuperview()
-            
-            setupContainerView()
-            
-            cardImageView.image = image
-            
-            addSubview(circleView)
-            addSubview(cardImageView)
-            
-            cardImageView.center(in: circleView)
-            let sizeCircleView: CGFloat = 104
-            
-            circleView.width(sizeCircleView)
-            circleView.height(sizeCircleView)
-            circleView.centerXToSuperview()
-            circleView.bottomToTop(of: containerView, offset: sizeCircleView / 2)
-            circleView.addGradient(colors: baseGradientColor,
-                                   locations: [0.0, 1.0],
-                                   startPoint: CGPoint(x: 1, y: 0),
-                                   endPoint: CGPoint(x: 0, y: 1))
-            
-            titleLabel.textColor = gradient.first
-            titleLabel.topToBottom(of: circleView, offset: 16)
-        } else if let image = image {
-            setupContainerView()
-            
-            cardImageView.image = image
-            containerView.addSubview(cardImageView)
-            
-            cardImageView.topToSuperview(offset: Styles.Sizes.VPaddingBase)
-            cardImageView.leftToSuperview(offset: Styles.Sizes.VPaddingBase)
-            cardImageView.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
-            
-            titleLabel.textColor = theme == Themes.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
-            titleLabel.topToBottom(of: cardImageView, offset: 15)
-        } else {
+        case .emptyFields, .removeProfile:
             setupContainerView()
             
             titleLabel.textColor = theme == Themes.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
             titleLabel.topToSuperview(offset: Styles.Sizes.VPaddingBase)
         }
+    }
+    
+    private func setupLimitAlert() {
+        baseGradientColor = type.gradientColor
+
+        let backgroundImageView = UIImageView()
+        backgroundImageView.contentMode = .scaleAspectFit
+        let backgroundImage = UIImage(named: "group")
+        backgroundImageView.image = backgroundImage
+        backgroundImageView.alpha = 0.7
+        
+        containerView.addSubview(backgroundImageView)
+        
+        backgroundImageView.topToSuperview()
+        backgroundImageView.leftToSuperview()
+        backgroundImageView.rightToSuperview()
+        
+        setupContainerView()
+        
+        cardImageView.image = UIImage(named: type.imageName)
+        
+        addSubview(circleView)
+        addSubview(cardImageView)
+        
+        cardImageView.center(in: circleView)
+        let sizeCircleView: CGFloat = 104
+        
+        circleView.width(sizeCircleView)
+        circleView.height(sizeCircleView)
+        circleView.centerXToSuperview()
+        circleView.bottomToTop(of: containerView, offset: sizeCircleView / 2)
+        circleView.addGradient(colors: baseGradientColor,
+                               locations: [0.0, 1.0],
+                               startPoint: CGPoint(x: 1, y: 0),
+                               endPoint: CGPoint(x: 0, y: 1))
+        
+        titleLabel.textColor = type.titleColor
+        titleLabel.topToBottom(of: circleView, offset: 16)
+    }
+    
+    private func setupBoostActivatedAlert() {
+        baseGradientColor = type.gradientColor
+
+        let backgroundImageView = UIImageView()
+        backgroundImageView.contentMode = .scaleAspectFit
+        let backgroundImage = UIImage(named: "group")
+        backgroundImageView.image = backgroundImage
+        backgroundImageView.alpha = 0.7
+        
+        containerView.addSubview(backgroundImageView)
+        
+        backgroundImageView.topToSuperview()
+        backgroundImageView.leftToSuperview()
+        backgroundImageView.rightToSuperview()
+        
+        setupContainerView()
+        
+        let userPhotoImageView = UIImageView()
+        userPhotoImageView.image = UIImage(named: type.imageName)
+        
+        addSubview(userPhotoImageView)
+        
+        let sizeUserPhoto: CGFloat = 104
+        userPhotoImageView.width(sizeUserPhoto)
+        userPhotoImageView.height(sizeUserPhoto)
+        userPhotoImageView.centerXToSuperview()
+        userPhotoImageView.bottomToTop(of: containerView, offset: sizeUserPhoto / 2)
+        
+        let sizeCircleView: CGFloat = 40
+        addSubview(circleView)
+        circleView.bottom(to: userPhotoImageView)
+        circleView.trailing(to: userPhotoImageView)
+        circleView.height(sizeCircleView)
+        circleView.width(sizeCircleView)
+        circleView.layer.cornerRadius = sizeCircleView / 2
+        
+        circleView.addSubview(cardImageView)
+        cardImageView.image = UIImage(named: AlertType.seeMore.imageName)
+        cardImageView.topToSuperview(offset: Styles.Sizes.HPaddingMedium)
+        cardImageView.leftToSuperview(offset: Styles.Sizes.VPaddingMedium)
+        cardImageView.rightToSuperview(offset: -Styles.Sizes.VPaddingMedium)
+        cardImageView.bottomToSuperview(offset: -Styles.Sizes.HPaddingMedium)
+        
+        titleLabel.textColor = type.titleColor
+        titleLabel.topToBottom(of: userPhotoImageView, offset: 16)
+    }
+    
+    private func setupHiddenProfileAlert(){
+        setupContainerView()
+        
+        cardImageView.image = UIImage(named: hiddenProfileImageName)
+        containerView.addSubview(cardImageView)
+        buttonTypes = [ButtonType.coloredBase("ОТКРЫТЬ АНКЕТУ", buttonBackgroundHiddenProfile, { print("HIDDEN PROFILE")})]
+        
+        cardImageView.topToSuperview(offset: Styles.Sizes.HPaddingBase)
+        cardImageView.leftToSuperview(offset: Styles.Sizes.VPaddingBase)
+        cardImageView.rightToSuperview(offset: -Styles.Sizes.VPaddingBase)
+        
+        titleLabel.textColor = theme == Themes.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
+        titleLabel.topToBottom(of: cardImageView, offset: 15)
+    }
+    
+    private func setupNoProfileAlert(){
+        setupContainerView()
+        
+        cardImageView.image = UIImage(named: noProfileImageName)
+        containerView.addSubview(cardImageView)
+        buttonTypes = [ButtonType.coloredBase("СОЗДАТЬ АНКЕТУ", buttonBackgroundNoProfile, { print("NO PROFILE")})]
+        
+        cardImageView.topToSuperview(offset: Styles.Sizes.HPaddingBase)
+        cardImageView.leftToSuperview(offset: Styles.Sizes.VPaddingBase)
+        cardImageView.rightToSuperview(offset: -Styles.Sizes.VPaddingBase)
+        
+        titleLabel.textColor = theme == Themes.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
+        titleLabel.topToBottom(of: cardImageView, offset: 15)
+        
     }
     
     private func setupContainerView() {
@@ -285,17 +349,17 @@ final class AlertView: UIView {
         containerView.centerInSuperview()
         containerView.widthToSuperview(multiplier: 0.87)
         
-        titleLabel.leftToSuperview(offset: Styles.Sizes.HPaddingBase)
-        titleLabel.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
+        titleLabel.leftToSuperview(offset: Styles.Sizes.VPaddingBase)
+        titleLabel.rightToSuperview(offset: -Styles.Sizes.VPaddingBase)
         
-        descriptionLabel.topToBottom(of: titleLabel, offset: Styles.Sizes.VPaddingMedium)
-        descriptionLabel.leftToSuperview(offset: Styles.Sizes.HPaddingBase)
-        descriptionLabel.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
+        descriptionLabel.topToBottom(of: titleLabel, offset: Styles.Sizes.HPaddingMedium)
+        descriptionLabel.leftToSuperview(offset: Styles.Sizes.VPaddingBase)
+        descriptionLabel.rightToSuperview(offset: -Styles.Sizes.VPaddingBase)
         
         buttonStackView.topToBottom(of: descriptionLabel, offset: 15)
-        buttonStackView.leftToSuperview(offset: Styles.Sizes.HPaddingBase)
-        buttonStackView.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
-        buttonStackView.bottomToSuperview(offset: -Styles.Sizes.VPaddingBase)
+        buttonStackView.leftToSuperview(offset: Styles.Sizes.VPaddingBase)
+        buttonStackView.rightToSuperview(offset: -Styles.Sizes.VPaddingBase)
+        buttonStackView.bottomToSuperview(offset: -Styles.Sizes.HPaddingBase)
     }
     
     // MARK: - Internal
@@ -313,5 +377,4 @@ final class AlertView: UIView {
             self.removeFromSuperview()
         })
     }
-
 }

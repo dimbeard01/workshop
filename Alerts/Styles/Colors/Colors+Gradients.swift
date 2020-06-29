@@ -13,6 +13,10 @@ extension Styles.Colors {
         static let findsGradientColors = [UIColor(red: 0.925, green: 0.549, blue: 0.412, alpha: 1),
                                           UIColor(red: 0.929, green: 0.431, blue: 0.627, alpha: 1)]
         
-        static let findsBoostGradientColors = [#colorLiteral(red: 0.4745098039, green: 0.8588235294, blue: 0.7215686275, alpha: 1), #colorLiteral(red: 0.6235294118, green: 0.768627451, blue: 0.9607843137, alpha: 1)]
+        static let findsBoostGradientColors = [#colorLiteral(red: 0.6234299541, green: 0.7686763406, blue: 0.9606664777, alpha: 1), #colorLiteral(red: 0.4745098039, green: 0.8588235294, blue: 0.7215686275, alpha: 1)]
+        
+        static let interestingYouGradientColors = [#colorLiteral(red: 0.07058823529, green: 0.7960784314, blue: 0.768627451, alpha: 1), #colorLiteral(red: 0.06666666667, green: 0.7490196078, blue: 0.5843137255, alpha: 1)]
+
+   
     }
 }
