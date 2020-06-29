@@ -96,7 +96,10 @@ class BaseTextButton: BaseButton {
     }
   
     func applyGradient() {
-        self.addGradient(colors: gradientColors, locations: [0.0, 1.0])
+        self.addGradient(colors: gradientColors,
+                                    locations: [0.0, 1.0],
+                                    startPoint: CGPoint(x: 1, y: 0),
+                                    endPoint: CGPoint(x: 0, y: 1))
     }
     
     override func layoutSubviews() {

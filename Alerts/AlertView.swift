@@ -10,9 +10,9 @@ import UIKit
 import TinyConstraints
 
 enum ButtonType {
-    case base(String, UIColor, () -> Void)
+    case coloredBase(String, UIColor, () -> Void)
     case gradient(String, [UIColor], () -> Void)
-    case hide(() -> Void)
+    case base(String, () -> Void)
     case cancel(() -> Void)
 }
 
@@ -34,11 +34,11 @@ final class AlertView: UIView {
     }()
     
     private let circleView: UIView = {
-           let view = UIView()
-           view.layer.cornerRadius = 52
-           view.layer.masksToBounds = true
-           return view
-       }()
+        let view = UIView()
+        view.layer.cornerRadius = 52
+        view.layer.masksToBounds = true
+        return view
+    }()
     
     private let cardImageView: UIImageView = {
         let image = UIImageView()
@@ -94,25 +94,9 @@ final class AlertView: UIView {
     private var baseGradientColor: [UIColor] = []
     
     // MARK: - Init
-
-    init(title: String, description: String, buttonTypes: [ButtonType], theme: Themes) {
-        self.titleLabel.text = title
-        self.titleLabel.textColor = theme == Themes.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
-        self.descriptionLabel.text = description
-        self.buttonTypes = buttonTypes
-        self.theme = theme
-        self.containerView.backgroundColor = theme == Themes.dark ? Styles.Colors.Palette.gray2 : Styles.Colors.Palette.white
-        
-        super.init(frame: UIScreen.main.bounds)
-        
-        self.setupViews()
-        self.setupButtons()
-    }
     
-    init(image: UIImage, title: String, description: String, buttonTypes: [ButtonType], theme: Themes) {
-        self.cardImageView.image = image
+    init(image: UIImage?, userPhoto: UIImage?, gradient: [UIColor]?, title: String, description: String, buttonTypes: [ButtonType], theme: Themes) {
         self.titleLabel.text = title
-        self.titleLabel.textColor = theme == Themes.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
         self.descriptionLabel.text = description
         self.buttonTypes = buttonTypes
         self.theme = theme
@@ -120,23 +104,7 @@ final class AlertView: UIView {
         
         super.init(frame: UIScreen.main.bounds)
         
-        self.setupViewsWithImage()
-        self.setupButtons()
-    }
-    
-    init(image: UIImage, color: [UIColor], title: String, description: String, buttonTypes: [ButtonType], theme: Themes) {
-        self.cardImageView.image = image
-        self.baseGradientColor = color
-        self.titleLabel.text = title
-        //self.titleLabel.textColor = theme == Themes.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
-        self.descriptionLabel.text = description
-        self.buttonTypes = buttonTypes
-        self.theme = theme
-        self.containerView.backgroundColor = theme == Themes.dark ? Styles.Colors.Palette.gray2 : Styles.Colors.Palette.white
-        
-        super.init(frame: UIScreen.main.bounds)
-        
-        self.setupViewsWithCirle()
+        self.setupViews(gradient: gradient, image: image, userPhoto: userPhoto)
         self.setupButtons()
     }
     
@@ -148,7 +116,7 @@ final class AlertView: UIView {
     
     private func makeButton(_ type: ButtonType) -> BaseTextButton {
         switch type {
-        case .base(let title, let color, let action):
+        case .coloredBase(let title, let color, let action):
             let button = BaseTextButton()
                 .setTitle(title: title)
                 .setTextColor(color: Styles.Colors.Palette.white)
@@ -165,9 +133,9 @@ final class AlertView: UIView {
             button.action = action
             return button
             
-        case .hide(let action):
+        case .base(let title, let action):
             let button = BaseTextButton()
-                .setTitle(title: "СКРЫТЬ")
+                .setTitle(title: title)
                 .setTextColor(color: buttonTextColor)
                 .setButtonColor(color: buttonBackgroundColor)
             button.action = action
@@ -195,99 +163,128 @@ final class AlertView: UIView {
       
     override func layoutSubviews() {
         super.layoutSubviews()
-
-                circleView.addGradient(colors: baseGradientColor, locations: [0.0, 1.0])
-
-
-    }
-    private func setupViews() {
-          alpha = 0
-          
-          backgroundColor = UIColor.init(white: 0, alpha: 0.3)
-          addSubview(containerView)
-          containerView.addSubview(titleLabel)
-          containerView.addSubview(descriptionLabel)
-          containerView.addSubview(buttonStackView)
-          
-          containerView.centerInSuperview()
-          containerView.widthToSuperview(multiplier: 0.87)
-          
-          titleLabel.topToSuperview(offset: Styles.Sizes.VPaddingBase)
-          titleLabel.leftToSuperview(offset: Styles.Sizes.HPaddingBase)
-          titleLabel.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
-          
-          descriptionLabel.topToBottom(of: titleLabel, offset: Styles.Sizes.VPaddingMedium)
-          descriptionLabel.leftToSuperview(offset: Styles.Sizes.HPaddingBase)
-          descriptionLabel.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
-          
-          buttonStackView.topToBottom(of: descriptionLabel, offset: 15)
-          buttonStackView.leftToSuperview(offset: Styles.Sizes.HPaddingBase)
-          buttonStackView.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
-          buttonStackView.bottomToSuperview(offset: -Styles.Sizes.VPaddingBase)
-      }
-    
-    private func setupViewsWithImage() {
-        alpha = 0
         
+        circleView.addGradient(colors: baseGradientColor,
+                               locations: [0.0, 1.0],
+                               startPoint: CGPoint(x: 1, y: 0),
+                               endPoint: CGPoint(x: 0, y: 1))
+    }
+   
+    private func setupViews(gradient: [UIColor]?, image: UIImage?, userPhoto: UIImage?) {
+        
+        if let userPhoto = userPhoto, let gradient = gradient, let image = image {
+            baseGradientColor = gradient
+            
+            let backgroundImageView = UIImageView()
+            backgroundImageView.contentMode = .scaleAspectFit
+            let backgroundImage = UIImage(named: "group")
+            backgroundImageView.image = backgroundImage
+            backgroundImageView.alpha = 0.7
+            
+            containerView.addSubview(backgroundImageView)
+            
+            backgroundImageView.topToSuperview()
+            backgroundImageView.leftToSuperview()
+            backgroundImageView.rightToSuperview()
+            
+            setupContainerView()
+            
+            let userPhotoImageView = UIImageView()
+            userPhotoImageView.image = userPhoto
+            
+            addSubview(userPhotoImageView)
+            
+            let sizeUserPhoto: CGFloat = 104
+            userPhotoImageView.width(sizeUserPhoto)
+            userPhotoImageView.height(sizeUserPhoto)
+            userPhotoImageView.centerXToSuperview()
+            userPhotoImageView.bottomToTop(of: containerView, offset: sizeUserPhoto / 2)
+            
+            let sizeCircleView: CGFloat = 40
+            addSubview(circleView)
+            circleView.bottom(to: userPhotoImageView)
+            circleView.trailing(to: userPhotoImageView)
+            circleView.height(sizeCircleView)
+            circleView.width(sizeCircleView)
+            circleView.layer.cornerRadius = sizeCircleView / 2
+            
+            circleView.addSubview(cardImageView)
+            cardImageView.image = image
+            cardImageView.topToSuperview(offset: Styles.Sizes.HPaddingMedium)
+            cardImageView.leftToSuperview(offset: Styles.Sizes.VPaddingMedium)
+            cardImageView.rightToSuperview(offset: -Styles.Sizes.VPaddingMedium)
+            cardImageView.bottomToSuperview(offset: -Styles.Sizes.HPaddingMedium)
+            
+            titleLabel.textColor = gradient.first
+            titleLabel.topToBottom(of: userPhotoImageView, offset: 16)
+
+        } else if let gradient = gradient, let image = image {
+            baseGradientColor = gradient
+
+            let backgroundImageView = UIImageView()
+            backgroundImageView.contentMode = .scaleAspectFit
+            let backgroundImage = UIImage(named: "group")
+            backgroundImageView.image = backgroundImage
+            backgroundImageView.alpha = 0.7
+            
+            containerView.addSubview(backgroundImageView)
+            
+            backgroundImageView.topToSuperview()
+            backgroundImageView.leftToSuperview()
+            backgroundImageView.rightToSuperview()
+            
+            setupContainerView()
+            
+            cardImageView.image = image
+            
+            addSubview(circleView)
+            addSubview(cardImageView)
+            
+            cardImageView.center(in: circleView)
+            let sizeCircleView: CGFloat = 104
+            
+            circleView.width(sizeCircleView)
+            circleView.height(sizeCircleView)
+            circleView.centerXToSuperview()
+            circleView.bottomToTop(of: containerView, offset: sizeCircleView / 2)
+            circleView.addGradient(colors: baseGradientColor,
+                                   locations: [0.0, 1.0],
+                                   startPoint: CGPoint(x: 1, y: 0),
+                                   endPoint: CGPoint(x: 0, y: 1))
+            
+            titleLabel.textColor = gradient.first
+            titleLabel.topToBottom(of: circleView, offset: 16)
+        } else if let image = image {
+            setupContainerView()
+            
+            cardImageView.image = image
+            containerView.addSubview(cardImageView)
+            
+            cardImageView.topToSuperview(offset: Styles.Sizes.VPaddingBase)
+            cardImageView.leftToSuperview(offset: Styles.Sizes.VPaddingBase)
+            cardImageView.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
+            
+            titleLabel.textColor = theme == Themes.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
+            titleLabel.topToBottom(of: cardImageView, offset: 15)
+        } else {
+            setupContainerView()
+            
+            titleLabel.textColor = theme == Themes.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
+            titleLabel.topToSuperview(offset: Styles.Sizes.VPaddingBase)
+        }
+    }
+    
+    private func setupContainerView() {
+        alpha = 0
         backgroundColor = UIColor.init(white: 0, alpha: 0.3)
         addSubview(containerView)
-        
-        containerView.addSubview(cardImageView)
+
         containerView.addSubview(titleLabel)
         containerView.addSubview(descriptionLabel)
         containerView.addSubview(buttonStackView)
-        
         containerView.centerInSuperview()
         containerView.widthToSuperview(multiplier: 0.87)
         
-        cardImageView.topToSuperview(offset: Styles.Sizes.VPaddingBase)
-        cardImageView.leftToSuperview(offset: Styles.Sizes.VPaddingBase)
-        cardImageView.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
-        
-        titleLabel.topToBottom(of: cardImageView, offset: 15)
-        titleLabel.leftToSuperview(offset: Styles.Sizes.HPaddingBase)
-        titleLabel.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
-        
-        descriptionLabel.topToBottom(of: titleLabel, offset: Styles.Sizes.VPaddingMedium)
-        descriptionLabel.leftToSuperview(offset: Styles.Sizes.HPaddingBase)
-        descriptionLabel.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
-        
-        buttonStackView.topToBottom(of: descriptionLabel, offset: 15)
-        buttonStackView.leftToSuperview(offset: Styles.Sizes.HPaddingBase)
-        buttonStackView.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
-        buttonStackView.bottomToSuperview(offset: -Styles.Sizes.VPaddingBase)
-    }
-    
-    private func setupViewsWithCirle() {
-        alpha = 0
-        
-        backgroundColor = UIColor.init(white: 0, alpha: 0.3)
-        addSubview(containerView)
-        addSubview(circleView)
-        addSubview(cardImageView)
-        
-        containerView.addSubview(titleLabel)
-        containerView.addSubview(descriptionLabel)
-        containerView.addSubview(buttonStackView)
-        
-        containerView.centerInSuperview()
-        containerView.widthToSuperview(multiplier: 0.87)
-        
-        let sizeCercle: CGFloat = 104
-        
-        cardImageView.center(in: circleView)
-        
-        circleView.width(sizeCercle)
-        circleView.height(sizeCercle)
-        circleView.centerXToSuperview()
-        circleView.bottomToTop(of: containerView, offset: sizeCercle / 2)
-        
-        
-//        circleView.backgroundColor = .red
-       circleView.addGradient(colors: baseGradientColor, locations: [0.0, 1.0])
-        
-//        titleLabel.backgroundColor.addGradient(colors: baseGradientColor, locations: [0.0, 1.0])
-        titleLabel.topToBottom(of: circleView, offset: 16)
         titleLabel.leftToSuperview(offset: Styles.Sizes.HPaddingBase)
         titleLabel.rightToSuperview(offset: -Styles.Sizes.HPaddingBase)
         
