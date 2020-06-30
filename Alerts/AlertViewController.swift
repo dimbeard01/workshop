@@ -8,6 +8,19 @@
 
 import UIKit
 
+enum ActionType {
+    case detailed
+    case openProfile
+    case createProfile
+    case activated
+    case boostDetailed
+    case done
+    case hide
+    case remove
+    case exitAndHide
+    case cancel(String)
+}
+
 enum AlertType {
     case message
     case like
@@ -79,39 +92,87 @@ enum AlertType {
         default: return Styles.Colors.Gradients.findsBoostGradientColors
         }
     }
-    
-    var buttonType: [ButtonType] {
-        switch self {
-        case .message: return [ButtonType.gradient("ПОДРОБНЕЕ", AlertType.message.gradientColor, { print("MESSEGE") })]
-        case .like: return [ButtonType.gradient("ПОДРОБНЕЕ", AlertType.like.gradientColor, { print("LIKE") })]
-        case .interestingYou: return [ButtonType.gradient("АКТИВИРОВАТЬ", AlertType.interestingYou.gradientColor, { print("INTERESTING YOU") })]
-        case .seeMore: return [ButtonType.gradient("АКТИВИРОВАТЬ", AlertType.seeMore.gradientColor, { print("SEE MORE") })]
-        case .boostActivated: return [ButtonType.base("ГОТОВО", { print("BOOST ACTIVATED") }), ButtonType.base("ПОДРОБНЕЕ О BOOST", { print("BOOST ACTIVATED") })]
-        case .emptyFields: return [ButtonType.coloredBase("ВЫЙТИ И СКРЫТЬ АНКЕТУ", Styles.Colors.Palette.error1,{ print("EMPTY FIELDS")}), ButtonType.cancel({ print("CANCEL") })]
-        case .removeProfile: return [ButtonType.coloredBase("УДАЛИТЬ АНКЕТУ", Styles.Colors.Palette.error1, { print("HIDDEN PROFILE")}), ButtonType.base("СКРЫТЬ", { print("REMOVE PROFILE") }), ButtonType.cancel({ print("CANCEL") })]
-        default: return [ButtonType.base("ГОТОВО", { print("BOOST ACTIVATED") })]
-        }
-    }
 }
 
 final class AlertViewController: UIViewController {
     
-    // MARK: - LifeCycle
+    // MARK: - Properties
+
+    var onAction: ((ActionType) -> Void)?
+    lazy var buttonTypes: [ButtonType] = []
+    private var alertView: AlertView!
+    private let theme: Theme
+    private let type: AlertType
     
-    var alertView: AlertView!
+    // MARK: - Init
+
+    init(type: AlertType, theme: Theme) {
+        self.type = type
+        self.theme = theme
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
    
-        alertView = AlertView(type: AlertType.boostActivated, theme: Themes.light)
-        
+        alertView = AlertView(type: type, buttonTypes: makeButtons(), theme: theme)
         view.addSubview(alertView)
-        alertView.show()
+        alertView.alpha = 1
     }
     
-    func remove() {
-        alertView.hide()
+    // MARK: - Support
+
+    private func makeButtons() -> [ButtonType] {
+        switch type {
+        case .message: return [ButtonType.gradient("ПОДРОБНЕЕ", type.gradientColor, { [weak self] in
+            self?.onAction?(.detailed) })]
+            
+        case .like: return [ButtonType.gradient("ПОДРОБНЕЕ", type.gradientColor, { [weak self] in
+            self?.onAction?(.detailed) })]
+            
+        case .interestingYou: return [ButtonType.gradient("АКТИВИРОВАТЬ", type.gradientColor, { [weak self] in
+            self?.onAction?(.activated) })]
+            
+        case .seeMore: return [ButtonType.gradient("АКТИВИРОВАТЬ", type.gradientColor, { [weak self] in
+            self?.onAction?(.activated) })]
+            
+        case .boostActivated: return [
+            ButtonType.base("ГОТОВО", { [weak self] in
+                self?.onAction?(.done) }),
+            ButtonType.base("ПОДРОБНЕЕ О BOOST", { [weak self] in
+                self?.onAction?(.boostDetailed) })]
+            
+        case .hiddenProfile:
+            return theme == Theme.dark ? [ButtonType.coloredBase("ОТКРЫТЬ АНКЕТУ", Styles.Colors.Palette.purple1 , { [weak self] in
+            self?.onAction?(.openProfile) })] : [ButtonType.coloredBase("ОТКРЫТЬ АНКЕТУ", Styles.Colors.Palette.pink1 , { [weak self] in
+            self?.onAction?(.openProfile) })]
+
+        case .noProfile:
+            return theme == Theme.dark ? [ButtonType.coloredBase("СОЗДАТЬ АНКЕТУ", Styles.Colors.Palette.orange1 , { [weak self] in
+            self?.onAction?(.createProfile) })] : [ButtonType.coloredBase("СОЗДАТЬ АНКЕТУ", Styles.Colors.Palette.green1 , { [weak self] in
+            self?.onAction?(.createProfile) })]
+            
+        case .emptyFields: return [
+            ButtonType.coloredBase("ВЫЙТИ И СКРЫТЬ АНКЕТУ", Styles.Colors.Palette.error1,{ [weak self] in
+                self?.onAction?(.exitAndHide) }),
+            ButtonType.cancel({ [weak self] in
+                self?.onAction?(.cancel("transfer data")) })]
+            
+        case .removeProfile: return [
+            ButtonType.coloredBase("УДАЛИТЬ АНКЕТУ", Styles.Colors.Palette.error1, { [weak self] in
+                self?.onAction?(.remove) }),
+            ButtonType.base("СКРЫТЬ", { [weak self] in
+                self?.onAction?(.hide) }),
+            ButtonType.cancel({ [weak self] in
+                self?.onAction?(.cancel("transfer data")) })]
+        }
     }
 }

@@ -16,11 +16,6 @@ enum ButtonType {
     case cancel(() -> Void)
 }
 
-enum Themes {
-    case dark
-    case light
-}
-
 final class AlertView: UIView {
         
     // MARK: - Properties
@@ -77,6 +72,7 @@ final class AlertView: UIView {
             return Styles.Colors.Palette.white
         case .light:
             return Styles.Colors.Palette.gray4
+        default: return .white
         }
     }
     
@@ -86,6 +82,8 @@ final class AlertView: UIView {
             return Styles.Colors.Palette.gray3
         case .light:
             return Styles.Colors.Palette.white0
+            default: return .white
+
         }
     }
     
@@ -93,6 +91,8 @@ final class AlertView: UIView {
         switch theme {
         case .dark: return "darkHidden"
         case .light: return "lightHidden"
+        default: return ""
+
         }
     }
     
@@ -100,38 +100,26 @@ final class AlertView: UIView {
         switch theme {
         case .dark: return "dark"
         case .light: return "light"
-        }
-    }
-    
-    private var buttonBackgroundHiddenProfile: UIColor {
-        switch theme {
-        case .dark: return Styles.Colors.Palette.purple1
-        case .light: return Styles.Colors.Palette.pink1
-        }
-    }
-    
-    private var buttonBackgroundNoProfile: UIColor {
-        switch theme {
-        case .dark: return Styles.Colors.Palette.orange1
-        case .light: return  Styles.Colors.Palette.green1
+        default: return ""
+
         }
     }
     
     private var buttonTypes: [ButtonType] = []
-    private var theme: Themes
+    var theme: Theme
     private var baseGradientColor: [UIColor] = []
     private let type: AlertType
     
     // MARK: - Init
     
-    init(type: AlertType, theme: Themes) {
+    init(type: AlertType, buttonTypes: [ButtonType], theme: Theme) {
         self.type = type
         self.titleLabel.text = type.title
         self.descriptionLabel.text = type.description
-        self.buttonTypes = type.buttonType
+        self.buttonTypes = buttonTypes
         self.theme = theme
-        self.containerView.backgroundColor = theme == Themes.dark ? Styles.Colors.Palette.gray2 : Styles.Colors.Palette.white
-        
+        self.containerView.backgroundColor = theme == Theme.dark ? Styles.Colors.Palette.gray2 : Styles.Colors.Palette.white
+
         super.init(frame: UIScreen.main.bounds)
         
         self.setupViews()
@@ -217,7 +205,7 @@ final class AlertView: UIView {
         case .emptyFields, .removeProfile:
             setupContainerView()
             
-            titleLabel.textColor = theme == Themes.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
+            titleLabel.textColor = theme == Theme.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
             titleLabel.topToSuperview(offset: Styles.Sizes.VPaddingBase)
         }
     }
@@ -312,34 +300,31 @@ final class AlertView: UIView {
         
         cardImageView.image = UIImage(named: hiddenProfileImageName)
         containerView.addSubview(cardImageView)
-        buttonTypes = [ButtonType.coloredBase("ОТКРЫТЬ АНКЕТУ", buttonBackgroundHiddenProfile, { print("HIDDEN PROFILE")})]
         
         cardImageView.topToSuperview(offset: Styles.Sizes.HPaddingBase)
         cardImageView.leftToSuperview(offset: Styles.Sizes.VPaddingBase)
         cardImageView.rightToSuperview(offset: -Styles.Sizes.VPaddingBase)
         
-        titleLabel.textColor = theme == Themes.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
+        titleLabel.textColor = theme == Theme.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
         titleLabel.topToBottom(of: cardImageView, offset: 15)
     }
     
-    private func setupNoProfileAlert(){
+    private func setupNoProfileAlert() {
         setupContainerView()
         
         cardImageView.image = UIImage(named: noProfileImageName)
         containerView.addSubview(cardImageView)
-        buttonTypes = [ButtonType.coloredBase("СОЗДАТЬ АНКЕТУ", buttonBackgroundNoProfile, { print("NO PROFILE")})]
         
         cardImageView.topToSuperview(offset: Styles.Sizes.HPaddingBase)
         cardImageView.leftToSuperview(offset: Styles.Sizes.VPaddingBase)
         cardImageView.rightToSuperview(offset: -Styles.Sizes.VPaddingBase)
         
-        titleLabel.textColor = theme == Themes.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
+        titleLabel.textColor = theme == Theme.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
         titleLabel.topToBottom(of: cardImageView, offset: 15)
         
     }
     
     private func setupContainerView() {
-        alpha = 0
         backgroundColor = UIColor.init(white: 0, alpha: 0.3)
         addSubview(containerView)
 
