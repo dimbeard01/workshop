@@ -150,16 +150,6 @@ final class AlertViewController: UIViewController {
             ButtonType.base("ПОДРОБНЕЕ О BOOST", { [weak self] in
                 self?.onAction?(.boostDetailed) })]
             
-        case .hiddenProfile:
-            return theme == Theme.dark ? [ButtonType.coloredBase("ОТКРЫТЬ АНКЕТУ", Styles.Colors.Palette.purple1 , { [weak self] in
-            self?.onAction?(.openProfile) })] : [ButtonType.coloredBase("ОТКРЫТЬ АНКЕТУ", Styles.Colors.Palette.pink1 , { [weak self] in
-            self?.onAction?(.openProfile) })]
-
-        case .noProfile:
-            return theme == Theme.dark ? [ButtonType.coloredBase("СОЗДАТЬ АНКЕТУ", Styles.Colors.Palette.orange1 , { [weak self] in
-            self?.onAction?(.createProfile) })] : [ButtonType.coloredBase("СОЗДАТЬ АНКЕТУ", Styles.Colors.Palette.green1 , { [weak self] in
-            self?.onAction?(.createProfile) })]
-            
         case .emptyFields: return [
             ButtonType.coloredBase("ВЫЙТИ И СКРЫТЬ АНКЕТУ", Styles.Colors.Palette.error1,{ [weak self] in
                 self?.onAction?(.exitAndHide) }),
@@ -173,6 +163,16 @@ final class AlertViewController: UIViewController {
                 self?.onAction?(.hide) }),
             ButtonType.cancel({ [weak self] in
                 self?.onAction?(.cancel("transfer data")) })]
+
+            case .hiddenProfile:
+                return theme == Theme.dark ? [ButtonType.coloredBase("ОТКРЫТЬ АНКЕТУ", Styles.Colors.Palette.purple1 , { [weak self] in
+                self?.onAction?(.openProfile) })] : [ButtonType.coloredBase("ОТКРЫТЬ АНКЕТУ", Styles.Colors.Palette.pink1 , { [weak self] in
+                self?.onAction?(.openProfile) })]
+
+            case .noProfile:
+                return theme == Theme.dark ? [ButtonType.coloredBase("СОЗДАТЬ АНКЕТУ", Styles.Colors.Palette.orange1 , { [weak self] in
+                self?.onAction?(.createProfile) })] : [ButtonType.coloredBase("СОЗДАТЬ АНКЕТУ", Styles.Colors.Palette.green1 , { [weak self] in
+                self?.onAction?(.createProfile) })]
         }
     }
 }

@@ -14,18 +14,22 @@ class InitialViewController: UIViewController {
         super.viewDidLoad()
         
         let button = UIButton(type: .system)
-        button.frame = CGRect(x: 90, y: 200, width: 200, height: 55)
+        button.frame = CGRect(x: 88, y: 200, width: 200, height: 55)
         button.setTitle("Show Alert", for: .normal)
-        button.backgroundColor = .white
+        button.backgroundColor = .lightGray
         button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
-        view.backgroundColor = .lightGray
-        
+        view.backgroundColor = .white
         view.addSubview(button)
     }
     
     @objc private func showAlert() {
-        let alertVC = AlertViewController(type: .hiddenProfile, theme: Theme.dark)
         
+        let imageUser = UIImage(named: "userPhoto")
+        let userAlertVC = ShortProfilePresentationViewController(userPhoto: imageUser!)
+        userAlertVC.modalPresentationStyle = .overCurrentContext
+             userAlertVC.modalTransitionStyle = .crossDissolve
+        
+        let alertVC = AlertViewController(type: .hiddenProfile, theme: Theme.dark)
         alertVC.modalPresentationStyle = .overCurrentContext
         alertVC.modalTransitionStyle = .crossDissolve
         
@@ -56,6 +60,6 @@ class InitialViewController: UIViewController {
             }
         }
         
-        present(alertVC, animated: true, completion: nil)
+        present(userAlertVC, animated: true, completion: nil)
     }
 }
