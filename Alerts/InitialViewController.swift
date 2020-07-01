@@ -14,9 +14,10 @@ class InitialViewController: UIViewController {
         super.viewDidLoad()
         
         let button = UIButton(type: .system)
-        button.frame = CGRect(x: 88, y: 200, width: 200, height: 55)
+        button.frame = CGRect(x: 100, y: 400, width: 200, height: 55)
         button.setTitle("Show Alert", for: .normal)
         button.backgroundColor = .lightGray
+        button.tintColor = .white
         button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
         view.backgroundColor = .white
         view.addSubview(button)
@@ -24,16 +25,31 @@ class InitialViewController: UIViewController {
     
     @objc private func showAlert() {
         
-        let imageUser = UIImage(named: "userPhoto")
-        let userAlertVC = ShortProfilePresentationViewController(userPhoto: imageUser!)
-        userAlertVC.modalPresentationStyle = .overCurrentContext
-             userAlertVC.modalTransitionStyle = .crossDissolve
+        let userAnswerList = [QuestionnaireModel(question: "Любимый цвет?", answer: "Черный"),
+                              QuestionnaireModel(question: "Ваш любимый участник проекта дом 2?", answer: "Елена Беркова"),
+                              QuestionnaireModel(question: "О чем все знают?", answer: "Все знают, что я даже не скрываю!")]
+        let userName = "Bruce Willis"
+        let timeWasOnline = "в 21:00 сегодня"
+        let userPhoto = UIImage(named: "userPhoto")!
+        let colorStyle = Styles.Colors.Palette.green1
+        let isOnline = true
         
-        let alertVC = AlertViewController(type: .hiddenProfile, theme: Theme.dark)
+        let userAlertVC = ShortProfileAlertViewController(userPhoto: userPhoto,
+                                                                 userName: userName,
+                                                                 isOnline: isOnline,
+                                                                 colorStyle: colorStyle,
+                                                                 timeWasOnline: timeWasOnline,
+                                                                 userAnswerList: userAnswerList,
+                                                                 theme: Theme.dark)
+        
+        userAlertVC.modalPresentationStyle = .overCurrentContext
+        userAlertVC.modalTransitionStyle = .crossDissolve
+        
+        let alertVC = AlertViewController(type: .emptyFields, theme: Theme.light)
         alertVC.modalPresentationStyle = .overCurrentContext
         alertVC.modalTransitionStyle = .crossDissolve
         
-        alertVC.onAction = { [weak self] actionType in
+        userAlertVC.onAction = { [weak self] actionType in
             switch actionType {
             case .detailed :
                 print("Detailed")
@@ -59,7 +75,6 @@ class InitialViewController: UIViewController {
                 print(string)
             }
         }
-        
         present(userAlertVC, animated: true, completion: nil)
     }
 }

@@ -21,10 +21,9 @@
 		327629DD24A4C9B8001A0CFF /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327629DC24A4C9B8001A0CFF /* AlertViewController.swift */; };
 		3289233224A4D1B80050BD8A /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289233124A4D1B80050BD8A /* AlertView.swift */; };
 		32AFD2DD24AB0E2A002BF920 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFD2DC24AB0E2A002BF920 /* InitialViewController.swift */; };
-		32AFD2DF24AB52CC002BF920 /* ShortProfilePresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFD2DE24AB52CC002BF920 /* ShortProfilePresentationViewController.swift */; };
-		32AFD2E124AB5544002BF920 /* ShortProfilePresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFD2E024AB5544002BF920 /* ShortProfilePresentationView.swift */; };
-		32AFD2E324AB69A3002BF920 /* UserInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFD2E224AB69A3002BF920 /* UserInfoTableViewController.swift */; };
-		32AFD2E524AB69EB002BF920 /* UserInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFD2E424AB69EB002BF920 /* UserInfoTableViewCell.swift */; };
+		32AFD2DF24AB52CC002BF920 /* ShortProfileAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFD2DE24AB52CC002BF920 /* ShortProfileAlertViewController.swift */; };
+		32AFD2E124AB5544002BF920 /* ShortProfileAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFD2E024AB5544002BF920 /* ShortProfileAlertView.swift */; };
+		32AFD2E524AB69EB002BF920 /* UserAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFD2E424AB69EB002BF920 /* UserAnswerView.swift */; };
 		58A5F26924A5C80C007561E5 /* BaseTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A5F26824A5C80C007561E5 /* BaseTextButton.swift */; };
 		58A5F26B24A5C83F007561E5 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A5F26A24A5C83F007561E5 /* BaseButton.swift */; };
 		58A5F26D24A5C85F007561E5 /* ViewWithTouchArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A5F26C24A5C85F007561E5 /* ViewWithTouchArea.swift */; };
@@ -66,10 +65,9 @@
 		327629DC24A4C9B8001A0CFF /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		3289233124A4D1B80050BD8A /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		32AFD2DC24AB0E2A002BF920 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
-		32AFD2DE24AB52CC002BF920 /* ShortProfilePresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortProfilePresentationViewController.swift; sourceTree = "<group>"; };
-		32AFD2E024AB5544002BF920 /* ShortProfilePresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortProfilePresentationView.swift; sourceTree = "<group>"; };
-		32AFD2E224AB69A3002BF920 /* UserInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTableViewController.swift; sourceTree = "<group>"; };
-		32AFD2E424AB69EB002BF920 /* UserInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTableViewCell.swift; sourceTree = "<group>"; };
+		32AFD2DE24AB52CC002BF920 /* ShortProfileAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortProfileAlertViewController.swift; sourceTree = "<group>"; };
+		32AFD2E024AB5544002BF920 /* ShortProfileAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortProfileAlertView.swift; sourceTree = "<group>"; };
+		32AFD2E424AB69EB002BF920 /* UserAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnswerView.swift; sourceTree = "<group>"; };
 		58A5F26824A5C80C007561E5 /* BaseTextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTextButton.swift; sourceTree = "<group>"; };
 		58A5F26A24A5C83F007561E5 /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		58A5F26C24A5C85F007561E5 /* ViewWithTouchArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewWithTouchArea.swift; sourceTree = "<group>"; };
@@ -156,10 +154,9 @@
 				32AFD2DC24AB0E2A002BF920 /* InitialViewController.swift */,
 				327629DC24A4C9B8001A0CFF /* AlertViewController.swift */,
 				3289233124A4D1B80050BD8A /* AlertView.swift */,
-				32AFD2DE24AB52CC002BF920 /* ShortProfilePresentationViewController.swift */,
-				32AFD2E024AB5544002BF920 /* ShortProfilePresentationView.swift */,
-				32AFD2E224AB69A3002BF920 /* UserInfoTableViewController.swift */,
-				32AFD2E424AB69EB002BF920 /* UserInfoTableViewCell.swift */,
+				32AFD2DE24AB52CC002BF920 /* ShortProfileAlertViewController.swift */,
+				32AFD2E024AB5544002BF920 /* ShortProfileAlertView.swift */,
+				32AFD2E424AB69EB002BF920 /* UserAnswerView.swift */,
 				58A5F26824A5C80C007561E5 /* BaseTextButton.swift */,
 				58A5F26A24A5C83F007561E5 /* BaseButton.swift */,
 				58A5F26C24A5C85F007561E5 /* ViewWithTouchArea.swift */,
@@ -377,9 +374,9 @@
 				58A5F29624A5C8FA007561E5 /* Theme+Light.swift in Sources */,
 				58A5F29124A5C8FA007561E5 /* ThemeAlternativeStyle.swift in Sources */,
 				327629C924A4BDFA001A0CFF /* AppDelegate.swift in Sources */,
-				32AFD2E524AB69EB002BF920 /* UserInfoTableViewCell.swift in Sources */,
+				32AFD2E524AB69EB002BF920 /* UserAnswerView.swift in Sources */,
 				58A5F29C24A5C9A8007561E5 /* BaseButtonStatusProtocol.swift in Sources */,
-				32AFD2E124AB5544002BF920 /* ShortProfilePresentationView.swift in Sources */,
+				32AFD2E124AB5544002BF920 /* ShortProfileAlertView.swift in Sources */,
 				3214803624A5CD6C005DAECA /* UIEdgeInsets+Inverted.swift in Sources */,
 				3289233224A4D1B80050BD8A /* AlertView.swift in Sources */,
 				3214803A24A5CE38005DAECA /* UIView+SetCornerRadius.swift in Sources */,
@@ -388,7 +385,7 @@
 				58A5F28D24A5C8FA007561E5 /* Sizes.swift in Sources */,
 				3235521224A73ACB00D97F0D /* UIView+AddGradient.swift in Sources */,
 				58A5F29324A5C8FA007561E5 /* ThemeStyle.swift in Sources */,
-				32AFD2DF24AB52CC002BF920 /* ShortProfilePresentationViewController.swift in Sources */,
+				32AFD2DF24AB52CC002BF920 /* ShortProfileAlertViewController.swift in Sources */,
 				58A5F29E24A5C9BF007561E5 /* ActivityIndicatorProtocol.swift in Sources */,
 				327629CB24A4BDFA001A0CFF /* SceneDelegate.swift in Sources */,
 				58A5F28C24A5C8FA007561E5 /* Constants.swift in Sources */,
@@ -396,7 +393,6 @@
 				58A5F29524A5C8FA007561E5 /* Theme.swift in Sources */,
 				327629DD24A4C9B8001A0CFF /* AlertViewController.swift in Sources */,
 				58A5F26B24A5C83F007561E5 /* BaseButton.swift in Sources */,
-				32AFD2E324AB69A3002BF920 /* UserInfoTableViewController.swift in Sources */,
 				58A5F26D24A5C85F007561E5 /* ViewWithTouchArea.swift in Sources */,
 				58A5F26924A5C80C007561E5 /* BaseTextButton.swift in Sources */,
 				58A5F28F24A5C8FA007561E5 /* Colors+Gradients.swift in Sources */,
@@ -468,7 +464,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -522,7 +518,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -540,6 +536,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G5L42RXF4Y;
 				INFOPLIST_FILE = Alerts/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -547,7 +544,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dimbeard.Alerts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -559,6 +556,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G5L42RXF4Y;
 				INFOPLIST_FILE = Alerts/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -566,7 +564,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dimbeard.Alerts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

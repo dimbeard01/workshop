@@ -106,8 +106,8 @@ final class AlertView: UIView {
     }
     
     private var buttonTypes: [ButtonType] = []
-    var theme: Theme
     private var baseGradientColor: [UIColor] = []
+    private var theme: Theme
     private let type: AlertType
     
     // MARK: - Init
@@ -118,12 +118,11 @@ final class AlertView: UIView {
         self.descriptionLabel.text = type.description
         self.buttonTypes = buttonTypes
         self.theme = theme
-        self.containerView.backgroundColor = theme == Theme.dark ? Styles.Colors.Palette.gray2 : Styles.Colors.Palette.white
 
         super.init(frame: UIScreen.main.bounds)
         
-        self.setupViews()
-        self.setupButtons()
+        setupViews()
+        setupStackButtons()
     }
     
     required init?(coder: NSCoder) {
@@ -132,7 +131,7 @@ final class AlertView: UIView {
 
     // MARK: - Support
     
-    private func makeButton(_ type: ButtonType) -> BaseTextButton {
+    private func makeStackButton(_ type: ButtonType) -> BaseTextButton {
         switch type {
         case .coloredBase(let title, let color, let action):
             let button = BaseTextButton()
@@ -168,15 +167,7 @@ final class AlertView: UIView {
             return button
         }
     }
-    
-    private func setupButtons() {
-        let buttons = buttonTypes.map { makeButton($0) }
-        buttons.forEach { button in
-            buttonStackView.addArrangedSubview(button)
-            button.height(Styles.Sizes.buttonMedium)
-        }
-    }
-    
+
     // MARK: - Layout
       
     override func layoutSubviews() {
@@ -187,7 +178,15 @@ final class AlertView: UIView {
                                startPoint: CGPoint(x: 1, y: 0),
                                endPoint: CGPoint(x: 0, y: 1))
     }
-   
+    
+    private func setupStackButtons() {
+        let buttons = buttonTypes.map { makeStackButton($0) }
+        buttons.forEach { button in
+            buttonStackView.addArrangedSubview(button)
+            button.height(Styles.Sizes.buttonMedium)
+        }
+    }
+    
     private func setupViews() {
         switch type {
         case .message, .like, .interestingYou, .seeMore:
@@ -206,7 +205,7 @@ final class AlertView: UIView {
             setupContainerView()
             
             titleLabel.textColor = theme == Theme.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
-            titleLabel.topToSuperview(offset: Styles.Sizes.VPaddingBase)
+            titleLabel.topToSuperview(offset: 12)
         }
     }
     
@@ -279,17 +278,17 @@ final class AlertView: UIView {
         let sizeCircleView: CGFloat = 40
         addSubview(circleView)
         circleView.bottom(to: userPhotoImageView)
-        circleView.trailing(to: userPhotoImageView)
+        circleView.right(to: userPhotoImageView)
         circleView.height(sizeCircleView)
         circleView.width(sizeCircleView)
         circleView.layer.cornerRadius = sizeCircleView / 2
         
         circleView.addSubview(cardImageView)
         cardImageView.image = UIImage(named: AlertType.seeMore.imageName)
-        cardImageView.topToSuperview(offset: Styles.Sizes.HPaddingMedium)
-        cardImageView.leftToSuperview(offset: Styles.Sizes.VPaddingMedium)
-        cardImageView.rightToSuperview(offset: -Styles.Sizes.VPaddingMedium)
-        cardImageView.bottomToSuperview(offset: -Styles.Sizes.HPaddingMedium)
+        cardImageView.topToSuperview(offset: 8)
+        cardImageView.leftToSuperview(offset: 8)
+        cardImageView.rightToSuperview(offset: -8)
+        cardImageView.bottomToSuperview(offset: -8)
         
         titleLabel.textColor = type.titleColor
         titleLabel.topToBottom(of: userPhotoImageView, offset: 16)
@@ -301,9 +300,9 @@ final class AlertView: UIView {
         cardImageView.image = UIImage(named: hiddenProfileImageName)
         containerView.addSubview(cardImageView)
         
-        cardImageView.topToSuperview(offset: Styles.Sizes.HPaddingBase)
-        cardImageView.leftToSuperview(offset: Styles.Sizes.VPaddingBase)
-        cardImageView.rightToSuperview(offset: -Styles.Sizes.VPaddingBase)
+        cardImageView.topToSuperview(offset: 12)
+        cardImageView.leftToSuperview(offset: 12)
+        cardImageView.rightToSuperview(offset: -12)
         
         titleLabel.textColor = theme == Theme.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
         titleLabel.topToBottom(of: cardImageView, offset: 15)
@@ -315,36 +314,37 @@ final class AlertView: UIView {
         cardImageView.image = UIImage(named: noProfileImageName)
         containerView.addSubview(cardImageView)
         
-        cardImageView.topToSuperview(offset: Styles.Sizes.HPaddingBase)
-        cardImageView.leftToSuperview(offset: Styles.Sizes.VPaddingBase)
-        cardImageView.rightToSuperview(offset: -Styles.Sizes.VPaddingBase)
+        cardImageView.topToSuperview(offset: 12)
+        cardImageView.leftToSuperview(offset: 12)
+        cardImageView.rightToSuperview(offset: -12)
         
         titleLabel.textColor = theme == Theme.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
         titleLabel.topToBottom(of: cardImageView, offset: 15)
-        
     }
     
     private func setupContainerView() {
         backgroundColor = UIColor.init(white: 0, alpha: 0.3)
-        addSubview(containerView)
+        containerView.backgroundColor = theme == Theme.dark ? Styles.Colors.Palette.gray2 : Styles.Colors.Palette.white
 
+        addSubview(containerView)
+    
         containerView.addSubview(titleLabel)
         containerView.addSubview(descriptionLabel)
         containerView.addSubview(buttonStackView)
         containerView.centerInSuperview()
         containerView.widthToSuperview(multiplier: 0.87)
         
-        titleLabel.leftToSuperview(offset: Styles.Sizes.VPaddingBase)
-        titleLabel.rightToSuperview(offset: -Styles.Sizes.VPaddingBase)
+        titleLabel.leftToSuperview(offset: 12)
+        titleLabel.rightToSuperview(offset: -12)
         
-        descriptionLabel.topToBottom(of: titleLabel, offset: Styles.Sizes.HPaddingMedium)
-        descriptionLabel.leftToSuperview(offset: Styles.Sizes.VPaddingBase)
-        descriptionLabel.rightToSuperview(offset: -Styles.Sizes.VPaddingBase)
+        descriptionLabel.topToBottom(of: titleLabel, offset: Styles.Sizes.VPaddingMedium)
+        descriptionLabel.leftToSuperview(offset: 12)
+        descriptionLabel.rightToSuperview(offset: -12)
         
         buttonStackView.topToBottom(of: descriptionLabel, offset: 15)
-        buttonStackView.leftToSuperview(offset: Styles.Sizes.VPaddingBase)
-        buttonStackView.rightToSuperview(offset: -Styles.Sizes.VPaddingBase)
-        buttonStackView.bottomToSuperview(offset: -Styles.Sizes.HPaddingBase)
+        buttonStackView.leftToSuperview(offset: 12)
+        buttonStackView.rightToSuperview(offset: -12)
+        buttonStackView.bottomToSuperview(offset: -12)
     }
     
     // MARK: - Internal

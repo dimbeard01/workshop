@@ -1,5 +1,5 @@
 //
-//  UserInfoTableViewCell.swift
+//  UserAnswerView.swift
 //  Alerts
 //
 //  Created by Dima on 30.06.2020.
@@ -8,16 +8,13 @@
 
 import UIKit
 
-class UserInfoTableViewCell: UITableViewCell {
+class UserAnswerView: UIView {
     
     // MARK: - Properties
     
-    static let identifier: String = "identifier"
-    
     private let questionLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 1
-        label.textColor = Styles.Colors.Palette.gray4
+        label.numberOfLines = 0
         label.font = Styles.Fonts.Caption1
         label.textAlignment = .left
         return label
@@ -26,41 +23,40 @@ class UserInfoTableViewCell: UITableViewCell {
     private let answerLabel: UILabel = {
           let label = UILabel()
           label.numberOfLines = 0
-          label.textColor = Styles.Colors.Palette.black
           label.font = Styles.Fonts.Body1
           label.textAlignment = .left
           return label
       }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        backgroundColor = .clear
+    // MARK: - Init
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-  
-    func configure(question: String, answer: String) {
-        questionLabel.text = question
-        answerLabel.text = answer
+    
+    func configure(userInfo: QuestionnaireModel, theme: Theme) {
+        questionLabel.text = userInfo.question
+        answerLabel.text = userInfo.answer
+        answerLabel.textColor = theme == Theme.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
+        questionLabel.textColor = theme == Theme.dark ? Styles.Colors.Palette.gray4 : Styles.Colors.Palette.gray5
     }
     
     private func setupView() {
         addSubview(questionLabel)
         addSubview(answerLabel)
         
-        questionLabel.leadingToSuperview()
-        questionLabel.trailingToSuperview()
+        questionLabel.leftToSuperview()
+        questionLabel.rightToSuperview()
         questionLabel.topToSuperview()
-        questionLabel.bottomToTop(of: answerLabel, offset: -5)
         
         answerLabel.topToBottom(of: questionLabel, offset: 5)
-        answerLabel.leadingToSuperview()
-        answerLabel.trailingToSuperview()
+        answerLabel.leftToSuperview()
+        answerLabel.rightToSuperview()
         answerLabel.bottomToSuperview()
     }
-
 }
