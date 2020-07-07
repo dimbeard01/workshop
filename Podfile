@@ -7,4 +7,5 @@ target 'Alerts' do
 
   # Pods for Alerts
   pod "TinyConstraints"
+  pod "Texture"
 end

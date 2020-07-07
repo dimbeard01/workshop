@@ -20,10 +20,18 @@
 		327629D524A4BDFB001A0CFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 327629D324A4BDFB001A0CFF /* LaunchScreen.storyboard */; };
 		327629DD24A4C9B8001A0CFF /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327629DC24A4C9B8001A0CFF /* AlertViewController.swift */; };
 		3289233224A4D1B80050BD8A /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289233124A4D1B80050BD8A /* AlertView.swift */; };
+		32A05EDD24B453BF00E755A8 /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A05EDC24B453BF00E755A8 /* BorderView.swift */; };
+		32A05EDF24B4545600E755A8 /* BaseIconButtonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A05EDE24B4545600E755A8 /* BaseIconButtonProtocol.swift */; };
+		32A05EE124B4549200E755A8 /* BaseIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A05EE024B4549200E755A8 /* BaseIconButton.swift */; };
+		32A05EE324B4560F00E755A8 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A05EE224B4560F00E755A8 /* ImageManager.swift */; };
 		32AFD2DD24AB0E2A002BF920 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFD2DC24AB0E2A002BF920 /* InitialViewController.swift */; };
 		32AFD2DF24AB52CC002BF920 /* ShortProfileAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFD2DE24AB52CC002BF920 /* ShortProfileAlertViewController.swift */; };
 		32AFD2E124AB5544002BF920 /* ShortProfileAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFD2E024AB5544002BF920 /* ShortProfileAlertView.swift */; };
 		32AFD2E524AB69EB002BF920 /* UserAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFD2E424AB69EB002BF920 /* UserAnswerView.swift */; };
+		32CBAF9A24B31769003395C1 /* BoostNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CBAF9924B31768003395C1 /* BoostNode.swift */; };
+		32CBAF9C24B31814003395C1 /* BoostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CBAF9B24B31814003395C1 /* BoostViewController.swift */; };
+		32CBAF9E24B3237A003395C1 /* BaseNodeViewBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CBAF9D24B3237A003395C1 /* BaseNodeViewBox.swift */; };
+		32CBAFA024B32D59003395C1 /* ASDisplayNode+AddGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CBAF9F24B32D59003395C1 /* ASDisplayNode+AddGradient.swift */; };
 		58A5F26924A5C80C007561E5 /* BaseTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A5F26824A5C80C007561E5 /* BaseTextButton.swift */; };
 		58A5F26B24A5C83F007561E5 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A5F26A24A5C83F007561E5 /* BaseButton.swift */; };
 		58A5F26D24A5C85F007561E5 /* ViewWithTouchArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A5F26C24A5C85F007561E5 /* ViewWithTouchArea.swift */; };
@@ -64,10 +72,18 @@
 		327629D624A4BDFB001A0CFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		327629DC24A4C9B8001A0CFF /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		3289233124A4D1B80050BD8A /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		32A05EDC24B453BF00E755A8 /* BorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
+		32A05EDE24B4545600E755A8 /* BaseIconButtonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseIconButtonProtocol.swift; sourceTree = "<group>"; };
+		32A05EE024B4549200E755A8 /* BaseIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseIconButton.swift; sourceTree = "<group>"; };
+		32A05EE224B4560F00E755A8 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		32AFD2DC24AB0E2A002BF920 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		32AFD2DE24AB52CC002BF920 /* ShortProfileAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortProfileAlertViewController.swift; sourceTree = "<group>"; };
 		32AFD2E024AB5544002BF920 /* ShortProfileAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortProfileAlertView.swift; sourceTree = "<group>"; };
 		32AFD2E424AB69EB002BF920 /* UserAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnswerView.swift; sourceTree = "<group>"; };
+		32CBAF9924B31768003395C1 /* BoostNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostNode.swift; sourceTree = "<group>"; };
+		32CBAF9B24B31814003395C1 /* BoostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostViewController.swift; sourceTree = "<group>"; };
+		32CBAF9D24B3237A003395C1 /* BaseNodeViewBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNodeViewBox.swift; sourceTree = "<group>"; };
+		32CBAF9F24B32D59003395C1 /* ASDisplayNode+AddGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASDisplayNode+AddGradient.swift"; sourceTree = "<group>"; };
 		58A5F26824A5C80C007561E5 /* BaseTextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTextButton.swift; sourceTree = "<group>"; };
 		58A5F26A24A5C83F007561E5 /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		58A5F26C24A5C85F007561E5 /* ViewWithTouchArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewWithTouchArea.swift; sourceTree = "<group>"; };
@@ -108,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				58A5F26E24A5C876007561E5 /* BaseButtonActionProtocol.swift */,
+				32A05EDE24B4545600E755A8 /* BaseIconButtonProtocol.swift */,
 				58A5F29B24A5C9A8007561E5 /* BaseButtonStatusProtocol.swift */,
 				58A5F29D24A5C9BE007561E5 /* ActivityIndicatorProtocol.swift */,
 			);
@@ -124,6 +141,7 @@
 				3214803924A5CE38005DAECA /* UIView+SetCornerRadius.swift */,
 				3214803E24A5CEFA005DAECA /* UIView+ScaleDown.swift */,
 				32570CE224A9E1280040EB1D /* UIImage+Color.swift */,
+				32CBAF9F24B32D59003395C1 /* ASDisplayNode+AddGradient.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -152,14 +170,16 @@
 				327629C824A4BDFA001A0CFF /* AppDelegate.swift */,
 				327629CA24A4BDFA001A0CFF /* SceneDelegate.swift */,
 				32AFD2DC24AB0E2A002BF920 /* InitialViewController.swift */,
-				327629DC24A4C9B8001A0CFF /* AlertViewController.swift */,
-				3289233124A4D1B80050BD8A /* AlertView.swift */,
-				32AFD2DE24AB52CC002BF920 /* ShortProfileAlertViewController.swift */,
-				32AFD2E024AB5544002BF920 /* ShortProfileAlertView.swift */,
-				32AFD2E424AB69EB002BF920 /* UserAnswerView.swift */,
-				58A5F26824A5C80C007561E5 /* BaseTextButton.swift */,
+				32A05EE624B46F2C00E755A8 /* BaseAlert */,
+				32A05EE524B46F0D00E755A8 /* ShortProfileAlert */,
+				32A05EE424B46EDA00E755A8 /* BoostAlert */,
 				58A5F26A24A5C83F007561E5 /* BaseButton.swift */,
+				58A5F26824A5C80C007561E5 /* BaseTextButton.swift */,
+				32A05EE024B4549200E755A8 /* BaseIconButton.swift */,
+				32CBAF9D24B3237A003395C1 /* BaseNodeViewBox.swift */,
 				58A5F26C24A5C85F007561E5 /* ViewWithTouchArea.swift */,
+				32A05EE224B4560F00E755A8 /* ImageManager.swift */,
+				32A05EDC24B453BF00E755A8 /* BorderView.swift */,
 				3214803424A5CC6B005DAECA /* Extensions */,
 				58A5F27224A5C8FA007561E5 /* Styles */,
 				3214803324A5CC57005DAECA /* Protocols */,
@@ -168,6 +188,34 @@
 				327629D624A4BDFB001A0CFF /* Info.plist */,
 			);
 			path = Alerts;
+			sourceTree = "<group>";
+		};
+		32A05EE424B46EDA00E755A8 /* BoostAlert */ = {
+			isa = PBXGroup;
+			children = (
+				32CBAF9924B31768003395C1 /* BoostNode.swift */,
+				32CBAF9B24B31814003395C1 /* BoostViewController.swift */,
+			);
+			path = BoostAlert;
+			sourceTree = "<group>";
+		};
+		32A05EE524B46F0D00E755A8 /* ShortProfileAlert */ = {
+			isa = PBXGroup;
+			children = (
+				32AFD2E424AB69EB002BF920 /* UserAnswerView.swift */,
+				32AFD2E024AB5544002BF920 /* ShortProfileAlertView.swift */,
+				32AFD2DE24AB52CC002BF920 /* ShortProfileAlertViewController.swift */,
+			);
+			path = ShortProfileAlert;
+			sourceTree = "<group>";
+		};
+		32A05EE624B46F2C00E755A8 /* BaseAlert */ = {
+			isa = PBXGroup;
+			children = (
+				3289233124A4D1B80050BD8A /* AlertView.swift */,
+				327629DC24A4C9B8001A0CFF /* AlertViewController.swift */,
+			);
+			path = BaseAlert;
 			sourceTree = "<group>";
 		};
 		58A5F27224A5C8FA007561E5 /* Styles */ = {
@@ -363,11 +411,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				32570CE324A9E1280040EB1D /* UIImage+Color.swift in Sources */,
+				32CBAF9E24B3237A003395C1 /* BaseNodeViewBox.swift in Sources */,
+				32A05EDF24B4545600E755A8 /* BaseIconButtonProtocol.swift in Sources */,
+				32CBAF9C24B31814003395C1 /* BoostViewController.swift in Sources */,
+				32A05EE324B4560F00E755A8 /* ImageManager.swift in Sources */,
 				58A5F28924A5C8FA007561E5 /* Styles.swift in Sources */,
 				3214803824A5CDD1005DAECA /* CGRect+HitFrame.swift in Sources */,
 				58A5F29024A5C8FA007561E5 /* Colors.swift in Sources */,
 				58A5F26F24A5C876007561E5 /* BaseButtonActionProtocol.swift in Sources */,
 				58A5F29224A5C8FA007561E5 /* Theme+Appearence.swift in Sources */,
+				32CBAFA024B32D59003395C1 /* ASDisplayNode+AddGradient.swift in Sources */,
 				58A5F29424A5C8FA007561E5 /* Theme+Dark.swift in Sources */,
 				58A5F29824A5C8FA007561E5 /* Font.swift in Sources */,
 				3214803F24A5CEFA005DAECA /* UIView+ScaleDown.swift in Sources */,
@@ -377,6 +430,7 @@
 				32AFD2E524AB69EB002BF920 /* UserAnswerView.swift in Sources */,
 				58A5F29C24A5C9A8007561E5 /* BaseButtonStatusProtocol.swift in Sources */,
 				32AFD2E124AB5544002BF920 /* ShortProfileAlertView.swift in Sources */,
+				32CBAF9A24B31769003395C1 /* BoostNode.swift in Sources */,
 				3214803624A5CD6C005DAECA /* UIEdgeInsets+Inverted.swift in Sources */,
 				3289233224A4D1B80050BD8A /* AlertView.swift in Sources */,
 				3214803A24A5CE38005DAECA /* UIView+SetCornerRadius.swift in Sources */,
@@ -386,9 +440,11 @@
 				3235521224A73ACB00D97F0D /* UIView+AddGradient.swift in Sources */,
 				58A5F29324A5C8FA007561E5 /* ThemeStyle.swift in Sources */,
 				32AFD2DF24AB52CC002BF920 /* ShortProfileAlertViewController.swift in Sources */,
+				32A05EDD24B453BF00E755A8 /* BorderView.swift in Sources */,
 				58A5F29E24A5C9BF007561E5 /* ActivityIndicatorProtocol.swift in Sources */,
 				327629CB24A4BDFA001A0CFF /* SceneDelegate.swift in Sources */,
 				58A5F28C24A5C8FA007561E5 /* Constants.swift in Sources */,
+				32A05EE124B4549200E755A8 /* BaseIconButton.swift in Sources */,
 				58A5F29724A5C8FA007561E5 /* Fonts.swift in Sources */,
 				58A5F29524A5C8FA007561E5 /* Theme.swift in Sources */,
 				327629DD24A4C9B8001A0CFF /* AlertViewController.swift in Sources */,

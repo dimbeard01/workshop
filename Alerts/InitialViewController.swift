@@ -45,11 +45,11 @@ class InitialViewController: UIViewController {
         userAlertVC.modalPresentationStyle = .overCurrentContext
         userAlertVC.modalTransitionStyle = .crossDissolve
         
-        let alertVC = AlertViewController(type: .emptyFields, theme: Theme.light)
+        let alertVC = AlertViewController(type: .hideProfile, theme: Theme.light)
         alertVC.modalPresentationStyle = .overCurrentContext
         alertVC.modalTransitionStyle = .crossDissolve
         
-        userAlertVC.onAction = { [weak self] actionType in
+        alertVC.onAction = { [weak self] actionType in
             switch actionType {
             case .detailed :
                 print("Detailed")
@@ -75,6 +75,8 @@ class InitialViewController: UIViewController {
                 print(string)
             }
         }
-        present(userAlertVC, animated: true, completion: nil)
+        
+        let boostVC = BoostViewController(type: BoostAlertType.baseBoost, gradient: Styles.Colors.Gradients.findsBoostGradientColors, theme: .light)
+        present(boostVC, animated: true, completion: nil)
     }
 }
