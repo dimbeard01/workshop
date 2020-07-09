@@ -32,6 +32,7 @@ class FindsEditProfileBoostNode: ASDisplayNode {
             button.action = { [weak self] in
                 
             }
+    
             return button
         }
         

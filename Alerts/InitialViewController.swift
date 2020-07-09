@@ -77,6 +77,16 @@ class InitialViewController: UIViewController {
         }
         
         let boostVC = BoostViewController()
-        present(userAlertVC, animated: true, completion: nil)
+        
+        boostVC.onAction = { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
+            
+        }
+        
+        boostVC.onInAction = { [weak self] in
+            print("dsdsd")
+            
+        }
+        present(boostVC, animated: true, completion: nil)
     }
 }
