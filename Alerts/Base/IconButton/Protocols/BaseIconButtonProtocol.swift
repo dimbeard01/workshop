@@ -6,6 +6,7 @@
 //  Copyright © 2020 Dima. All rights reserved.
 //
 
+
 import UIKit
 
 protocol BaseIconButtonProtocol {
@@ -17,14 +18,8 @@ protocol BaseIconButtonProtocol {
     @discardableResult
     func setImage(image: UIImage) -> Self
     
-//    @discardableResult
-//    func setImage(url: URL) -> Self
-    
     @discardableResult
     func setSelectedImage(image: UIImage) -> Self
-    
-//    @discardableResult
-//    func setSelectedImage(url: URL) -> Self
     
     @discardableResult
     func setIconSize(height: CGFloat) -> Self

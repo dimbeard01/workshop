@@ -59,3 +59,9 @@ extension Styles.Colors {
         static let orange1: UIColor = #colorLiteral(red: 0.9450980392, green: 0.5294117647, blue: 0.003921568627, alpha: 1)
     }
 }
+
+extension Styles.Colors.Palette {
+    // Dividers
+    static let dividerDark: UIColor = #colorLiteral(red: 0.369, green: 0.463, blue: 0.592, alpha: 0.25)
+    static let dividerLight: UIColor = #colorLiteral(red: 0.62, green: 0.675, blue: 0.761, alpha: 0.25)
+}

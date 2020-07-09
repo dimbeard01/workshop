@@ -8,11 +8,11 @@
 import UIKit
 import TinyConstraints
 
-private class BorderView: UIView {
+class BorderView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
         
-        //self.roundCorners(corners: [.topLeft, .topRight], radius: Styles.Sizes.cornerRadiusBase)
+        self.roundCorners(corners: [.topLeft, .topRight], radius: Styles.Sizes.cornerRadiusBase)
     }
 }

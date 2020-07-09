@@ -9,10 +9,6 @@
 import UIKit
 
 class BaseIconButton: BaseButton {
-//    private var imageManager: ImageManager {
-//        return ImageManager.shared
-//    }
-    
     var isSelected: Bool = false {
         didSet {
             if selecteble || manualSelecteble {
@@ -168,7 +164,6 @@ class BaseIconButton: BaseButton {
 }
 
 extension BaseIconButton: BaseIconButtonProtocol {
-    
     @discardableResult
     func setImage(image: UIImage) -> Self {
         iconImage = image
@@ -176,46 +171,6 @@ extension BaseIconButton: BaseIconButtonProtocol {
         
         return self
     }
-//    
-//    @discardableResult
-//    func setImage(url: URL) -> Self {
-//        UIImage.imageFrom(url) { (result) in
-//            DispatchQueue.main.async { [weak self] in
-//                guard let self = self else { return }
-//                
-//                switch result {
-//                case .success(let image):
-//                    self.iconImage = image
-//                    self.updateIcon()
-//                    
-//                case .failure:
-//                    break
-//                }
-//            }
-//        }
-//        
-//        return self
-//    }
-//    
-//    @discardableResult
-//    func setSelectedImage(url: URL) -> Self {
-//        UIImage.imageFrom(url) { (result) in
-//            DispatchQueue.main.async { [weak self] in
-//                guard let self = self else { return }
-//                
-//                switch result {
-//                case .success(let image):
-//                    self.iconSelectedImage = image
-//                    self.updateIcon()
-//                    
-//                case .failure:
-//                    break
-//                }
-//            }
-//        }
-//        
-//        return self
-//    }
     
     @discardableResult
     func setSelectedImage(image: UIImage) -> Self {
@@ -313,4 +268,3 @@ extension BaseIconButton: BaseButtonStatusProtocol {
         }
     }
 }
-

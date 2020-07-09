@@ -76,7 +76,7 @@ class InitialViewController: UIViewController {
             }
         }
         
-        let boostVC = BoostViewController(type: BoostAlertType.baseBoost, gradient: Styles.Colors.Gradients.findsBoostGradientColors, theme: .light)
-        present(boostVC, animated: true, completion: nil)
+        let boostVC = BoostViewController()
+        present(userAlertVC, animated: true, completion: nil)
     }
 }

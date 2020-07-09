@@ -34,4 +34,18 @@ extension UIView {
         gradientLayer.frame = self.bounds
         return gradientLayer
     }
+    
+    func addGradient(colors: [UIColor], locations: [NSNumber], angle: Float = 0) {
+        let alpha: Float = angle / 360
+        
+        let startPointX = powf(sinf(2 * Float.pi * ((alpha + 0.75) / 2)), 2)
+        let startPointY = powf(sinf(2 * Float.pi * ((alpha + 0) / 2)), 2)
+        let endPointX = powf(sinf(2 * Float.pi * ((alpha + 0.25) / 2)), 2)
+        let endPointY = powf(sinf(2 * Float.pi * ((alpha + 0.5) / 2)), 2)
+        
+        let startPoint = CGPoint(x: CGFloat(startPointX), y: CGFloat(startPointY))
+        let endPoint = CGPoint(x: CGFloat(endPointX),y: CGFloat(endPointY))
+        
+        addGradient(colors: colors, locations: locations, startPoint: startPoint, endPoint: endPoint)
+    }
 }

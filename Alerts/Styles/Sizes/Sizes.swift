@@ -1,6 +1,14 @@
 
 import UIKit
 
+import UIKit
+
+extension Styles.Sizes {
+    static let screenSize: CGSize = UIScreen.main.bounds.size
+    static let screenStatusBar = UIApplication.shared.statusBarFrame
+}
+
+//Paddings
 extension Styles.Sizes {
     //horizontal Paddings
     static let HPaddingBase: CGFloat = 12.0
