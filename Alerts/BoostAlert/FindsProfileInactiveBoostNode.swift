@@ -8,15 +8,12 @@
 
 import UIKit
 import AsyncDisplayKit
-
-
   
 final class FindsProfileInactiveBoostNode: ASDisplayNode {
   
     // MARK: - Properties
 
-    var onTapAction: (() -> Void)?
-    var onTapInAction: (() -> Void)?
+    var onActivate: (() -> Void)?
 
     private lazy var activateBoostButtonNode: BaseNodeViewBox<BaseTextButton> = {
         let boxNode = BaseNodeViewBox<BaseTextButton> { () -> UIView in
@@ -24,7 +21,7 @@ final class FindsProfileInactiveBoostNode: ASDisplayNode {
                 .setTitle(title: "Активировать".uppercased())
                 .setTitleFont(font: Styles.Fonts.Tagline2)
                 .setTextColor(color: Styles.Colors.Palette.white)
-            button.action = self.onTapAction
+            button.action = self.onActivate
             button.insets = .zero
             return button
         }
@@ -35,27 +32,6 @@ final class FindsProfileInactiveBoostNode: ASDisplayNode {
         )
         return boxNode
     }()
-    
-    private lazy var inActivateBoostButtonNode: BaseNodeViewBox<BaseTextButton> = {
-        let boxNode = BaseNodeViewBox<BaseTextButton> { () -> UIView in
-            let button = BaseTextButton()
-                .setTitle(title: "Деактивировать".uppercased())
-                .setTitleFont(font: Styles.Fonts.Tagline2)
-                .setTextColor(color: Styles.Colors.Palette.white)
-            button.action = self.onTapInAction
-            button.insets = .zero
-            return button
-        }
-        
-        boxNode.style.preferredSize = CGSize(
-            width: UIScreen.main.bounds.width * 0.94, // find a way to change to .infinity
-            height: Styles.Sizes.buttonSmall
-        )
-        return boxNode
-    }()
-    
-    private let infoTitleNode = ASTextNode()
-    private let infoDescriptionNode = ASTextNode()
     
     private let arrowImageNode: ASImageNode = {
         let node = ASImageNode()
@@ -66,6 +42,8 @@ final class FindsProfileInactiveBoostNode: ASDisplayNode {
         return node
     }()
     
+    private let infoTitleNode = ASTextNode()
+    private let infoDescriptionNode = ASTextNode()
     private let wrapperNode = ASDisplayNode()
     
     // MARK: - Init
@@ -109,14 +87,12 @@ final class FindsProfileInactiveBoostNode: ASDisplayNode {
         
         func makeVerticalInfoSpec() -> ASInsetLayoutSpec {
             let hInfoStack = makeHorizontalInfoSpec()
-            
             let infoDescriptionInsetSpec = ASInsetLayoutSpec(insets: .zero, child: infoDescriptionNode)
             
             var children = [ASLayoutElement]()
             children.append(hInfoStack)
             children.append(infoDescriptionInsetSpec)
             children.append(activateBoostButtonNode)
-            children.append(inActivateBoostButtonNode)
 
             let vInfoStack = ASStackLayoutSpec.vertical()
             vInfoStack.spacing = Styles.Sizes.VPaddingMedium
@@ -130,7 +106,6 @@ final class FindsProfileInactiveBoostNode: ASDisplayNode {
                 bottom: Styles.Sizes.HPaddingMedium + Styles.Sizes.HPaddingBase,
                 right: Styles.Sizes.VPaddingMedium + Styles.Sizes.VPaddingBase
             )
-            
             return ASInsetLayoutSpec(insets: insets, child: vInfoStack)
         }
         
@@ -147,7 +122,6 @@ final class FindsProfileInactiveBoostNode: ASDisplayNode {
                        )
             return ASBackgroundLayoutSpec(child: hMainStack, background: insetSpec)
         }
-        
         return ASInsetLayoutSpec(insets: .zero, child: makeWrapperBackgroundInsetSpec())
     }
     
@@ -159,7 +133,6 @@ final class FindsProfileInactiveBoostNode: ASDisplayNode {
                 .font(Styles.Fonts.Body1)
                 .alignment(.center)
         }
-        
         infoTitleNode.attributedText = NSAttributedString(string: "Finds+", attributes: attributes.dictionary)
     }
     
@@ -169,7 +142,6 @@ final class FindsProfileInactiveBoostNode: ASDisplayNode {
                 .font(Styles.Fonts.Subhead2)
                 .alignment(.center)
         }
-        
         
         infoDescriptionNode.maximumNumberOfLines = 0
         infoDescriptionNode.attributedText = NSAttributedString(string: "Получи доступ к возможностям Finds+, чтобы встретить новых друзей и в полной мере насладиться общением.", attributes: attributes.dictionary)

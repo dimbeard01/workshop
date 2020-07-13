@@ -10,39 +10,36 @@ import UIKit
 import AsyncDisplayKit
 
 final class BoostViewController: UIViewController {
-   
-   //  let boostNode = FindsEditProfileBoostNode(boostState: .noFindsPlus)
+    
+    //let boostNode = FindsEditProfileBoostNode(boostState: .noFindsPlus)
     let boostNode = FindsProfileInactiveBoostNode()
     
     var onAction: (() -> Void)?
-    var onInAction: (() -> Void)?
-
-      override func viewDidLoad() {
-          super.viewDidLoad()
-          
-          view.backgroundColor = .lightGray
-          view.addSubnode(boostNode)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-          let width = UIScreen.main.bounds.width
-          let sizeRange = boostNode.calculateLayoutThatFits(
-              ASSizeRange(min: .zero, max: CGSize(width: width, height: CGFloat.infinity))
-          )
-
-          boostNode.view.topToSuperview(view.safeAreaLayoutGuide.topAnchor, offset: 24)
-          boostNode.view.centerXToSuperview()
-          boostNode.view.height(sizeRange.size.height)
-          boostNode.view.width(view.frame.width)
-        boostNode.onTapAction = { [weak self] in
-                 self?.onAction?()
-             }
+        view.backgroundColor = .lightGray
+        view.addSubnode(boostNode)
         
-        boostNode.onTapInAction = { [weak self] in
-            self?.onInAction?()
+        let width = UIScreen.main.bounds.width
+        let sizeRange = boostNode.calculateLayoutThatFits(
+            ASSizeRange(min: .zero, max: CGSize(width: width, height: CGFloat.infinity))
+        )
+        
+        boostNode.view.topToSuperview(view.safeAreaLayoutGuide.topAnchor, offset: 24)
+        boostNode.view.centerXToSuperview()
+        boostNode.view.height(sizeRange.size.height)
+        boostNode.view.width(view.frame.width)
+        
+        boostNode.onActivate = { [weak self] in
+            self?.onAction?()
         }
-       
-      }
-    
-    
+        
+//        boostNode.onTapAction = { [weak self] action in
+//            self?.onAction?()
+//        }
+    }
 }
 
 class BaseNodeViewBox<T: UIView>: ASDisplayNode {

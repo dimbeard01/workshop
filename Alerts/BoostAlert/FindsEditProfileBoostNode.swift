@@ -13,7 +13,7 @@ enum BoostState {
     case active
 }
 
-class FindsEditProfileBoostNode: ASDisplayNode {
+final class FindsEditProfileBoostNode: ASDisplayNode {
     enum ActionType {
         case showInfo
         case buyFindsPlus

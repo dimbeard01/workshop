@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserAnswerView: UIView {
+final class UserAnswerView: UIView {
     
     // MARK: - Properties
     
@@ -39,6 +39,8 @@ class UserAnswerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Helpers
+
     func configure(userInfo: QuestionnaireModel, theme: Theme) {
         questionLabel.text = userInfo.question
         answerLabel.text = userInfo.answer

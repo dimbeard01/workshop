@@ -13,7 +13,7 @@ struct QuestionnaireModel {
     var answer: String?
 }
 
-class ShortProfileAlertView: UIView {
+final class ShortProfileAlertView: UIView {
     
     // MARK: - Properties
     
@@ -199,7 +199,7 @@ class ShortProfileAlertView: UIView {
         setupStackViews()
     }
     
-    func setupStackViews() {
+    private func setupStackViews() {
         if let userAnswerList = userAnswerList, !userAnswerList.isEmpty {
             containerView.addSubview(openProfileButton)
             containerView.addSubview(infoStackView)

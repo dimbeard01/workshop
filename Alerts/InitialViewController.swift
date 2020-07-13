@@ -82,11 +82,6 @@ class InitialViewController: UIViewController {
             self?.dismiss(animated: true, completion: nil)
             
         }
-        
-        boostVC.onInAction = { [weak self] in
-            print("dsdsd")
-            
-        }
         present(boostVC, animated: true, completion: nil)
     }
 }
