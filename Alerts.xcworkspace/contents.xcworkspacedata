@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/dima/Documents/work/Alerts/Alerts/BoostAlert/FindsEditProfileBoostNode.swift">
-   </FileRef>
-   <FileRef
       location = "group:Alerts.xcodeproj">
    </FileRef>
    <FileRef

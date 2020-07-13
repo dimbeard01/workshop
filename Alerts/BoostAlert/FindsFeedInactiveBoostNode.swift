@@ -9,7 +9,7 @@
 import UIKit
 import AsyncDisplayKit
   
-final class FindsProfileInactiveBoostNode: ASDisplayNode {
+final class FindsFeedInactiveBoostNode: ASDisplayNode {
   
     // MARK: - Properties
 
@@ -163,7 +163,7 @@ final class FindsProfileInactiveBoostNode: ASDisplayNode {
 
     // MARK: - Themeable
 
-extension FindsProfileInactiveBoostNode: Themeable {
+extension FindsFeedInactiveBoostNode: Themeable {
     func updateTheme() {
         switch theme {
         case .light:

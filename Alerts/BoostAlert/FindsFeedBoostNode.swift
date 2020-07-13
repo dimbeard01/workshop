@@ -13,7 +13,7 @@ enum BoostState {
     case active
 }
 
-final class FindsEditProfileBoostNode: ASDisplayNode {
+final class FindsFeedBoostNode: ASDisplayNode {
     enum ActionType {
         case showInfo
         case buyFindsPlus
@@ -248,7 +248,7 @@ final class FindsEditProfileBoostNode: ASDisplayNode {
     }
 }
 
-extension FindsEditProfileBoostNode: Themeable {
+extension FindsFeedBoostNode: Themeable {
     func updateTheme() {
         switch theme {
         case .light:

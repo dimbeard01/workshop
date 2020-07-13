@@ -38,8 +38,8 @@
 		32CBAFA024B32D59003395C1 /* ASDisplayNode+AddGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CBAF9F24B32D59003395C1 /* ASDisplayNode+AddGradient.swift */; };
 		32D3DA1424B6F0EC0013998E /* Images+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3DA1324B6F0EC0013998E /* Images+Defaults.swift */; };
 		32D3DA1624B6F0FE0013998E /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3DA1524B6F0FE0013998E /* Images.swift */; };
-		32D3DA1824B6F1670013998E /* FindsEditProfileBoostNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3DA1724B6F1670013998E /* FindsEditProfileBoostNode.swift */; };
-		32D3DA1A24B72D6B0013998E /* FindsProfileInactiveBoostNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3DA1924B72D6B0013998E /* FindsProfileInactiveBoostNode.swift */; };
+		32D3DA1824B6F1670013998E /* FindsFeedBoostNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3DA1724B6F1670013998E /* FindsFeedBoostNode.swift */; };
+		32D3DA1A24B72D6B0013998E /* FindsFeedInactiveBoostNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3DA1924B72D6B0013998E /* FindsFeedInactiveBoostNode.swift */; };
 		58A5F26924A5C80C007561E5 /* BaseTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A5F26824A5C80C007561E5 /* BaseTextButton.swift */; };
 		58A5F26B24A5C83F007561E5 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A5F26A24A5C83F007561E5 /* BaseButton.swift */; };
 		58A5F26D24A5C85F007561E5 /* ViewWithTouchArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A5F26C24A5C85F007561E5 /* ViewWithTouchArea.swift */; };
@@ -98,8 +98,8 @@
 		32CBAF9F24B32D59003395C1 /* ASDisplayNode+AddGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASDisplayNode+AddGradient.swift"; sourceTree = "<group>"; };
 		32D3DA1324B6F0EC0013998E /* Images+Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Images+Defaults.swift"; sourceTree = "<group>"; };
 		32D3DA1524B6F0FE0013998E /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
-		32D3DA1724B6F1670013998E /* FindsEditProfileBoostNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FindsEditProfileBoostNode.swift; path = /Users/dima/Documents/work/Alerts/Alerts/BoostAlert/FindsEditProfileBoostNode.swift; sourceTree = "<absolute>"; };
-		32D3DA1924B72D6B0013998E /* FindsProfileInactiveBoostNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindsProfileInactiveBoostNode.swift; sourceTree = "<group>"; };
+		32D3DA1724B6F1670013998E /* FindsFeedBoostNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FindsFeedBoostNode.swift; path = /Users/dima/Documents/work/Alerts/Alerts/BoostAlert/FindsFeedBoostNode.swift; sourceTree = "<absolute>"; };
+		32D3DA1924B72D6B0013998E /* FindsFeedInactiveBoostNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindsFeedInactiveBoostNode.swift; sourceTree = "<group>"; };
 		58A5F26824A5C80C007561E5 /* BaseTextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTextButton.swift; sourceTree = "<group>"; };
 		58A5F26A24A5C83F007561E5 /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		58A5F26C24A5C85F007561E5 /* ViewWithTouchArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewWithTouchArea.swift; sourceTree = "<group>"; };
@@ -244,8 +244,8 @@
 				32A05EE624B46F2C00E755A8 /* BaseAlert */,
 				32A05EE524B46F0D00E755A8 /* ShortProfileAlert */,
 				32A05EE424B46EDA00E755A8 /* BoostAlert */,
-				32A05EE224B4560F00E755A8 /* ImageManager.swift */,
 				328F1C8B24BC56FE0054EC02 /* FindsFeedPlaceholderNode.swift */,
+				32A05EE224B4560F00E755A8 /* ImageManager.swift */,
 				32A05EDC24B453BF00E755A8 /* BorderView.swift */,
 				3214803424A5CC6B005DAECA /* Extensions */,
 				3227E67C24B6EA3A006E7763 /* Theme */,
@@ -262,8 +262,8 @@
 		32A05EE424B46EDA00E755A8 /* BoostAlert */ = {
 			isa = PBXGroup;
 			children = (
-				32D3DA1724B6F1670013998E /* FindsEditProfileBoostNode.swift */,
-				32D3DA1924B72D6B0013998E /* FindsProfileInactiveBoostNode.swift */,
+				32D3DA1724B6F1670013998E /* FindsFeedBoostNode.swift */,
+				32D3DA1924B72D6B0013998E /* FindsFeedInactiveBoostNode.swift */,
 				32CBAF9B24B31814003395C1 /* BoostViewController.swift */,
 			);
 			path = BoostAlert;
@@ -495,7 +495,7 @@
 				32CBAF9C24B31814003395C1 /* BoostViewController.swift in Sources */,
 				32A05EE324B4560F00E755A8 /* ImageManager.swift in Sources */,
 				58A5F28924A5C8FA007561E5 /* Styles.swift in Sources */,
-				32D3DA1824B6F1670013998E /* FindsEditProfileBoostNode.swift in Sources */,
+				32D3DA1824B6F1670013998E /* FindsFeedBoostNode.swift in Sources */,
 				328F1C8C24BC56FE0054EC02 /* FindsFeedPlaceholderNode.swift in Sources */,
 				3214803824A5CDD1005DAECA /* CGRect+HitFrame.swift in Sources */,
 				58A5F29024A5C8FA007561E5 /* Colors.swift in Sources */,
@@ -534,7 +534,7 @@
 				3227E69724B6EDFC006E7763 /* UIView+Corners.swift in Sources */,
 				3227E68E24B6EC38006E7763 /* UIButtonHitTestInset.swift in Sources */,
 				3227E69424B6ED3F006E7763 /* WeakReferences.swift in Sources */,
-				32D3DA1A24B72D6B0013998E /* FindsProfileInactiveBoostNode.swift in Sources */,
+				32D3DA1A24B72D6B0013998E /* FindsFeedInactiveBoostNode.swift in Sources */,
 				58A5F26D24A5C85F007561E5 /* ViewWithTouchArea.swift in Sources */,
 				58A5F26924A5C80C007561E5 /* BaseTextButton.swift in Sources */,
 				58A5F28F24A5C8FA007561E5 /* Colors+Gradients.swift in Sources */,
