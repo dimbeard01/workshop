@@ -18,14 +18,20 @@
 		3227E69224B6ECC5006E7763 /* BaseIconTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227E69124B6ECC5006E7763 /* BaseIconTextButton.swift */; };
 		3227E69424B6ED3F006E7763 /* WeakReferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227E69324B6ED3F006E7763 /* WeakReferences.swift */; };
 		3227E69724B6EDFC006E7763 /* UIView+Corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227E69624B6EDFC006E7763 /* UIView+Corners.swift */; };
+		322E774124C04A960027000F /* BlurTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E774024C04A960027000F /* BlurTest.swift */; };
+		322E774324C09F4A0027000F /* LastSeenDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E774224C09F4A0027000F /* LastSeenDateFormatter.swift */; };
 		3235521224A73ACB00D97F0D /* UIView+AddGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3235521124A73ACB00D97F0D /* UIView+AddGradient.swift */; };
 		327629C924A4BDFA001A0CFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327629C824A4BDFA001A0CFF /* AppDelegate.swift */; };
 		327629CB24A4BDFA001A0CFF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327629CA24A4BDFA001A0CFF /* SceneDelegate.swift */; };
 		327629D224A4BDFB001A0CFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 327629D124A4BDFB001A0CFF /* Assets.xcassets */; };
 		327629D524A4BDFB001A0CFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 327629D324A4BDFB001A0CFF /* LaunchScreen.storyboard */; };
 		327629DD24A4C9B8001A0CFF /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327629DC24A4C9B8001A0CFF /* AlertViewController.swift */; };
+		3285598D24BDE63200EFC5F7 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285598C24BDE63200EFC5F7 /* Header.swift */; };
 		3289233224A4D1B80050BD8A /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289233124A4D1B80050BD8A /* AlertView.swift */; };
 		328F1C8C24BC56FE0054EC02 /* FindsFeedPlaceholderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328F1C8B24BC56FE0054EC02 /* FindsFeedPlaceholderNode.swift */; };
+		328F1C9124BCA6A70054EC02 /* FindsFeedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328F1C9024BCA6A70054EC02 /* FindsFeedCollectionViewController.swift */; };
+		328F1C9524BCAB120054EC02 /* FindsFeedCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328F1C9424BCAB120054EC02 /* FindsFeedCellNode.swift */; };
+		328FB2E724BEE08100C4A13D /* FindsFeedAlertCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328FB2E624BEE08100C4A13D /* FindsFeedAlertCellNode.swift */; };
 		32A05EDD24B453BF00E755A8 /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A05EDC24B453BF00E755A8 /* BorderView.swift */; };
 		32A05EDF24B4545600E755A8 /* BaseIconButtonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A05EDE24B4545600E755A8 /* BaseIconButtonProtocol.swift */; };
 		32A05EE124B4549200E755A8 /* BaseIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A05EE024B4549200E755A8 /* BaseIconButton.swift */; };
@@ -76,6 +82,8 @@
 		3227E69124B6ECC5006E7763 /* BaseIconTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseIconTextButton.swift; sourceTree = "<group>"; };
 		3227E69324B6ED3F006E7763 /* WeakReferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakReferences.swift; sourceTree = "<group>"; };
 		3227E69624B6EDFC006E7763 /* UIView+Corners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Corners.swift"; sourceTree = "<group>"; };
+		322E774024C04A960027000F /* BlurTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurTest.swift; sourceTree = "<group>"; };
+		322E774224C09F4A0027000F /* LastSeenDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastSeenDateFormatter.swift; sourceTree = "<group>"; };
 		3235521124A73ACB00D97F0D /* UIView+AddGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddGradient.swift"; sourceTree = "<group>"; };
 		327629C524A4BDFA001A0CFF /* Alerts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alerts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		327629C824A4BDFA001A0CFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,8 +92,12 @@
 		327629D424A4BDFB001A0CFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		327629D624A4BDFB001A0CFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		327629DC24A4C9B8001A0CFF /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		3285598C24BDE63200EFC5F7 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		3289233124A4D1B80050BD8A /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		328F1C8B24BC56FE0054EC02 /* FindsFeedPlaceholderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindsFeedPlaceholderNode.swift; sourceTree = "<group>"; };
+		328F1C9024BCA6A70054EC02 /* FindsFeedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindsFeedCollectionViewController.swift; sourceTree = "<group>"; };
+		328F1C9424BCAB120054EC02 /* FindsFeedCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindsFeedCellNode.swift; sourceTree = "<group>"; };
+		328FB2E624BEE08100C4A13D /* FindsFeedAlertCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindsFeedAlertCellNode.swift; sourceTree = "<group>"; };
 		32A05EDC24B453BF00E755A8 /* BorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
 		32A05EDE24B4545600E755A8 /* BaseIconButtonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseIconButtonProtocol.swift; sourceTree = "<group>"; };
 		32A05EE024B4549200E755A8 /* BaseIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseIconButton.swift; sourceTree = "<group>"; };
@@ -244,8 +256,13 @@
 				32A05EE624B46F2C00E755A8 /* BaseAlert */,
 				32A05EE524B46F0D00E755A8 /* ShortProfileAlert */,
 				32A05EE424B46EDA00E755A8 /* BoostAlert */,
-				328F1C8B24BC56FE0054EC02 /* FindsFeedPlaceholderNode.swift */,
+				328F1C8D24BC775D0054EC02 /* FeedPlaceholder */,
 				32A05EE224B4560F00E755A8 /* ImageManager.swift */,
+				328F1C9024BCA6A70054EC02 /* FindsFeedCollectionViewController.swift */,
+				328F1C9424BCAB120054EC02 /* FindsFeedCellNode.swift */,
+				328FB2E624BEE08100C4A13D /* FindsFeedAlertCellNode.swift */,
+				322E774024C04A960027000F /* BlurTest.swift */,
+				3285598C24BDE63200EFC5F7 /* Header.swift */,
 				32A05EDC24B453BF00E755A8 /* BorderView.swift */,
 				3214803424A5CC6B005DAECA /* Extensions */,
 				3227E67C24B6EA3A006E7763 /* Theme */,
@@ -257,6 +274,14 @@
 				327629D624A4BDFB001A0CFF /* Info.plist */,
 			);
 			path = Alerts;
+			sourceTree = "<group>";
+		};
+		328F1C8D24BC775D0054EC02 /* FeedPlaceholder */ = {
+			isa = PBXGroup;
+			children = (
+				328F1C8B24BC56FE0054EC02 /* FindsFeedPlaceholderNode.swift */,
+			);
+			path = FeedPlaceholder;
 			sourceTree = "<group>";
 		};
 		32A05EE424B46EDA00E755A8 /* BoostAlert */ = {
@@ -274,6 +299,7 @@
 			children = (
 				32AFD2E424AB69EB002BF920 /* UserAnswerView.swift */,
 				32AFD2E024AB5544002BF920 /* ShortProfileAlertView.swift */,
+				322E774224C09F4A0027000F /* LastSeenDateFormatter.swift */,
 				32AFD2DE24AB52CC002BF920 /* ShortProfileAlertViewController.swift */,
 			);
 			path = ShortProfileAlert;
@@ -500,14 +526,18 @@
 				3214803824A5CDD1005DAECA /* CGRect+HitFrame.swift in Sources */,
 				58A5F29024A5C8FA007561E5 /* Colors.swift in Sources */,
 				58A5F26F24A5C876007561E5 /* BaseButtonActionProtocol.swift in Sources */,
+				3285598D24BDE63200EFC5F7 /* Header.swift in Sources */,
 				58A5F29224A5C8FA007561E5 /* Theme+Appearence.swift in Sources */,
 				32CBAFA024B32D59003395C1 /* ASDisplayNode+AddGradient.swift in Sources */,
 				3227E69224B6ECC5006E7763 /* BaseIconTextButton.swift in Sources */,
 				58A5F29424A5C8FA007561E5 /* Theme+Dark.swift in Sources */,
+				322E774324C09F4A0027000F /* LastSeenDateFormatter.swift in Sources */,
 				58A5F29824A5C8FA007561E5 /* Font.swift in Sources */,
 				3214803F24A5CEFA005DAECA /* UIView+ScaleDown.swift in Sources */,
 				58A5F29624A5C8FA007561E5 /* Theme+Light.swift in Sources */,
+				328F1C9124BCA6A70054EC02 /* FindsFeedCollectionViewController.swift in Sources */,
 				58A5F29124A5C8FA007561E5 /* ThemeAlternativeStyle.swift in Sources */,
+				328FB2E724BEE08100C4A13D /* FindsFeedAlertCellNode.swift in Sources */,
 				327629C924A4BDFA001A0CFF /* AppDelegate.swift in Sources */,
 				32AFD2E524AB69EB002BF920 /* UserAnswerView.swift in Sources */,
 				58A5F29C24A5C9A8007561E5 /* BaseButtonStatusProtocol.swift in Sources */,
@@ -517,11 +547,13 @@
 				3289233224A4D1B80050BD8A /* AlertView.swift in Sources */,
 				58A5F28E24A5C8FA007561E5 /* Colors+Palette.swift in Sources */,
 				58A5F28D24A5C8FA007561E5 /* Sizes.swift in Sources */,
+				322E774124C04A960027000F /* BlurTest.swift in Sources */,
 				3235521224A73ACB00D97F0D /* UIView+AddGradient.swift in Sources */,
 				58A5F29324A5C8FA007561E5 /* ThemeStyle.swift in Sources */,
 				32AFD2DF24AB52CC002BF920 /* ShortProfileAlertViewController.swift in Sources */,
 				32A05EDD24B453BF00E755A8 /* BorderView.swift in Sources */,
 				58A5F29E24A5C9BF007561E5 /* ActivityIndicatorProtocol.swift in Sources */,
+				328F1C9524BCAB120054EC02 /* FindsFeedCellNode.swift in Sources */,
 				3227E68024B6EA74006E7763 /* ThemeManager.swift in Sources */,
 				327629CB24A4BDFA001A0CFF /* SceneDelegate.swift in Sources */,
 				58A5F28C24A5C8FA007561E5 /* Constants.swift in Sources */,

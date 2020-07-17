@@ -48,10 +48,8 @@ final class FindsFeedBoostNode: ASDisplayNode {
     
     private let arrowImageNode: ASImageNode = {
         let node = ASImageNode()
-        node.style.preferredSize = CGSize(
-            width: Styles.Sizes.iconBase,
-            height: Styles.Sizes.iconBase
-        )
+        node.style.preferredSize = CGSize(width: Styles.Sizes.iconBase,
+                                          height: Styles.Sizes.iconBase)
         return node
     }()
     
@@ -66,10 +64,8 @@ final class FindsFeedBoostNode: ASDisplayNode {
             return button
         }
         
-        boxNode.style.preferredSize = CGSize(
-            width: Styles.Sizes.iconBase,
-            height: Styles.Sizes.iconBase
-        )
+        boxNode.style.preferredSize = CGSize(width: Styles.Sizes.iconBase,
+                                             height: Styles.Sizes.iconBase)
         return boxNode
     }()
 
@@ -193,28 +189,21 @@ final class FindsFeedBoostNode: ASDisplayNode {
             hStack.alignItems = .center
             hStack.children = children
             
-            let insets = UIEdgeInsets(
-                top: Styles.Sizes.VPaddingBase + Styles.Sizes.VPaddingMedium,
-                left: Styles.Sizes.HPaddingBase * 2,
-                bottom: Styles.Sizes.VPaddingBase + Styles.Sizes.VPaddingMedium,
-                right: Styles.Sizes.HPaddingBase * 2
-            )
-            
+            let insets = UIEdgeInsets(top: Styles.Sizes.VPaddingBase + Styles.Sizes.VPaddingMedium,
+                                      left: Styles.Sizes.HPaddingBase * 2,
+                                      bottom: Styles.Sizes.VPaddingBase + Styles.Sizes.VPaddingMedium,
+                                      right: Styles.Sizes.HPaddingBase * 2)
             return ASInsetLayoutSpec(insets: insets, child: hStack)
         }
         
         func roundedBackgroundInsetSpec() -> ASBackgroundLayoutSpec {
             let hMainStack = makeMainHorizontaStacklInsetSpec()
             
-            let insetSpec = ASInsetLayoutSpec(
-                insets: .init(
-                    top: Styles.Sizes.VPaddingMedium,
-                    left: Styles.Sizes.HPaddingMedium,
-                    bottom: Styles.Sizes.HPaddingMedium,
-                    right: Styles.Sizes.VPaddingMedium),
-                child: roundedWrapperNode
-            )
-         
+            let insetSpec = ASInsetLayoutSpec(insets: .init(top: Styles.Sizes.VPaddingMedium,
+                                                            left: Styles.Sizes.HPaddingMedium,
+                                                            bottom: Styles.Sizes.HPaddingMedium,
+                                                            right: Styles.Sizes.VPaddingMedium),
+                                              child: roundedWrapperNode)
             return ASBackgroundLayoutSpec(child: hMainStack, background: insetSpec)
         }
         

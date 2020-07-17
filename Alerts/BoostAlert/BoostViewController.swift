@@ -11,16 +11,16 @@ import AsyncDisplayKit
 
 final class BoostViewController: UIViewController {
     
-    //let boostNode = FindsFeedBoostNode(boostState: .noFindsPlus)
+    //let boostNode = FindsFeedBoostNode(boostState: .inactive)
     let boostNode = FindsFeedInactiveBoostNode()
-    let placholderNode = FindsFeedPlaceholderNode(type: .noRequestAndLike)
+    let placholderNode = FindsFeedPlaceholderNode(type: .noSuggestion)
     
     var onAction: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = Styles.Colors.Palette.gray1
+        view.backgroundColor = .white // Styles.Colors.Palette.gray1
         view.addSubnode(boostNode)
         view.addSubnode(placholderNode)
 
@@ -34,10 +34,6 @@ final class BoostViewController: UIViewController {
         boostNode.view.height(sizeRange.size.height)
         boostNode.view.width(view.frame.width)
         
-        boostNode.onActivate = { [weak self] in
-            self?.onAction?()
-        }
-        
         let placholderSizeRange = placholderNode.calculateLayoutThatFits(
             ASSizeRange(min: .zero, max: CGSize(width: width, height: CGFloat.infinity))
         )
@@ -47,6 +43,9 @@ final class BoostViewController: UIViewController {
         placholderNode.view.height(placholderSizeRange.size.height)
         placholderNode.view.width(view.frame.width)
         
+                boostNode.onActivate = { [weak self] in
+                    self?.onAction?()
+                }
         
 //        boostNode.onTapAction = { [weak self] action in
 //            self?.onAction?()

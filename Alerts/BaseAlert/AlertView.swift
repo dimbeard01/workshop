@@ -290,11 +290,8 @@ final class AlertView: UIView {
         case .boostActivated:
             setupBoostActivatedAlert()
             
-        case .hiddenProfile:
-            setupHiddenProfileAlert()
-            
-        case .noProfile:
-            setupNoProfileAlert()
+        case .hiddenProfile, .noProfile:
+            setupNoOrHiddenProfileAlert()
             
         case .emptyFields, .removeProfile, .hideProfile:
             setupContainerView()
@@ -389,24 +386,21 @@ final class AlertView: UIView {
         titleLabel.topToBottom(of: userPhotoImageView, offset: 16)
     }
     
-    private func setupHiddenProfileAlert(){
+    private func setupNoOrHiddenProfileAlert(){
         setupContainerView()
         
-        cardImageView.image = UIImage(named: hiddenProfileImageName)
-        containerView.addSubview(cardImageView)
+        var image: String {
+            switch type {
+            case .hiddenProfile:
+                return hiddenProfileImageName
+            case .noProfile:
+                return noProfileImageName
+            default :
+                return ""
+            }
+        }
         
-        cardImageView.topToSuperview(offset: 12)
-        cardImageView.leftToSuperview(offset: 12)
-        cardImageView.rightToSuperview(offset: -12)
-        
-        titleLabel.textColor = theme == Theme.dark ? Styles.Colors.Palette.white : Styles.Colors.Palette.gray3
-        titleLabel.topToBottom(of: cardImageView, offset: 15)
-    }
-    
-    private func setupNoProfileAlert() {
-        setupContainerView()
-        
-        cardImageView.image = UIImage(named: noProfileImageName)
+        cardImageView.image = UIImage(named: image)
         containerView.addSubview(cardImageView)
         
         cardImageView.topToSuperview(offset: 12)

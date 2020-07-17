@@ -19,10 +19,8 @@ final class FindsFeedPlaceholderNode: ASDisplayNode {
     
     private let doubleIconImageNode: ASImageNode = {
         let node = ASImageNode()
-        node.style.preferredSize = CGSize(
-            width: 64,
-            height: 64
-        )
+        node.style.preferredSize = CGSize(width: Styles.Sizes.iconSmall * 4,
+                                          height: Styles.Sizes.iconSmall * 4)
         return node
     }()
     
@@ -48,7 +46,6 @@ final class FindsFeedPlaceholderNode: ASDisplayNode {
         func makeVerticalInfoSpec() -> ASStackLayoutSpec {
             let infoTitleInsetSpec =  ASInsetLayoutSpec(insets: .zero, child: infoTitleNode)
             let infoDescriptionInsetSpec = ASInsetLayoutSpec(insets: .zero, child: infoDescriptionNode)
-            
             var children = [ASLayoutElement]()
             children.append(infoTitleInsetSpec)
             children.append(infoDescriptionInsetSpec)
@@ -76,13 +73,10 @@ final class FindsFeedPlaceholderNode: ASDisplayNode {
             return vStack
         }
         
-        let insets = UIEdgeInsets(
-            top: Styles.Sizes.VPaddingBase,
-            left: Styles.Sizes.HPaddingBase * 3,
-            bottom: Styles.Sizes.VPaddingBase,
-            right: Styles.Sizes.HPaddingBase * 3
-        )
-        
+        let insets = UIEdgeInsets(top: Styles.Sizes.VPaddingBase,
+                                  left: Styles.Sizes.HPaddingBase * 3,
+                                  bottom: Styles.Sizes.VPaddingBase,
+                                  right: Styles.Sizes.HPaddingBase * 3)
         return ASInsetLayoutSpec(insets:insets, child: makeMainVerticalInfoSpec())
     }
     

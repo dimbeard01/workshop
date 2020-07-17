@@ -45,12 +45,19 @@ final class ShortProfileAlertViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let another = 1294836949351
+        let dayBeforeYesterday = 1594835999
+        let yesterdayZero = 1594836012
+        let yesterday = 1594922399
+        let today = 1594922501
+        let todayMore = 1595008000
+        let monthAgo = 1592398000
         
         userAlert = ShortProfileAlertView(userPhoto: userPhoto,
                                                  userName: userName,
                                                  isOnline: isOnline,
                                                  colorStyle: colorStyle,
-                                                 timeWasOnline: timeWasOnline,
+                                                 timeWasOnline: todayMore,
                                                  userAnswerList: userAnswerList,
                                                  buttonTypes: makeButtons(color: colorStyle),
                                                  theme: theme)

@@ -35,10 +35,8 @@ final class FindsFeedInactiveBoostNode: ASDisplayNode {
     
     private let arrowImageNode: ASImageNode = {
         let node = ASImageNode()
-        node.style.preferredSize = CGSize(
-            width: Styles.Sizes.avatarSmall,
-            height: Styles.Sizes.avatarSmall
-        )
+        node.style.preferredSize = CGSize(width: Styles.Sizes.avatarSmall,
+                                          height: Styles.Sizes.avatarSmall)
         return node
     }()
     
@@ -65,7 +63,7 @@ final class FindsFeedInactiveBoostNode: ASDisplayNode {
         super.layoutDidFinish()
         
         updateActiveButtonColor()
-        wrapperNode.cornerRadius = Styles.Sizes.cornerRadiusMedium
+        wrapperNode.cornerRadius = Styles.Sizes.cornerRadiusBase
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
@@ -100,26 +98,21 @@ final class FindsFeedInactiveBoostNode: ASDisplayNode {
             vInfoStack.justifyContent = .center
             vInfoStack.children = children
             
-            let insets = UIEdgeInsets(
-                top: Styles.Sizes.VPaddingMedium + Styles.Sizes.VPaddingBase,
-                left: Styles.Sizes.HPaddingMedium + Styles.Sizes.HPaddingBase,
-                bottom: Styles.Sizes.HPaddingMedium + Styles.Sizes.HPaddingBase,
-                right: Styles.Sizes.VPaddingMedium + Styles.Sizes.VPaddingBase
-            )
+            let insets = UIEdgeInsets(top: Styles.Sizes.VPaddingMedium + Styles.Sizes.VPaddingBase,
+                                      left: Styles.Sizes.HPaddingMedium + Styles.Sizes.HPaddingBase,
+                                      bottom: Styles.Sizes.HPaddingMedium + Styles.Sizes.HPaddingBase,
+                                      right: Styles.Sizes.VPaddingMedium + Styles.Sizes.VPaddingBase)
             return ASInsetLayoutSpec(insets: insets, child: vInfoStack)
         }
         
         func makeWrapperBackgroundInsetSpec() -> ASBackgroundLayoutSpec {
             let hMainStack = makeVerticalInfoSpec()
             
-            let insetSpec = ASInsetLayoutSpec(
-                           insets: .init(
-                               top: Styles.Sizes.VPaddingMedium,
-                               left: Styles.Sizes.HPaddingMedium,
-                               bottom: Styles.Sizes.HPaddingMedium,
-                               right: Styles.Sizes.VPaddingMedium),
-                           child: wrapperNode
-                       )
+            let insetSpec = ASInsetLayoutSpec(insets: .init(top: Styles.Sizes.VPaddingMedium,
+                                                            left: Styles.Sizes.HPaddingMedium,
+                                                            bottom: Styles.Sizes.HPaddingMedium,
+                                                            right: Styles.Sizes.VPaddingMedium),
+                                              child: wrapperNode)
             return ASBackgroundLayoutSpec(child: hMainStack, background: insetSpec)
         }
         return ASInsetLayoutSpec(insets: .zero, child: makeWrapperBackgroundInsetSpec())

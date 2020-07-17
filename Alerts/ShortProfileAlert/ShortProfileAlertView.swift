@@ -48,8 +48,11 @@ final class ShortProfileAlertView: UIView {
         return label
     }()
     
+    let dateDigits: Int
+    
     private let timeWasOnlineLabel: UILabel = {
         let label = UILabel()
+      
         label.textColor = Styles.Colors.Palette.gray5
         label.numberOfLines = 0
         label.font = Styles.Fonts.Caption2
@@ -81,18 +84,21 @@ final class ShortProfileAlertView: UIView {
     
     // MARK: - Init
     
-    init(userPhoto: UIImage, userName: String, isOnline: Bool, colorStyle: UIColor, timeWasOnline: String, userAnswerList: [QuestionnaireModel]?, buttonTypes: (ButtonType, [ButtonType]), theme: Theme) {
+    init(userPhoto: UIImage, userName: String, isOnline: Bool, colorStyle: UIColor, timeWasOnline: Int, userAnswerList: [QuestionnaireModel]?, buttonTypes: (ButtonType, [ButtonType]), theme: Theme) {
         self.userPhoto = userPhoto
         self.userNameLabel.text = userName
         self.isOnline = isOnline
         self.colorStyle = colorStyle
-        self.timeWasOnlineLabel.text = timeWasOnline
+        self.dateDigits = timeWasOnline
         self.userAnswerList = userAnswerList
         self.buttonTypes = buttonTypes.1
         self.theme = theme
         
         super.init(frame: UIScreen.main.bounds)
         
+        
+        timeWasOnlineLabel.text = LastSeenDateFormatter().convertedDate(with: dateDigits)
+
         openProfileButton = makeOpenProfileButton(buttonTypes.0)
         setupViews()
         setupStackButtons()
@@ -239,5 +245,33 @@ final class ShortProfileAlertView: UIView {
     }
 }
 
-
+//
+//extension Int {
+//    func formatingData() -> String{
+//        if let timeResult = (Double(self) as? Double) {
+//            let date = Date(timeIntervalSince1970: timeResult)
+//            let dateFormatter = DateFormatter()
+//            //dateFormatter.dateFormat = "в hh:mm, dd MMMM"
+//
+//            dateFormatter.dateFormat = "в hh:mm, dd MMMM"
+//
+//            let b = date.month()
+//            print(b)
+//            let a = dateFormatter.calendar.component(Calendar.Component.month, from: date)
+//            //dateFormatter.timeStyle = DateFormatter.Style.medium //Set time style
+//            //dateFormatter.dateStyle = DateFormatter.Style.long //Set date style
+//            dateFormatter.timeZone = .current
+//            let localDate = dateFormatter.string(from: date)
+//
+//            let s = URLDateFormatter(12).stringFromDate()
+//            print(s)
+//            switch a {
+//            case 11:
+//                return "hh:mm dd "
+//            default:
+//                return "hh:mm dd Июля"
+//            }
+//        }
+//    }
+//}
 

@@ -45,7 +45,7 @@ class InitialViewController: UIViewController {
         userAlertVC.modalPresentationStyle = .overCurrentContext
         userAlertVC.modalTransitionStyle = .crossDissolve
         
-        let alertVC = AlertViewController(type: .hideProfile, theme: Theme.light)
+        let alertVC = AlertViewController(type: .noProfile, theme: Theme.light)
         alertVC.modalPresentationStyle = .overCurrentContext
         alertVC.modalTransitionStyle = .crossDissolve
         
@@ -82,6 +82,10 @@ class InitialViewController: UIViewController {
             self?.dismiss(animated: true, completion: nil)
             
         }
-        present(boostVC, animated: true, completion: nil)
+        
+        let collectionVC = FindsFeddCollectionViewController()
+        let blurVC = BlurViewController()
+    
+        present(userAlertVC, animated: true, completion: nil)
     }
 }

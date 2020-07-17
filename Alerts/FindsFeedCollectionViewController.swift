@@ -1,0 +1,108 @@
+//
+//  FindsFeedCollectionViewController.swift
+//  Alerts
+//
+//  Created by Dima on 13.07.2020.
+//  Copyright © 2020 Dima. All rights reserved.
+//
+
+import AsyncDisplayKit
+
+final class FindsFeddCollectionViewController: ASViewController<ASCollectionNode> {
+    
+    // MARK: - Properties
+    
+    private let flowLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        return layout
+    }()
+    
+    let collectionNode: ASCollectionNode
+    let alertNodes = [FindsFeedPlaceholderNode(type: .noRequestAndLike), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode()]
+    
+    // MARK: - Init
+    
+    init() {
+        collectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
+        
+        super.init(node: collectionNode)
+        
+        flowLayout.minimumLineSpacing = 8
+        flowLayout.minimumInteritemSpacing = 0
+        view.backgroundColor = .white
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - LifeCycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        collectionNode.delegate = self
+        collectionNode.dataSource = self
+        flowLayout.scrollDirection = .vertical
+    }
+}
+
+    // MARK: - Collection Data Source
+
+extension FindsFeddCollectionViewController: ASCollectionDataSource {
+    func numberOfSections(in collectionNode: ASCollectionNode) -> Int {
+        return 2
+    }
+    
+    func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
+        return 19
+    }
+    
+    func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
+        let node = alertNodes[indexPath.item]
+        
+        switch indexPath.section {
+        case 0:
+            let cellNodeBlock = { () -> ASCellNode in
+                let cellNode = FindsFeedAlertCellNode(node: node)
+                return cellNode
+            }
+            return cellNodeBlock
+            
+        case 1:
+            let cellNodeBlock = { () -> ASCellNode in
+                let cellNode = FindsFeedCellNode()
+                return cellNode
+            }
+            return cellNodeBlock
+            
+        default:
+            return { ASCellNode() }
+        }
+    }
+}
+
+// MARK: - Collection Delegate FlowLayout
+
+extension FindsFeddCollectionViewController: ASCollectionDelegateFlowLayout {
+    func collectionNode(_ collectionNode: ASCollectionNode, constrainedSizeForItemAt indexPath: IndexPath) -> ASSizeRange {
+        switch indexPath.section {
+        case 0:
+            return ASSizeRange(min: CGSize(width: 359,
+                                           height: 164),
+                               max: CGSize(width: 359,
+                                           height: 164))
+        case 1:
+            let width = (collectionNode.bounds.width - 23) / 2
+            let height = width
+            return ASSizeRange(min: CGSize(width: width, height: height), max: CGSize(width: width, height: .infinity))
+        default:
+            return ASSizeRange(min: .zero, max: .zero)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    }
+}
