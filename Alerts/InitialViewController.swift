@@ -84,8 +84,10 @@ class InitialViewController: UIViewController {
         }
         
         let collectionVC = FindsFeddCollectionViewController()
+        let collectionProfileVC = ProfileUniqueAliasCollectionViewController()
+
         let blurVC = BlurViewController()
     
-        present(userAlertVC, animated: true, completion: nil)
+        present(collectionProfileVC, animated: true, completion: nil)
     }
 }

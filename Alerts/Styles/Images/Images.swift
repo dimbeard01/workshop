@@ -336,4 +336,8 @@ extension Styles.Images {
     
     //PlugViews
     static let plugEmpty: UIImage = #imageLiteral(resourceName: "plug_empty")
+    
+    //ProfilePremium
+    static let premiumIcon: UIImage = #imageLiteral(resourceName: "premium")
+
 }

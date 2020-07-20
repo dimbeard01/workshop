@@ -23,23 +23,13 @@ final class FindsFeedCellNode: ASCellNode {
         return node
     }()
     
+    let animator = UIViewPropertyAnimator(duration: 0, curve: .linear)
+    
     private let photoImageNode: ASImageNode = {
         let node = ASImageNode()
         node.contentMode = .scaleAspectFit
         node.image = UIImage(named: "photo2")
-//        guard let image = CIImage(image: UIImage(named: "photo2")!) else {
-//            return node
-//        }
-//        let blurFilter = CIFilter(name: "CIGaussianBlur" )
-//        blurFilter?.setValue(image, forKey: kCIInputImageKey)
-//        blurFilter?.setValue(10, forKey: kCIInputRadiusKey)
-//
-//        guard let outputImage = blurFilter?.outputImage else {
-//            return node
-//        }
-//
-//        let blureImage = UIImage(ciImage: outputImage)
-//        node.image = blureImage
+        
         return node
     }()
 
@@ -71,13 +61,25 @@ final class FindsFeedCellNode: ASCellNode {
 
             blurEffect.setValue(10, forKeyPath: "blurRadius")
             let blurView = UIVisualEffectView(effect: blurEffect)
-            
-//            blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+            blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             //blurView.layer.masksToBounds = true
             return blurView
         }
         return boxNode
     }()
+    
+//      private lazy var blurNode: BaseNodeViewBox<UIVisualEffectView> = {
+//            let boxNode = BaseNodeViewBox<UIVisualEffectView> { () -> UIView in
+//
+//                let blurView = UIVisualEffectView(effect: nil)
+//
+//                blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//                blurView.layer.masksToBounds = true
+//                return blurView
+//            }
+//            return boxNode
+//        }()
 
     // MARK: - Init
     
@@ -90,15 +92,24 @@ final class FindsFeedCellNode: ASCellNode {
         updateUserName()
         updateImage()
         backgroundColor = .black
+        
     }
     
     // MARK: - Layout
-    
+
     override func layoutDidFinish() {
         cornerRadius = 20
+        
+        //animateBlur()
     }
     
-
+    
+    func animateBlur(){
+        animator.addAnimations {
+            self.blurNode.value?.effect = UIBlurEffect(style: .regular)
+        }
+        animator.fractionComplete = 0.1
+    }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         func makeHorizontalInsetSpec() -> ASInsetLayoutSpec {

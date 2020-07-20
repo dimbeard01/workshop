@@ -19,8 +19,9 @@ final class FindsFeddCollectionViewController: ASViewController<ASCollectionNode
     }()
     
     let collectionNode: ASCollectionNode
-    let alertNodes = [FindsFeedPlaceholderNode(type: .noRequestAndLike), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode()]
-    
+    let alertNodes = [FindsFeedPlaceholderNode(type: .noRequestAndLike), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode(), FindsFeedInactiveBoostNode()]
+    let itemsSet = [[1],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]]
+    let profileItems = [1,2,3,4]
     // MARK: - Init
     
     init() {
@@ -56,8 +57,15 @@ extension FindsFeddCollectionViewController: ASCollectionDataSource {
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
-        return 19
-    }
+        switch section {
+        case 0:
+            return itemsSet[0].count
+        case 1:
+            return itemsSet[1].count
+        default:
+            return 1
+        }
+     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
         let node = alertNodes[indexPath.item]
