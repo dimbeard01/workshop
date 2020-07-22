@@ -26,7 +26,10 @@
 		327629D224A4BDFB001A0CFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 327629D124A4BDFB001A0CFF /* Assets.xcassets */; };
 		327629D524A4BDFB001A0CFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 327629D324A4BDFB001A0CFF /* LaunchScreen.storyboard */; };
 		327629DD24A4C9B8001A0CFF /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327629DC24A4C9B8001A0CFF /* AlertViewController.swift */; };
+		3282833E24C6E3E60082A0D9 /* ProfileCellNode+Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3282833D24C6E3E60082A0D9 /* ProfileCellNode+Touches.swift */; };
 		3285598D24BDE63200EFC5F7 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285598C24BDE63200EFC5F7 /* Header.swift */; };
+		32863F3724C8426200E05C02 /* ProfilePremiumCellNode+Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32863F3624C8426200E05C02 /* ProfilePremiumCellNode+Touches.swift */; };
+		32863F3924C849B700E05C02 /* ProfileUniqueAliasHeaderCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32863F3824C849B700E05C02 /* ProfileUniqueAliasHeaderCellNode.swift */; };
 		3289233224A4D1B80050BD8A /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289233124A4D1B80050BD8A /* AlertView.swift */; };
 		328C7B4724C5CC9400BF6B37 /* ProfileUniqueAliasCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328C7B4624C5CC9400BF6B37 /* ProfileUniqueAliasCellNode.swift */; };
 		328C7B4924C5D74C00BF6B37 /* UniqueAliasCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328C7B4824C5D74C00BF6B37 /* UniqueAliasCellViewModel.swift */; };
@@ -96,7 +99,10 @@
 		327629D424A4BDFB001A0CFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		327629D624A4BDFB001A0CFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		327629DC24A4C9B8001A0CFF /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		3282833D24C6E3E60082A0D9 /* ProfileCellNode+Touches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCellNode+Touches.swift"; sourceTree = "<group>"; };
 		3285598C24BDE63200EFC5F7 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		32863F3624C8426200E05C02 /* ProfilePremiumCellNode+Touches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfilePremiumCellNode+Touches.swift"; sourceTree = "<group>"; };
+		32863F3824C849B700E05C02 /* ProfileUniqueAliasHeaderCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUniqueAliasHeaderCellNode.swift; sourceTree = "<group>"; };
 		3289233124A4D1B80050BD8A /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		328C7B4624C5CC9400BF6B37 /* ProfileUniqueAliasCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUniqueAliasCellNode.swift; sourceTree = "<group>"; };
 		328C7B4824C5D74C00BF6B37 /* UniqueAliasCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueAliasCellViewModel.swift; sourceTree = "<group>"; };
@@ -240,6 +246,9 @@
 		327629BC24A4BDFA001A0CFF = {
 			isa = PBXGroup;
 			children = (
+				327629C824A4BDFA001A0CFF /* AppDelegate.swift */,
+				327629CA24A4BDFA001A0CFF /* SceneDelegate.swift */,
+				32AFD2DC24AB0E2A002BF920 /* InitialViewController.swift */,
 				328C7B4524C5CC0700BF6B37 /* Profile */,
 				327629C724A4BDFA001A0CFF /* Alerts */,
 				327629C624A4BDFA001A0CFF /* Products */,
@@ -259,9 +268,6 @@
 		327629C724A4BDFA001A0CFF /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
-				327629C824A4BDFA001A0CFF /* AppDelegate.swift */,
-				327629CA24A4BDFA001A0CFF /* SceneDelegate.swift */,
-				32AFD2DC24AB0E2A002BF920 /* InitialViewController.swift */,
 				32A05EE624B46F2C00E755A8 /* BaseAlert */,
 				32A05EE524B46F0D00E755A8 /* ShortProfileAlert */,
 				32A05EE424B46EDA00E755A8 /* BoostAlert */,
@@ -283,6 +289,15 @@
 			path = Alerts;
 			sourceTree = "<group>";
 		};
+		3282833C24C6E3BE0082A0D9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3282833D24C6E3E60082A0D9 /* ProfileCellNode+Touches.swift */,
+				32863F3624C8426200E05C02 /* ProfilePremiumCellNode+Touches.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		328C7B4324C58C9000BF6B37 /* CollectionNode */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,7 +314,9 @@
 				328C7B4624C5CC9400BF6B37 /* ProfileUniqueAliasCellNode.swift */,
 				328C7B4C24C5F2DC00BF6B37 /* ProfileUniqueAliasPremiumCellNode.swift */,
 				328C7B4824C5D74C00BF6B37 /* UniqueAliasCellViewModel.swift */,
+				32863F3824C849B700E05C02 /* ProfileUniqueAliasHeaderCellNode.swift */,
 				328C7B4A24C5D8F200BF6B37 /* ProfileUniqueAliasCollectionViewController.swift */,
+				3282833C24C6E3BE0082A0D9 /* Extensions */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -546,6 +563,7 @@
 			files = (
 				3227E68524B6EAC5006E7763 /* Attributes.swift in Sources */,
 				328C7B4D24C5F2DC00BF6B37 /* ProfileUniqueAliasPremiumCellNode.swift in Sources */,
+				32863F3924C849B700E05C02 /* ProfileUniqueAliasHeaderCellNode.swift in Sources */,
 				32A05EDF24B4545600E755A8 /* BaseIconButtonProtocol.swift in Sources */,
 				32CBAF9C24B31814003395C1 /* BoostViewController.swift in Sources */,
 				32A05EE324B4560F00E755A8 /* ImageManager.swift in Sources */,
@@ -576,7 +594,9 @@
 				32D3DA1424B6F0EC0013998E /* Images+Defaults.swift in Sources */,
 				3227E68724B6EAE4006E7763 /* Attributes+Operators.swift in Sources */,
 				3289233224A4D1B80050BD8A /* AlertView.swift in Sources */,
+				32863F3724C8426200E05C02 /* ProfilePremiumCellNode+Touches.swift in Sources */,
 				58A5F28E24A5C8FA007561E5 /* Colors+Palette.swift in Sources */,
+				3282833E24C6E3E60082A0D9 /* ProfileCellNode+Touches.swift in Sources */,
 				58A5F28D24A5C8FA007561E5 /* Sizes.swift in Sources */,
 				322E774124C04A960027000F /* BlurTest.swift in Sources */,
 				3235521224A73ACB00D97F0D /* UIView+AddGradient.swift in Sources */,

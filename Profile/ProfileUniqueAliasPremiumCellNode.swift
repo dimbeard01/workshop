@@ -13,8 +13,9 @@ final class ProfileUniqueAliasPremiumCellNode: ASCellNode {
     
     // MARK: - Properties
     
+    var onTapEnded: (() -> Void)?
+
     private var cellViewModel: PremiumAliasPriceCellViewModel
-    
     private let titleNode = ASTextNode()
     private let additionalTitleNode = ASTextNode()
     private let priceInfoNode = ASTextNode()
@@ -36,7 +37,14 @@ final class ProfileUniqueAliasPremiumCellNode: ASCellNode {
         return node
     }()
     
-    
+    private let premiumArrowIconNode: ASImageNode = {
+          let node = ASImageNode()
+          node.style.preferredSize = CGSize(width: Styles.Sizes.buttonExtraSmall,
+                                            height: Styles.Sizes.buttonExtraSmall)
+          node.contentMode = .scaleAspectFit
+          return node
+      }()
+        
     // MARK: - Life cycle
     
     init(model: PremiumAliasPriceCellViewModel) {
@@ -51,7 +59,6 @@ final class ProfileUniqueAliasPremiumCellNode: ASCellNode {
         updateImage()
         backgroundColor = Styles.Colors.Palette.gray2
     }
-    
     
     override func layoutDidFinish() {
         cornerRadius = Styles.Sizes.cornerRadiusMedium
@@ -94,8 +101,7 @@ final class ProfileUniqueAliasPremiumCellNode: ASCellNode {
             return hStack
         }
         
-        func makeMainVerticalInsetSpec() -> ASStackLayoutSpec {
-            
+        func makeVerticalInsetSpec() -> ASStackLayoutSpec {
             let additionalTitleInsetSpec =  ASInsetLayoutSpec(insets: .zero, child: additionalTitleNode)
             
             var children = [ASLayoutElement]()
@@ -112,13 +118,31 @@ final class ProfileUniqueAliasPremiumCellNode: ASCellNode {
             return vStack
         }
         
+        func makeMainHorizontalInsetSpec() -> ASStackLayoutSpec {
+            let spacer = ASLayoutSpec()
+            spacer.style.flexShrink = 1
+            
+            var children = [ASLayoutElement]()
+            children.append(makeVerticalInsetSpec())
+            children.append(spacer)
+            children.append(premiumArrowIconNode)
+            
+            let hStack = ASStackLayoutSpec.horizontal()
+            hStack.spacing = Styles.Sizes.VPaddingMedium
+            hStack.justifyContent = .spaceBetween
+            hStack.alignItems = .center
+            hStack.children = children
+            
+            return hStack
+        }
+        
         let inset = UIEdgeInsets(
             top: Styles.Sizes.VPaddingMedium,
             left: Styles.Sizes.HPaddingBase,
             bottom: Styles.Sizes.VPaddingMedium,
             right: Styles.Sizes.HPaddingBase)
         
-        return ASInsetLayoutSpec(insets: inset, child: makeMainVerticalInsetSpec())
+        return ASInsetLayoutSpec(insets: inset, child: makeMainHorizontalInsetSpec())
     }
     
     // MARK: - Helpers
@@ -159,10 +183,10 @@ final class ProfileUniqueAliasPremiumCellNode: ASCellNode {
         }
         infoText.attributedText = NSAttributedString(string: "/ в месяц", attributes: attributes.dictionary)
     }
-    
-    
+
     private func updateImage() {
         premiumImageNode.image = cellViewModel.image
+        premiumArrowIconNode.image = Styles.Images.premiumArrowIcon
     }
 }
 

@@ -10,23 +10,14 @@ import AsyncDisplayKit
 
 final class ProfileUniqueAliasCellNode: ASCellNode {
     
-    // MARK: - Properties
-    
-    override var isSelected: Bool {
-        didSet {
-            switch self.isSelected {
-            case true:
-                backgroundColor = .clear
-                borderColor = Styles.Colors.Palette.primary1.cgColor
-                borderWidth = 2
-            default:
-                backgroundColor = Styles.Colors.Palette.bgDark
-            }
-            
-        }
+    enum State {
+        case noneSelected
+        case selected
     }
     
-    let a = false
+    // MARK: - Properties
+    
+    var onTapEnded: (() -> Void)?
     
     private var cellViewModel: AliasPriceCellViewModel
 
@@ -43,6 +34,13 @@ final class ProfileUniqueAliasCellNode: ASCellNode {
         return formatter
     }()
     
+    var state: State = .noneSelected {
+          didSet {
+              updateCellState()
+          }
+      }
+         
+    
     // MARK: - Life cycle
     
     init(model: AliasPriceCellViewModel) {
@@ -57,9 +55,9 @@ final class ProfileUniqueAliasCellNode: ASCellNode {
         backgroundColor = Styles.Colors.Palette.gray2
     }
     
-    
     override func layoutDidFinish() {
         cornerRadius = Styles.Sizes.cornerRadiusMedium
+        handleTapEnded()
     }
     
     // MARK: - Layout
@@ -97,6 +95,24 @@ final class ProfileUniqueAliasCellNode: ASCellNode {
     
     // MARK: - Helpers
     
+    private func handleTapEnded() {
+        onTapEnded = {
+            print("tap ended")
+        }
+    }
+    
+    private func updateCellState() {
+        switch state {
+        case .noneSelected:
+            backgroundColor = Styles.Colors.Palette.gray2
+            borderWidth = 0
+        case .selected:
+            backgroundColor = .clear
+            borderColor = Styles.Colors.Palette.primary2.cgColor
+            borderWidth = 2
+        }
+    }
+    
     private func updateTitle() {
         let attributes = Attributes {
             return $0.foreground(color: Styles.Colors.Palette.white0)
@@ -108,7 +124,7 @@ final class ProfileUniqueAliasCellNode: ASCellNode {
     
     private func updateAdditionalTitle() {
         let attributes = Attributes {
-            return $0.foreground(color: Styles.Colors.Palette.primary1)
+            return $0.foreground(color: Styles.Colors.Palette.primary2)
                 .font(Font.semibold(11))
                 .alignment(.left)
         }
@@ -122,7 +138,7 @@ final class ProfileUniqueAliasCellNode: ASCellNode {
                 .alignment(.left)
         }
         guard let priceInfo = rubleSymbol.string(from: NSNumber(value: cellViewModel.priceInfo)) else { return }
-        priceInfoNode.attributedText = NSAttributedString(string: "\(priceInfo)/ в месяц", attributes: attributes.dictionary)
+        priceInfoNode.attributedText = NSAttributedString(string: "\(priceInfo) / в месяц", attributes: attributes.dictionary)
     }
     
     private func updatePrice() {

@@ -77,17 +77,17 @@ class InitialViewController: UIViewController {
         }
         
         let boostVC = BoostViewController()
-        
+    
         boostVC.onAction = { [weak self] in
             self?.dismiss(animated: true, completion: nil)
-            
         }
         
+        let blurVC = BlurViewController()
         let collectionVC = FindsFeddCollectionViewController()
         let collectionProfileVC = ProfileUniqueAliasCollectionViewController()
-
-        let blurVC = BlurViewController()
-    
+        collectionProfileVC.modalPresentationStyle = .overFullScreen
+        collectionProfileVC.modalTransitionStyle = .coverVertical
+        
         present(collectionProfileVC, animated: true, completion: nil)
     }
 }

@@ -21,15 +21,30 @@ final class ProfileUniqueAliasCollectionViewController: ASViewController<ASColle
     let collectionNode: ASCollectionNode
     
     let monthViewModel: [AliasPriceCellViewModel] = [
-        AliasPriceCellViewModel(title: "1 Месяц", additionalTitle: "Популярное", priceInfo: 299.46, price: 299.0),
-        AliasPriceCellViewModel(title: "3 Месяцa", additionalTitle: "без подписки", priceInfo: 299.0, price: 897.0),
-        AliasPriceCellViewModel(title: "3 Месяцa", additionalTitle: "лучший выбор", priceInfo: 299.0, price: 1794.0),
-        AliasPriceCellViewModel(title: "12 Месяцев", additionalTitle: "экономия 80%", priceInfo: 299.0, price: 3588.0)
+        AliasPriceCellViewModel(title: "1 Месяц",
+                                additionalTitle: "Популярное",
+                                priceInfo: 299.46,
+                                price: 299.0),
+        AliasPriceCellViewModel(title: "3 Месяцa",
+                                additionalTitle: "без подписки",
+                                priceInfo: 299.0,
+                                price: 897.0),
+        AliasPriceCellViewModel(title: "3 Месяцa",
+                                additionalTitle: "лучший выбор",
+                                priceInfo: 299.0,
+                                price: 1794.0),
+        AliasPriceCellViewModel(title: "12 Месяцев",
+                                additionalTitle: "экономия 80%",
+                                priceInfo: 299.0,
+                                price: 3588.0)
     ]
     
-    let premiumViewModel = [PremiumAliasPriceCellViewModel(image: Styles.Images.premiumIcon, title: "Anonym Premium", additionalTitle: "Входит в подписку", priceInfo: 499.0)]
-
-    // MARK: - Init
+    let premiumViewModel = [PremiumAliasPriceCellViewModel(image: Styles.Images.premiumIcon,
+                                                           title: "Anonym Premium",
+                                                           additionalTitle: "Входит в подписку",
+                                                           priceInfo: 499.0)]
+    
+       // MARK: - LifeCycle
     
     init() {
         collectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
@@ -45,14 +60,18 @@ final class ProfileUniqueAliasCollectionViewController: ASViewController<ASColle
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - LifeCycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionNode.delegate = self
         collectionNode.dataSource = self
         flowLayout.scrollDirection = .vertical
+        collectionNode.registerSupplementaryNode(ofKind: UICollectionView.elementKindSectionHeader)
+        additionalSafeAreaInsets.top = -20
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
     }
 }
 
@@ -72,7 +91,12 @@ extension ProfileUniqueAliasCollectionViewController: ASCollectionDataSource {
         default:
             return 0
         }
-     }
+    }
+    
+    func collectionNode(_ collectionNode: ASCollectionNode, nodeForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> ASCellNode {
+        let cellNode = ProfileUniqueAliasHeaderCellNode()
+        return cellNode
+    }
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
         switch indexPath.section {
@@ -83,7 +107,6 @@ extension ProfileUniqueAliasCollectionViewController: ASCollectionDataSource {
                 return cellNode
             }
             return cellNodeBlock
-            
         case 1:
             let cellModel = premiumViewModel[indexPath.item]
             let cellNodeBlock = { () -> ASCellNode in
@@ -92,12 +115,22 @@ extension ProfileUniqueAliasCollectionViewController: ASCollectionDataSource {
             }
             return cellNodeBlock
         default:
-            return {ASCellNode()}
+            return { ASCellNode() }
+        }
+    }
+    
+    func collectionNode(_ collectionNode: ASCollectionNode, sizeRangeForHeaderInSection section: Int) -> ASSizeRange {
+        switch section {
+        case 0:
+            let width = (collectionNode.bounds.width)
+            return ASSizeRange(min: CGSize(width: width, height: .zero), max: CGSize(width: width, height: .infinity))
+        default:
+            return ASSizeRangeZero
         }
     }
 }
 
-// MARK: - Collection Delegate FlowLayout
+    // MARK: - Collection Delegate FlowLayout
 
 extension ProfileUniqueAliasCollectionViewController: ASCollectionDelegateFlowLayout {
     func collectionNode(_ collectionNode: ASCollectionNode, constrainedSizeForItemAt indexPath: IndexPath) -> ASSizeRange {
@@ -107,27 +140,37 @@ extension ProfileUniqueAliasCollectionViewController: ASCollectionDelegateFlowLa
             return ASSizeRange(min: CGSize(width: width, height: .zero), max: CGSize(width: width, height: .infinity))
         case 1:
             let width = collectionNode.bounds.width - 24
-              return ASSizeRange(min: CGSize(width: width, height: .zero), max: CGSize(width: width, height: .infinity))
+            return ASSizeRange(min: CGSize(width: width, height: .zero), max: CGSize(width: width, height: .infinity))
         default:
             let width = collectionNode.bounds.width
             return ASSizeRange(min: CGSize(width: width, height: .zero), max: CGSize(width: width, height: .infinity))
-        }
-        
-        
+        }        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 12, left: 12, bottom: 0, right: 12)
+        switch section {
+        case 0:
+            return UIEdgeInsets(top: 24, left: 12, bottom: 0, right: 12)
+        default:
+            return UIEdgeInsets(top: 12, left: 12, bottom: 0, right: 12)
+        }
     }
 }
 
+    // MARK: - Collection Delegate
+
 extension ProfileUniqueAliasCollectionViewController: ASCollectionDelegate {
     func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
-        
-        
+        guard let cellNode = collectionNode.nodeForItem(at: indexPath) as? ProfileUniqueAliasCellNode else { return }
+        if cellNode.state == .noneSelected {
+            cellNode.state = .selected
+        } else {
+            cellNode.state = .noneSelected
+        }
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, didDeselectItemAt indexPath: IndexPath) {
-        collectionNode.deselectItem(at: indexPath, animated: true)
+        guard let cellNode = collectionNode.nodeForItem(at: indexPath) as? ProfileUniqueAliasCellNode else { return }
+        cellNode.state = .noneSelected
     }
 }

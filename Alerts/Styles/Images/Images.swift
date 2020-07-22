@@ -339,5 +339,7 @@ extension Styles.Images {
     
     //ProfilePremium
     static let premiumIcon: UIImage = #imageLiteral(resourceName: "premium")
-
+    static let premiumArrowIcon: UIImage = #imageLiteral(resourceName: "vector")
+    static let premiumAliasIcon: UIImage = #imageLiteral(resourceName: "unique_nickname").withTintColor(Styles.Colors.Palette.primary2)
+    static let premiumBackgroundImage: UIImage = #imageLiteral(resourceName: "uniqueAliasBackground")
 }
