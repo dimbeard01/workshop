@@ -18,6 +18,7 @@
 		3227E69224B6ECC5006E7763 /* BaseIconTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227E69124B6ECC5006E7763 /* BaseIconTextButton.swift */; };
 		3227E69424B6ED3F006E7763 /* WeakReferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227E69324B6ED3F006E7763 /* WeakReferences.swift */; };
 		3227E69724B6EDFC006E7763 /* UIView+Corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227E69624B6EDFC006E7763 /* UIView+Corners.swift */; };
+		3228BB9B24C9697F005AFD51 /* String+PriceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3228BB9A24C9697F005AFD51 /* String+PriceFormatter.swift */; };
 		322E774124C04A960027000F /* BlurTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E774024C04A960027000F /* BlurTest.swift */; };
 		322E774324C09F4A0027000F /* LastSeenDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E774224C09F4A0027000F /* LastSeenDateFormatter.swift */; };
 		3235521224A73ACB00D97F0D /* UIView+AddGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3235521124A73ACB00D97F0D /* UIView+AddGradient.swift */; };
@@ -89,6 +90,7 @@
 		3227E69124B6ECC5006E7763 /* BaseIconTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseIconTextButton.swift; sourceTree = "<group>"; };
 		3227E69324B6ED3F006E7763 /* WeakReferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakReferences.swift; sourceTree = "<group>"; };
 		3227E69624B6EDFC006E7763 /* UIView+Corners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Corners.swift"; sourceTree = "<group>"; };
+		3228BB9A24C9697F005AFD51 /* String+PriceFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+PriceFormatter.swift"; sourceTree = "<group>"; };
 		322E774024C04A960027000F /* BlurTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurTest.swift; sourceTree = "<group>"; };
 		322E774224C09F4A0027000F /* LastSeenDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastSeenDateFormatter.swift; sourceTree = "<group>"; };
 		3235521124A73ACB00D97F0D /* UIView+AddGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddGradient.swift"; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 			children = (
 				3282833D24C6E3E60082A0D9 /* ProfileCellNode+Touches.swift */,
 				32863F3624C8426200E05C02 /* ProfilePremiumCellNode+Touches.swift */,
+				3228BB9A24C9697F005AFD51 /* String+PriceFormatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				58A5F29E24A5C9BF007561E5 /* ActivityIndicatorProtocol.swift in Sources */,
 				328F1C9524BCAB120054EC02 /* FindsFeedCellNode.swift in Sources */,
 				3227E68024B6EA74006E7763 /* ThemeManager.swift in Sources */,
+				3228BB9B24C9697F005AFD51 /* String+PriceFormatter.swift in Sources */,
 				327629CB24A4BDFA001A0CFF /* SceneDelegate.swift in Sources */,
 				58A5F28C24A5C8FA007561E5 /* Constants.swift in Sources */,
 				32A05EE124B4549200E755A8 /* BaseIconButton.swift in Sources */,

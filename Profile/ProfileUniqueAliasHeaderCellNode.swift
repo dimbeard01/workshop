@@ -31,8 +31,8 @@ final class ProfileUniqueAliasHeaderCellNode: ASCellNode {
         return node
     }()
     
-    // MARK: - Life cycle
-
+    // MARK: - Init
+    
     override init() {
         super.init()
         
@@ -43,7 +43,7 @@ final class ProfileUniqueAliasHeaderCellNode: ASCellNode {
     }
     
     // MARK: - Layout
-
+    
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         func makeVerticalInsetSpec() -> ASStackLayoutSpec {
             let titleInsetSpec =  ASInsetLayoutSpec(insets: .zero, child: titleNode)
@@ -97,7 +97,7 @@ final class ProfileUniqueAliasHeaderCellNode: ASCellNode {
     }
     
     // MARK: - Helpers
-
+    
     private func updateTitle() {
         let attributes = Attributes {
             return $0.foreground(color: Styles.Colors.Palette.primary2)

@@ -19,32 +19,23 @@ final class ProfileUniqueAliasCellNode: ASCellNode {
     
     var onTapEnded: (() -> Void)?
     
-    private var cellViewModel: AliasPriceCellViewModel
-
+    private var model: AliasPriceCellViewModel
+    
     private let titleNode = ASTextNode()
     private let additionalTitleNode = ASTextNode()
     private let priceInfoNode = ASTextNode()
     private let priceNode = ASTextNode()
     
-    private let rubleSymbol: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.positiveFormat = "0.00 ¤"
-        formatter.currencySymbol = "\u{20BD}"
-        return formatter
-    }()
-    
     var state: State = .noneSelected {
-          didSet {
-              updateCellState()
-          }
-      }
-         
+        didSet {
+            updateCellState()
+        }
+    }
     
-    // MARK: - Life cycle
+    // MARK: - Init
     
     init(model: AliasPriceCellViewModel) {
-        self.cellViewModel = model
+        self.model = model
         super.init()
         
         automaticallyManagesSubnodes = true
@@ -52,8 +43,10 @@ final class ProfileUniqueAliasCellNode: ASCellNode {
         updateAdditionalTitle()
         updatePriceInfo()
         updatePrice()
-        backgroundColor = Styles.Colors.Palette.gray2
+        ThemeManager.add(self)
     }
+    
+    // MARK: - Life cycle
     
     override func layoutDidFinish() {
         cornerRadius = Styles.Sizes.cornerRadiusMedium
@@ -84,13 +77,13 @@ final class ProfileUniqueAliasCellNode: ASCellNode {
             return vStack
         }
         
-        let inset = UIEdgeInsets(
+        let insets = UIEdgeInsets(
             top: Styles.Sizes.VPaddingMedium,
             left: Styles.Sizes.HPaddingBase,
             bottom: Styles.Sizes.VPaddingMedium,
             right: Styles.Sizes.HPaddingBase)
         
-        return ASInsetLayoutSpec(insets: inset, child: makeMainVerticalInsetSpec())
+        return ASInsetLayoutSpec(insets: insets, child: makeMainVerticalInsetSpec())
     }
     
     // MARK: - Helpers
@@ -115,41 +108,71 @@ final class ProfileUniqueAliasCellNode: ASCellNode {
     
     private func updateTitle() {
         let attributes = Attributes {
-            return $0.foreground(color: Styles.Colors.Palette.white0)
+            return $0.foreground(color: titleColor)
                 .font(Styles.Fonts.Caption1)
                 .alignment(.left)
         }
-        titleNode.attributedText = NSAttributedString(string: cellViewModel.title, attributes: attributes.dictionary)
+        titleNode.attributedText = NSAttributedString(string: model.title, attributes: attributes.dictionary)
     }
     
     private func updateAdditionalTitle() {
         let attributes = Attributes {
             return $0.foreground(color: Styles.Colors.Palette.primary2)
-                .font(Font.semibold(11))
+                .font(Styles.Fonts.Tagline3)
                 .alignment(.left)
         }
-        additionalTitleNode.attributedText = NSAttributedString(string: cellViewModel.additionalTitle.uppercased(), attributes: attributes.dictionary)
+        additionalTitleNode.attributedText = NSAttributedString(string: model.additionalTitle.uppercased(), attributes: attributes.dictionary)
     }
     
     private func updatePriceInfo() {
         let attributes = Attributes {
             return $0.foreground(color: Styles.Colors.Palette.gray4)
-                .font(Font.semibold(11))
+                .font(Styles.Fonts.Tagline3)
                 .alignment(.left)
         }
-        guard let priceInfo = rubleSymbol.string(from: NSNumber(value: cellViewModel.priceInfo)) else { return }
-        priceInfoNode.attributedText = NSAttributedString(string: "\(priceInfo) / в месяц", attributes: attributes.dictionary)
+        guard let price = String(model.priceInfo).asDecimalPrice else  { return }
+        priceInfoNode.attributedText = NSAttributedString(string: "\(price)/ в месяц", attributes: attributes.dictionary)
     }
     
     private func updatePrice() {
         let attributes = Attributes {
-            return $0.foreground(color: Styles.Colors.Palette.white0)
+            return $0.foreground(color: priceColor)
                 .font(Styles.Fonts.Subhead1)
                 .alignment(.left)
         }
-        guard let price = rubleSymbol.string(from: NSNumber(value: cellViewModel.price)) else { return }
+        guard let price = String(model.price).asDecimalPrice else  { return }
         priceNode.attributedText = NSAttributedString(string: price, attributes: attributes.dictionary)
     }
 }
 
+    // MARK: - Themeable
+
+extension ProfileUniqueAliasCellNode: Themeable {
+    func updateTheme() {
+        switch theme {
+        case .light:
+            backgroundColor = Styles.Colors.Palette.white0
+        case .dark:
+            backgroundColor = Styles.Colors.Palette.gray2
+        }
+    }
+    
+    var titleColor: UIColor {
+        switch theme {
+        case .light:
+            return Styles.Colors.Palette.gray3
+        case .dark:
+            return Styles.Colors.Palette.white0
+        }
+    }
+    
+    var priceColor: UIColor {
+        switch theme {
+        case .light:
+            return Styles.Colors.Palette.gray3
+        case .dark:
+            return Styles.Colors.Palette.white0
+        }
+    }
+}
 

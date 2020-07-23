@@ -14,20 +14,12 @@ final class ProfileUniqueAliasPremiumCellNode: ASCellNode {
     // MARK: - Properties
     
     var onTapEnded: (() -> Void)?
-
-    private var cellViewModel: PremiumAliasPriceCellViewModel
+    
+    private var model: PremiumAliasPriceCellViewModel
     private let titleNode = ASTextNode()
     private let additionalTitleNode = ASTextNode()
     private let priceInfoNode = ASTextNode()
     private let infoText = ASTextNode()
-    
-    private let rubleSymbol: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.positiveFormat = "0.00 ¤"
-        formatter.currencySymbol = "\u{20BD}"
-        return formatter
-    }()
     
     private let premiumImageNode: ASImageNode = {
         let node = ASImageNode()
@@ -38,17 +30,17 @@ final class ProfileUniqueAliasPremiumCellNode: ASCellNode {
     }()
     
     private let premiumArrowIconNode: ASImageNode = {
-          let node = ASImageNode()
-          node.style.preferredSize = CGSize(width: Styles.Sizes.buttonExtraSmall,
-                                            height: Styles.Sizes.buttonExtraSmall)
-          node.contentMode = .scaleAspectFit
-          return node
-      }()
-        
-    // MARK: - Life cycle
+        let node = ASImageNode()
+        node.style.preferredSize = CGSize(width: Styles.Sizes.buttonExtraSmall,
+                                          height: Styles.Sizes.buttonExtraSmall)
+        node.contentMode = .scaleAspectFit
+        return node
+    }()
+    
+    // MARK: - Init
     
     init(model: PremiumAliasPriceCellViewModel) {
-        self.cellViewModel = model
+        self.model = model
         super.init()
         
         automaticallyManagesSubnodes = true
@@ -57,9 +49,12 @@ final class ProfileUniqueAliasPremiumCellNode: ASCellNode {
         updateInfo()
         updatePriceInfo()
         updateImage()
-        backgroundColor = Styles.Colors.Palette.gray2
+        
+        ThemeManager.add(self)
     }
     
+    // MARK: - Life cycle
+
     override func layoutDidFinish() {
         cornerRadius = Styles.Sizes.cornerRadiusMedium
     }
@@ -136,57 +131,89 @@ final class ProfileUniqueAliasPremiumCellNode: ASCellNode {
             return hStack
         }
         
-        let inset = UIEdgeInsets(
+        let insets = UIEdgeInsets(
             top: Styles.Sizes.VPaddingMedium,
             left: Styles.Sizes.HPaddingBase,
             bottom: Styles.Sizes.VPaddingMedium,
             right: Styles.Sizes.HPaddingBase)
         
-        return ASInsetLayoutSpec(insets: inset, child: makeMainHorizontalInsetSpec())
+        return ASInsetLayoutSpec(insets: insets, child: makeMainHorizontalInsetSpec())
     }
     
     // MARK: - Helpers
     
     private func updateTitle() {
         let attributes = Attributes {
-            return $0.foreground(color: Styles.Colors.Palette.white0)
+            return $0.foreground(color: titleColor)
                 .font(Styles.Fonts.Subhead1)
                 .alignment(.left)
         }
-        titleNode.attributedText = NSAttributedString(string: cellViewModel.title, attributes: attributes.dictionary)
+        titleNode.attributedText = NSAttributedString(string: model.title, attributes: attributes.dictionary)
     }
     
     private func updateAdditionalTitle() {
         let attributes = Attributes {
-            return $0.foreground(color: #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1))
-                .font(Font.semibold(11))
+            return $0.foreground(color: #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1))
+                .font(Styles.Fonts.Tagline3)
                 .alignment(.left)
         }
-        additionalTitleNode.attributedText = NSAttributedString(string: cellViewModel.additionalTitle.uppercased(), attributes: attributes.dictionary)
+        additionalTitleNode.attributedText = NSAttributedString(string: model.additionalTitle.uppercased(), attributes: attributes.dictionary)
     }
     
     private func updatePriceInfo() {
         let attributes = Attributes {
-            return $0.foreground(color: Styles.Colors.Palette.white0)
+            return $0.foreground(color: priceColor)
                 .font(Styles.Fonts.Subhead1)
                 .alignment(.left)
+            
         }
-        guard let priceInfo = rubleSymbol.string(from: NSNumber(value: cellViewModel.priceInfo)) else { return }
-        priceInfoNode.attributedText = NSAttributedString(string: "\(priceInfo) ", attributes: attributes.dictionary)
+        guard let price = String(model.priceInfo).asDecimalPrice else  { return }
+        priceInfoNode.attributedText = NSAttributedString(string: "\(price)", attributes: attributes.dictionary)
     }
     
     private func updateInfo() {
         let attributes = Attributes {
             return $0.foreground(color: Styles.Colors.Palette.gray4)
-                .font(Font.semibold(11))
+                .font(Styles.Fonts.Tagline3)
                 .alignment(.left)
         }
         infoText.attributedText = NSAttributedString(string: "/ в месяц", attributes: attributes.dictionary)
     }
-
+    
     private func updateImage() {
-        premiumImageNode.image = cellViewModel.image
+        premiumImageNode.image = model.image
         premiumArrowIconNode.image = Styles.Images.premiumArrowIcon
+    }
+}
+
+    // MARK: - Themeable
+
+extension ProfileUniqueAliasPremiumCellNode: Themeable {
+    func updateTheme() {
+        switch theme {
+        case .light:
+            backgroundColor = Styles.Colors.Palette.white0
+        case .dark:
+            backgroundColor = Styles.Colors.Palette.gray2
+        }
+    }
+    
+    var titleColor: UIColor {
+        switch theme {
+        case .light:
+            return Styles.Colors.Palette.gray3
+        case .dark:
+            return Styles.Colors.Palette.white0
+        }
+    }
+    
+    var priceColor: UIColor {
+        switch theme {
+        case .light:
+            return Styles.Colors.Palette.gray3
+        case .dark:
+            return Styles.Colors.Palette.white0
+        }
     }
 }
 
