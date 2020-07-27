@@ -83,11 +83,61 @@ class InitialViewController: UIViewController {
         }
         
         let blurVC = BlurViewController()
+        
         let collectionVC = FindsFeddCollectionViewController()
+        
         let collectionProfileVC = ProfileUniqueAliasCollectionViewController()
         collectionProfileVC.modalPresentationStyle = .overFullScreen
         collectionProfileVC.modalTransitionStyle = .coverVertical
         
-        present(collectionProfileVC, animated: true, completion: nil)
+        let avatarProfileVC = ProfileUniqueAvatarController()
+        avatarProfileVC.modalPresentationStyle = .overFullScreen
+        avatarProfileVC.modalTransitionStyle = .coverVertical
+
+        
+        let model: [PreferenceEditProfileCellViewModel] = [
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo")!, title: "asfasf123"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "asfasf123"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo")!, title: "asda12"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "vcxw2"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "232ff"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo")!, title: "scsd21"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "ccc3"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo")!, title: "bfdfbdfwefwewdqwdqwdqwdqwdqwqfwefwefwefwef"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "wewet2efwe4t2ef2ef2ef2e"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo")!, title: "asfasf123"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "asfasf123"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo")!, title: "asda12"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "vcxw2"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "232ff"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo")!, title: "scsd21"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "ccc3"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo")!, title: "bfdfbdfgqergqfvqrfgqrv"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "wewet2efwe4t2ef2ef2ef2e"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo")!, title: "asfasf123"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "asfasf123"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo")!, title: "asda12"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "vcxw2"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "232ff"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo")!, title: "scsd21"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "ccc3"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo")!, title: "bfdfbdfgqergqfvqrfgqrv"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "wewet2efwe4t2ef2ef2ef2e"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo")!, title: "asfasf123"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "asfasf123"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo")!, title: "asda12"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "vcxw2"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "232ff"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo")!, title: "scsd21"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "ccc3"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo")!, title: "bfdfbdfgqergqfvqrfgqrv"),
+            PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "wewet2efwe4t2ef2ef2ef2e")
+        ]
+        
+        let lisenersVC = MainEditProfileTableViewController(model: model)
+        lisenersVC.modalPresentationStyle = .popover
+        lisenersVC.modalTransitionStyle = .coverVertical
+        
+        present(lisenersVC, animated: true, completion: nil)
     }
 }

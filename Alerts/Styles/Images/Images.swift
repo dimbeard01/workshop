@@ -342,4 +342,7 @@ extension Styles.Images {
     static let premiumArrowIcon: UIImage = #imageLiteral(resourceName: "vector")
     static let premiumAliasIcon: UIImage = #imageLiteral(resourceName: "unique_nickname").withTintColor(Styles.Colors.Palette.primary2)
     static let premiumBackgroundImage: UIImage = #imageLiteral(resourceName: "uniqueAliasBackground")
+    
+    //EditProfile
+    static let detailIcon: UIImage = #imageLiteral(resourceName: "detail")
 }
