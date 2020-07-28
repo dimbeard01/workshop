@@ -345,4 +345,6 @@ extension Styles.Images {
     
     //EditProfile
     static let detailIcon: UIImage = #imageLiteral(resourceName: "detail")
+    static let cancelIcon: UIImage = #imageLiteral(resourceName: "cancel")
+
 }

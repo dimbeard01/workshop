@@ -12,3 +12,14 @@ struct PreferenceEditProfileCellViewModel {
     var userPhoto: UIImage
     var title: String
 }
+
+struct Listeners {
+    let listentersName = "Мои слушатели"
+    var listenters: [PreferenceEditProfileCellViewModel]
+    var count: Int
+    
+    init(model: [PreferenceEditProfileCellViewModel]) {
+        self.listenters = model
+        self.count = model.count
+    }
+}

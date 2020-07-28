@@ -12,28 +12,37 @@ final class PreferenceEditProfileCellNode: ASCellNode {
     
     // MARK: - Properties
     
-    var onTapEnded: (() -> Void)?
+    var onDetailed: (() -> Void)?
     
+    private let wrapperNode = ASDisplayNode()
     private var model: PreferenceEditProfileCellViewModel
-    private let titleNode = ASTextNode()
     
     private let userPhotoNode: ASImageNode = {
-        let node = ASImageNode()
-        node.style.preferredSize = CGSize(width: Styles.Sizes.buttonSmall,
-                                          height: Styles.Sizes.buttonSmall)
-        node.contentMode = .scaleAspectFill
+          let node = ASImageNode()
+          node.style.preferredSize = CGSize(width: Styles.Sizes.buttonSmall,
+                                            height: Styles.Sizes.buttonSmall)
+          node.contentMode = .scaleAspectFill
+          return node
+      }()
+    
+    private let titleNode: ASTextNode = {
+        let node = ASTextNode()
+        node.style.preferredSize = CGSize(width: UIScreen.main.bounds.width * 0.6, height: 22)  //change this later
         return node
     }()
     
-    private let detailIconNode: ASImageNode = {
-        let node = ASImageNode()
-        node.style.preferredSize = CGSize(width: Styles.Sizes.buttonExtraSmall,
-                                          height: Styles.Sizes.buttonExtraSmall)
-        node.contentMode = .scaleAspectFit
-        return node
+    private lazy var detailButtonNode: BaseNodeViewBox<BaseIconButton> = {
+        let boxNode = BaseNodeViewBox<BaseIconButton> { () -> UIView in
+            let button = BaseIconButton()
+                .setImage(image: Styles.Images.detailIcon)
+            button.action = self.onDetailed
+            return button
+        }
+        
+        boxNode.style.preferredSize = CGSize(width: Styles.Sizes.buttonExtraSmall,
+                                             height: Styles.Sizes.buttonExtraSmall)
+        return boxNode
     }()
-    
-    let wrapper = ASDisplayNode()
     
     // MARK: - Init
     
@@ -49,12 +58,10 @@ final class PreferenceEditProfileCellNode: ASCellNode {
     }
     
     // MARK: - Life cycle
-
+    
     override func layoutDidFinish() {
-        wrapper.cornerRadius = Styles.Sizes.cornerRadiusMedium
+        wrapperNode.cornerRadius = Styles.Sizes.cornerRadiusMedium
         userPhotoNode.cornerRadius = userPhotoNode.style.width.value / 2
-        detailIconNode.clipsToBounds = true
-
     }
     
     // MARK: - Layout
@@ -73,40 +80,40 @@ final class PreferenceEditProfileCellNode: ASCellNode {
             hStack.justifyContent = .center
             hStack.alignItems = .center
             hStack.children = children
-            
+    
             return hStack
         }
         
         func makeMainHorizontalInsetSpec() -> ASInsetLayoutSpec {
             var children = [ASLayoutElement]()
             children.append(makeHorizontalInsetSpec())
-            children.append(detailIconNode)
-
+            children.append(detailButtonNode)
+            
             let hStack = ASStackLayoutSpec.horizontal()
             hStack.spacing = Styles.Sizes.HPaddingBase
             hStack.justifyContent = .spaceBetween
             hStack.alignItems = .center
             hStack.children = children
             
-           let insets = UIEdgeInsets(
+            let insets = UIEdgeInsets(
                 top: Styles.Sizes.VPaddingMedium,
                 left: Styles.Sizes.HPaddingBase,
                 bottom: Styles.Sizes.VPaddingMedium,
-                right: Styles.Sizes.HPaddingBase)
-            
+                right: Styles.Sizes.HPaddingBase
+            )
             return ASInsetLayoutSpec(insets: insets, child: hStack)
         }
         
         func makeBackgroundInsetSpec() -> ASBackgroundLayoutSpec {
-            return ASBackgroundLayoutSpec(child: makeMainHorizontalInsetSpec(), background: wrapper)
+            return ASBackgroundLayoutSpec(child: makeMainHorizontalInsetSpec(), background: wrapperNode)
         }
         
         let insets = UIEdgeInsets(
             top: Styles.Sizes.VPaddingSmall,
             left: Styles.Sizes.HPaddingMedium,
-            bottom: 0,
-            right: Styles.Sizes.HPaddingMedium)
-        
+            bottom: Styles.Sizes.VPaddingSmall,
+            right: Styles.Sizes.HPaddingMedium
+        )
         return ASInsetLayoutSpec(insets: insets, child: makeBackgroundInsetSpec())
     }
     
@@ -116,15 +123,14 @@ final class PreferenceEditProfileCellNode: ASCellNode {
         let attributes = Attributes {
             return $0.foreground(color: titleColor)
                 .font(Styles.Fonts.Body2)
+                .lineBreakMode(.byTruncatingTail)
                 .alignment(.left)
         }
-        titleNode.maximumNumberOfLines = 0
         titleNode.attributedText = NSAttributedString(string: model.title, attributes: attributes.dictionary)
     }
-        
+    
     private func updateImage() {
         userPhotoNode.image = model.userPhoto
-        detailIconNode.image = Styles.Images.detailIcon
     }
 }
 
@@ -134,9 +140,9 @@ extension PreferenceEditProfileCellNode: Themeable {
     func updateTheme() {
         switch theme {
         case .light:
-            wrapper.backgroundColor = Styles.Colors.Palette.white0
+            wrapperNode.backgroundColor = Styles.Colors.Palette.white0
         case .dark:
-            wrapper.backgroundColor = Styles.Colors.Palette.gray2
+            wrapperNode.backgroundColor = Styles.Colors.Palette.gray2
         }
     }
     

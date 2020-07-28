@@ -44,6 +44,14 @@ class InitialViewController: UIViewController {
         
         userAlertVC.modalPresentationStyle = .overCurrentContext
         userAlertVC.modalTransitionStyle = .crossDissolve
+        userAlertVC.onAction = { [weak self] (action) in
+            switch action {
+            case .done:
+                self?.dismiss(animated: true, completion: nil)
+            default:
+                print("sds")
+            }
+        }
         
         let alertVC = AlertViewController(type: .noProfile, theme: Theme.light)
         alertVC.modalPresentationStyle = .overCurrentContext
@@ -134,9 +142,19 @@ class InitialViewController: UIViewController {
             PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "wewet2efwe4t2ef2ef2ef2e")
         ]
         
-        let lisenersVC = MainEditProfileTableViewController(model: model)
+        let people = Listeners(model: model)
+        
+        let lisenersVC = MainEditProfileTableViewController(model: people)
         lisenersVC.modalPresentationStyle = .popover
         lisenersVC.modalTransitionStyle = .coverVertical
+        
+        lisenersVC.onCancelAction = { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
+        }
+        
+        lisenersVC.onDetailedAction = { [weak self] in
+            lisenersVC.present(userAlertVC, animated: true, completion: nil)
+        }
         
         present(lisenersVC, animated: true, completion: nil)
     }
