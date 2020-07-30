@@ -8,7 +8,7 @@
 
 import AsyncDisplayKit
 
-final class ProfileUniqueAliasHeaderCellNode: ASCellNode {
+final class ProfileUniqueAliasHeaderCellNode: ASDisplayNode {
     
     // MARK: - Properties
     
@@ -64,36 +64,28 @@ final class ProfileUniqueAliasHeaderCellNode: ASCellNode {
             return vStack
         }
         
-        func makeVerticalBackgroundInsetSpec() -> ASStackLayoutSpec {
-            let insetSpec = ASInsetLayoutSpec(
-                insets: .init(top: 0,
-                              left: 0,
-                              bottom: 66,
-                              right: 0),
-                child: uniqueAliasBackgroundNode)
-            
-            var children = [ASLayoutElement]()
-            children.append(insetSpec)
-            
-            let vStack = ASStackLayoutSpec.vertical()
-            vStack.alignItems = .center
-            vStack.children = children
-            
-            return vStack
-        }
-        
         func makeMainWrapperBackgroundInsetSpec() -> ASBackgroundLayoutSpec {
-            let insetSpec = ASInsetLayoutSpec(
+            let childInsetSpec = ASInsetLayoutSpec(
                 insets: .init(top: 66,
                               left: 24,
                               bottom: .zero,
                               right: 24),
                 child: makeVerticalInsetSpec())
             
-            return ASBackgroundLayoutSpec(child: insetSpec, background: makeVerticalBackgroundInsetSpec())
+            let backgroundInsetsSpec = ASInsetLayoutSpec(
+                           insets: .init(top:0,
+                                         left: 0,
+                                         bottom: 66,
+                                         right: 0),
+                           child: uniqueAliasBackgroundNode)
+            
+            return ASBackgroundLayoutSpec(child: childInsetSpec, background: backgroundInsetsSpec)
         }
         
-        return ASInsetLayoutSpec(insets: .zero, child: makeMainWrapperBackgroundInsetSpec())
+        return ASInsetLayoutSpec(insets: .init(top: 0,
+        left: 24,
+        bottom: 0,
+        right: 24), child: makeVerticalInsetSpec())
     }
     
     // MARK: - Helpers

@@ -156,6 +156,11 @@ class InitialViewController: UIViewController {
             lisenersVC.present(userAlertVC, animated: true, completion: nil)
         }
         
-        present(lisenersVC, animated: true, completion: nil)
+        
+        let updateAliasVC = ProfileUniqueAliasViewController(model: UniqueAliasUserModel(userPhoto: UIImage(named: "photo2")!, userName: "Bobo Sisun", state: true))
+        updateAliasVC.modalPresentationStyle = .overFullScreen
+        updateAliasVC.modalTransitionStyle = .coverVertical
+        
+        present(updateAliasVC, animated: true, completion: nil)
     }
 }

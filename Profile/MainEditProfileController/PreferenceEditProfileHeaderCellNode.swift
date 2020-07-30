@@ -129,7 +129,7 @@ final class PreferenceEditProfileHeaderCellNode: ASCellNode {
                 .font(Styles.Fonts.SubCaption1)
                 .alignment(.left)
         }
-        guard let count = numberFormatter.string(from: NSNumber(value: countModel.count)) else { return }
+        guard let count = numberFormatter.string(from: NSNumber(value: 24573041)) else { return }
         counterNode.attributedText = NSAttributedString(string: count, attributes: attributes.dictionary)
     }
 }

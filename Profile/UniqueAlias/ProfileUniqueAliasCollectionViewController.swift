@@ -97,7 +97,8 @@ extension ProfileUniqueAliasCollectionViewController: ASCollectionDataSource {
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> ASCellNode {
         let cellNode = ProfileUniqueAliasHeaderCellNode()
-        return cellNode
+        return ASCellNode()
+       // return cellNode
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
@@ -109,12 +110,12 @@ extension ProfileUniqueAliasCollectionViewController: ASCollectionDataSource {
                 return cellNode
             }
             return cellNodeBlock
-        case 1:
-            let cellModel = premiumViewModel[indexPath.item]
-            let cellNodeBlock = { () -> ASCellNode in
-                let cellNode = ProfileUniqueAliasPremiumCellNode(model: cellModel)
-                return cellNode
-            }
+//        case 1:
+//            let cellModel = premiumViewModel[indexPath.item]
+//            let cellNodeBlock = { () -> ASCellNode in
+//                let cellNode = ProfileUniqueAliasPremiumCellNode(model: cellModel)
+//                return cellNode
+//            }
             return cellNodeBlock
         default:
             return { ASCellNode() }

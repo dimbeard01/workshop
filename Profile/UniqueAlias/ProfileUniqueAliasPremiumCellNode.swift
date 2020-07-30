@@ -9,7 +9,7 @@
 
 import AsyncDisplayKit
 
-final class ProfileUniqueAliasPremiumCellNode: ASCellNode {
+final class ProfileUniqueAliasPremiumCellNode: ASDisplayNode {
     
     // MARK: - Properties
     
