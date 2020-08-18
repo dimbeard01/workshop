@@ -20,39 +20,41 @@ final class ProfileUniqueAliasCollectionViewController: ASViewController<ASColle
     
     let collectionNode: ASCollectionNode
     
-    let monthViewModel: [AliasPriceCellViewModel] = [
-        AliasPriceCellViewModel(title: "1 Месяц",
+    let monthViewModel: [AliasPriceCellModel] = [
+        AliasPriceCellModel(title: "1 Месяц",
                                 additionalTitle: "Популярное",
                                 priceInfo: 299.46,
                                 price: 299.0),
-        AliasPriceCellViewModel(title: "3 Месяцa",
+        AliasPriceCellModel(title: "3 Месяцa",
                                 additionalTitle: "без подписки",
                                 priceInfo: 299.0,
                                 price: 897.0),
-        AliasPriceCellViewModel(title: "3 Месяцa",
+        AliasPriceCellModel(title: "3 Месяцa",
                                 additionalTitle: "лучший выбор",
                                 priceInfo: 299.0,
                                 price: 1794.0),
-        AliasPriceCellViewModel(title: "12 Месяцев",
+        AliasPriceCellModel(title: "12 Месяцев",
                                 additionalTitle: "экономия 80%",
                                 priceInfo: 299.0,
                                 price: 3588.0)
     ]
     
-    let premiumViewModel = [PremiumAliasPriceCellViewModel(image: Styles.Images.premiumIcon,
+    let premiumViewModel = PremiumAliasPriceCellModel(image: Styles.Images.premiumIcon,
                                                            title: "Anonym Premium",
                                                            additionalTitle: "Входит в подписку",
-                                                           priceInfo: 499.0)]
+                                                           priceInfo: 499.0)
+    
+    let model: UniqueAliasUserModel
     
     // MARK: - Init
     
-    init() {
+    init(model: UniqueAliasUserModel) {
+        self.model = model
         collectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
-        
+
         super.init(node: collectionNode)
         
-        flowLayout.minimumLineSpacing = 12
-        flowLayout.minimumInteritemSpacing = 12
+        flowLayout.minimumLineSpacing = 24
         view.backgroundColor = Styles.Colors.Palette.bgDark
     }
     
@@ -81,41 +83,45 @@ final class ProfileUniqueAliasCollectionViewController: ASViewController<ASColle
 
 extension ProfileUniqueAliasCollectionViewController: ASCollectionDataSource {
     func numberOfSections(in collectionNode: ASCollectionNode) -> Int {
-        return 2
+        return 1
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return monthViewModel.count
-        case 1:
-            return premiumViewModel.count
-        default:
-            return 0
-        }
+       return 3
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> ASCellNode {
         let cellNode = ProfileUniqueAliasHeaderCellNode()
-        return ASCellNode()
-       // return cellNode
+        return cellNode
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
-        switch indexPath.section {
+        switch indexPath.item {
         case 0:
-            let cellModel = monthViewModel[indexPath.item]
+            let cellModel = model
             let cellNodeBlock = { () -> ASCellNode in
-                let cellNode = ProfileUniqueAliasCellNode(model: cellModel)
+                let cellNode = ProfileUniqueAliasUserInfoCellNode(model: cellModel)
                 return cellNode
             }
             return cellNodeBlock
-//        case 1:
-//            let cellModel = premiumViewModel[indexPath.item]
-//            let cellNodeBlock = { () -> ASCellNode in
-//                let cellNode = ProfileUniqueAliasPremiumCellNode(model: cellModel)
-//                return cellNode
-//            }
+            
+        case 1:
+            if !model.state {
+                let cellModel = premiumViewModel
+                let cellNodeBlock = { () -> ASCellNode in
+                    let cellNode = ProfileUniqueAliasPremiumCellNode(model: cellModel)
+                    return cellNode
+                }
+                return cellNodeBlock
+            } else {
+                return { ASCellNode() }
+            }
+            
+        case 2:
+            let cellNodeBlock = { () -> ASCellNode in
+                let cellNode = ProfileUniqueAliasAgreementCellNode()
+                return cellNode
+            }
             return cellNodeBlock
         default:
             return { ASCellNode() }
@@ -125,55 +131,22 @@ extension ProfileUniqueAliasCollectionViewController: ASCollectionDataSource {
     func collectionNode(_ collectionNode: ASCollectionNode, sizeRangeForHeaderInSection section: Int) -> ASSizeRange {
         switch section {
         case 0:
-            let width = (collectionNode.bounds.width)
+            let width = collectionNode.bounds.width
             return ASSizeRange(min: CGSize(width: width, height: .zero), max: CGSize(width: width, height: .infinity))
         default:
             return ASSizeRangeZero
         }
     }
 }
-
     // MARK: - Collection Delegate FlowLayout
 
 extension ProfileUniqueAliasCollectionViewController: ASCollectionDelegateFlowLayout {
     func collectionNode(_ collectionNode: ASCollectionNode, constrainedSizeForItemAt indexPath: IndexPath) -> ASSizeRange {
-        switch indexPath.section {
-        case 0:
-            let width = (collectionNode.bounds.width - 37) / 2
-            return ASSizeRange(min: CGSize(width: width, height: .zero), max: CGSize(width: width, height: .infinity))
-        case 1:
             let width = collectionNode.bounds.width - 24
             return ASSizeRange(min: CGSize(width: width, height: .zero), max: CGSize(width: width, height: .infinity))
-        default:
-            let width = collectionNode.bounds.width
-            return ASSizeRange(min: CGSize(width: width, height: .zero), max: CGSize(width: width, height: .infinity))
-        }        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        switch section {
-        case 0:
-            return UIEdgeInsets(top: 24, left: 12, bottom: 0, right: 12)
-        default:
-            return UIEdgeInsets(top: 12, left: 12, bottom: 0, right: 12)
-        }
-    }
-}
-
-    // MARK: - Collection Delegate
-
-extension ProfileUniqueAliasCollectionViewController: ASCollectionDelegate {
-    func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
-        guard let cellNode = collectionNode.nodeForItem(at: indexPath) as? ProfileUniqueAliasCellNode else { return }
-        if cellNode.state == .noneSelected {
-            cellNode.state = .selected
-        } else {
-            cellNode.state = .noneSelected
-        }
-    }
-    
-    func collectionNode(_ collectionNode: ASCollectionNode, didDeselectItemAt indexPath: IndexPath) {
-        guard let cellNode = collectionNode.nodeForItem(at: indexPath) as? ProfileUniqueAliasCellNode else { return }
-        cellNode.state = .noneSelected
+            return UIEdgeInsets(top: 32, left: 12, bottom: 12, right: 12)
     }
 }

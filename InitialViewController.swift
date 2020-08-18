@@ -90,19 +90,23 @@ class InitialViewController: UIViewController {
             self?.dismiss(animated: true, completion: nil)
         }
         
+        //Finds Test Blur View Controller
         let blurVC = BlurViewController()
         
+        //Finds Test Collcetion View Controller
         let collectionVC = FindsFeddCollectionViewController()
         
-        let collectionProfileVC = ProfileUniqueAliasCollectionViewController()
+        //Profile Unique Alias Collection View Controller
+        let collectionProfileVC = ProfileUniqueAliasCollectionViewController(model: UniqueAliasUserModel(userPhoto: UIImage(named: "photo2")!, userName: "Bobo Sisun", state: true))
         collectionProfileVC.modalPresentationStyle = .overFullScreen
         collectionProfileVC.modalTransitionStyle = .coverVertical
         
+        //Profile Unique Avatar View Controller
         let avatarProfileVC = ProfileUniqueAvatarController()
         avatarProfileVC.modalPresentationStyle = .overFullScreen
         avatarProfileVC.modalTransitionStyle = .coverVertical
 
-        
+        //Profile Lisened/Liseners Table View Controller
         let model: [PreferenceEditProfileCellViewModel] = [
             PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo")!, title: "asfasf123"),
             PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo2")!, title: "asfasf123"),
@@ -156,11 +160,28 @@ class InitialViewController: UIViewController {
             lisenersVC.present(userAlertVC, animated: true, completion: nil)
         }
         
-        
+        //Updated Profile Unique Alias View Controller
         let updateAliasVC = ProfileUniqueAliasViewController(model: UniqueAliasUserModel(userPhoto: UIImage(named: "photo2")!, userName: "Bobo Sisun", state: true))
         updateAliasVC.modalPresentationStyle = .overFullScreen
         updateAliasVC.modalTransitionStyle = .coverVertical
         
-        present(updateAliasVC, animated: true, completion: nil)
+        //Profile Thanks View Cotroller with rounded progress view
+        let thanks: CGFloat = 5500
+        let thanksLevel: CGFloat = thanks / 9000
+        let remainedThanks: CGFloat = 8000
+
+        let firstColor = #colorLiteral(red: 0.9843098521, green: 0.5569050908, blue: 0.8704888225, alpha: 1).cgColor
+        let lastColor = #colorLiteral(red: 0.3289796412, green: 0.9686762691, blue: 0.6704984307, alpha: 1).cgColor
+        
+        let thanksVC = ThanksLevelProfileController(thanksLevel: thanksLevel, remainedLevel: remainedThanks, gradientColors: [firstColor, lastColor])
+        thanksVC.modalPresentationStyle = .popover
+        thanksVC.modalTransitionStyle = .coverVertical
+        
+        
+        let thanksCN = ThanksLevelProfileCollectionNodeController(thanksLevel: thanksLevel, remainedLevel: remainedThanks, gradientColors: [firstColor, lastColor])
+        thanksCN.modalPresentationStyle = .overCurrentContext
+        thanksCN.modalTransitionStyle = .coverVertical
+        
+        present(thanksCN, animated: true, completion: nil)
     }
 }

@@ -9,13 +9,13 @@
 
 import AsyncDisplayKit
 
-final class ProfileUniqueAliasPremiumCellNode: ASDisplayNode {
+final class ProfileUniqueAliasPremiumCellNode: ASCellNode {
     
     // MARK: - Properties
     
     var onTapEnded: (() -> Void)?
     
-    private var model: PremiumAliasPriceCellViewModel
+    private var model: PremiumAliasPriceCellModel
     private let titleNode = ASTextNode()
     private let additionalTitleNode = ASTextNode()
     private let priceInfoNode = ASTextNode()
@@ -39,7 +39,7 @@ final class ProfileUniqueAliasPremiumCellNode: ASDisplayNode {
     
     // MARK: - Init
     
-    init(model: PremiumAliasPriceCellViewModel) {
+    init(model: PremiumAliasPriceCellModel) {
         self.model = model
         super.init()
         
@@ -216,6 +216,3 @@ extension ProfileUniqueAliasPremiumCellNode: Themeable {
         }
     }
 }
-
-
-

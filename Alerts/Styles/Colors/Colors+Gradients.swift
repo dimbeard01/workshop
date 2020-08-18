@@ -11,7 +11,7 @@ extension Styles.Colors {
                                               UIColor(red: 0.263, green: 0.461, blue: 0.842, alpha: 1)]
         
         static let findsGradientColors = [UIColor(red: 0.925, green: 0.549, blue: 0.412, alpha: 1),
-                                          UIColor(red: 0.929, green: 0.431, blue: 0.627, alpha: 1)]
+            UIColor(red: 0.929, green: 0.431, blue: 0.627, alpha: 1)]
         
         static let findsBoostGradientColors = [#colorLiteral(red: 0.6234299541, green: 0.7686763406, blue: 0.9606664777, alpha: 1), #colorLiteral(red: 0.4745098039, green: 0.8588235294, blue: 0.7215686275, alpha: 1)]
         

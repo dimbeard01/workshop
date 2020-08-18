@@ -12,7 +12,7 @@ import TinyConstraints
 
 final class ProfileUniqueAliasViewController: UIViewController {
     
-    private let premiumViewModel = PremiumAliasPriceCellViewModel(image: Styles.Images.premiumIcon,
+    private let premiumViewModel = PremiumAliasPriceCellModel(image: Styles.Images.premiumIcon,
                                                                   title: "Anonym Premium",
                                                                   additionalTitle: "Входит в подписку",
                                                                   priceInfo: 499.0)

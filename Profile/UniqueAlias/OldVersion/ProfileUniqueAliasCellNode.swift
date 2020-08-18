@@ -19,7 +19,7 @@ final class ProfileUniqueAliasCellNode: ASCellNode {
     
     var onTapEnded: (() -> Void)?
     
-    private var model: AliasPriceCellViewModel
+    private var model: AliasPriceCellModel
     
     private let titleNode = ASTextNode()
     private let additionalTitleNode = ASTextNode()
@@ -34,7 +34,7 @@ final class ProfileUniqueAliasCellNode: ASCellNode {
     
     // MARK: - Init
     
-    init(model: AliasPriceCellViewModel) {
+    init(model: AliasPriceCellModel) {
         self.model = model
         super.init()
         

@@ -8,7 +8,7 @@
 
 import AsyncDisplayKit
 
-final class ProfileUniqueAliasHeaderCellNode: ASDisplayNode {
+final class ProfileUniqueAliasHeaderCellNode: ASCellNode {
     
     // MARK: - Properties
     
@@ -83,9 +83,10 @@ final class ProfileUniqueAliasHeaderCellNode: ASDisplayNode {
         }
         
         return ASInsetLayoutSpec(insets: .init(top: 0,
-        left: 24,
-        bottom: 0,
-        right: 24), child: makeVerticalInsetSpec())
+                                               left: 24,
+                                               bottom: 0,
+                                               right: 24),
+                                 child: makeMainWrapperBackgroundInsetSpec())
     }
     
     // MARK: - Helpers

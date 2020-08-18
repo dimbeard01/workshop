@@ -1,5 +1,5 @@
 //
-//  UniqueAliasCellViewModel.swift
+//  UniqueAliasCellModel.swift
 //  Alerts
 //
 //  Created by Dima on 20.07.2020.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-struct AliasPriceCellViewModel {
+struct AliasPriceCellModel {
     var title: String
     var additionalTitle: String
     var priceInfo: Double
     var price: Double
 }
 
-struct PremiumAliasPriceCellViewModel {
+struct PremiumAliasPriceCellModel {
     var image: UIImage
     var title: String
     var additionalTitle: String
