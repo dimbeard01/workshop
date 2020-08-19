@@ -12,23 +12,24 @@ final class ThanksLevelProfileCollectionNodeController: ASViewController<ASColle
     
     // MARK: - Properties
     
+    let premiumViewModel = PremiumAliasPriceCellModel(image: Styles.Images.premiumIcon,
+                                                      title: "Anonym Premium",
+                                                      additionalTitle: "Входит в подписку",
+                                                      priceInfo: 499.0)
+    
     private let flowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         return layout
     }()
-    
-    let collectionNode: ASCollectionNode
-    private let thanksLevel: CGFloat
-    private let remainedLevel: CGFloat
-    private let gradientColors: [CGColor]
+
+    private let collectionNode: ASCollectionNode
+    private let model: UserThanksLevelModel
     
     // MARK: - Init
     
-    init(thanksLevel: CGFloat, remainedLevel: CGFloat, gradientColors: [CGColor]) {
-        self.thanksLevel = thanksLevel
-        self.remainedLevel = remainedLevel
-        self.gradientColors = gradientColors
+    init(model: UserThanksLevelModel) {
+        self.model = model
         collectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
         super.init(node: collectionNode)
         
@@ -56,19 +57,19 @@ final class ThanksLevelProfileCollectionNodeController: ASViewController<ASColle
 
 extension ThanksLevelProfileCollectionNodeController: ASCollectionDataSource {
     func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 9
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> ASCellNode {
         
-        let cellNode = ThanksLevelHeaderCollectionCellNode(thanksLevel: thanksLevel, remainedLevel: remainedLevel, gradientColors: gradientColors)
+        let cellNode = ThanksLevelHeaderCollectionCellNode(model: model)
         return cellNode
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
-        
+        let model = premiumViewModel
         let cellNodeBlock = { () -> ASCellNode in
-            let cellNode = ProfileUniqueAliasAgreementCellNode()
+            let cellNode = ProfileUniqueAliasPremiumCellNode(model: model)
             return cellNode
         }
         return cellNodeBlock
@@ -95,5 +96,9 @@ extension ThanksLevelProfileCollectionNodeController: ASCollectionDelegateFlowLa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 32, left: 12, bottom: 12, right: 12)
+    }
+    
+    func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
+        collectionNode.reloadData()
     }
 }

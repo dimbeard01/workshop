@@ -42,6 +42,7 @@
 		32863F3924C849B700E05C02 /* ProfileUniqueAliasHeaderCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32863F3824C849B700E05C02 /* ProfileUniqueAliasHeaderCellNode.swift */; };
 		328710AC24DA902600DE8158 /* ThanksLevelProfileCollectionNodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328710AB24DA902600DE8158 /* ThanksLevelProfileCollectionNodeController.swift */; };
 		3289233224A4D1B80050BD8A /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289233124A4D1B80050BD8A /* AlertView.swift */; };
+		328937A024ED73AD00617153 /* UserThanksLevelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289379F24ED73AD00617153 /* UserThanksLevelModel.swift */; };
 		328C3A2424CEBF5A00A4F38D /* MainEditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328C3A2324CEBF5A00A4F38D /* MainEditProfileTableViewController.swift */; };
 		328C3A2624CEC0D300A4F38D /* PreferenceEditProfileCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328C3A2524CEC0D300A4F38D /* PreferenceEditProfileCellNode.swift */; };
 		328C3A2824CEC2BD00A4F38D /* PreferenceEditProfileCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328C3A2724CEC2BD00A4F38D /* PreferenceEditProfileCellViewModel.swift */; };
@@ -178,6 +179,7 @@
 		328710AB24DA902600DE8158 /* ThanksLevelProfileCollectionNodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksLevelProfileCollectionNodeController.swift; sourceTree = "<group>"; };
 		328710EB24EBBEB2008282A5 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		3289233124A4D1B80050BD8A /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		3289379F24ED73AD00617153 /* UserThanksLevelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserThanksLevelModel.swift; sourceTree = "<group>"; };
 		328C3A2324CEBF5A00A4F38D /* MainEditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEditProfileTableViewController.swift; sourceTree = "<group>"; };
 		328C3A2524CEC0D300A4F38D /* PreferenceEditProfileCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceEditProfileCellNode.swift; sourceTree = "<group>"; };
 		328C3A2724CEC2BD00A4F38D /* PreferenceEditProfileCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceEditProfileCellViewModel.swift; sourceTree = "<group>"; };
@@ -506,6 +508,7 @@
 				32AF355E24D41D4900DCD8D1 /* ThanksLevelProfileController.swift */,
 				3251846324E65D7800200031 /* ThanksLevelHeaderCollectionCellNode.swift */,
 				328710AB24DA902600DE8158 /* ThanksLevelProfileCollectionNodeController.swift */,
+				3289379F24ED73AD00617153 /* UserThanksLevelModel.swift */,
 			);
 			path = ThanksLevelProfileController;
 			sourceTree = "<group>";
@@ -835,6 +838,7 @@
 				3227E69724B6EDFC006E7763 /* UIView+Corners.swift in Sources */,
 				3227E68E24B6EC38006E7763 /* UIButtonHitTestInset.swift in Sources */,
 				3227E69424B6ED3F006E7763 /* WeakReferences.swift in Sources */,
+				328937A024ED73AD00617153 /* UserThanksLevelModel.swift in Sources */,
 				32D3DA1A24B72D6B0013998E /* FindsFeedInactiveBoostNode.swift in Sources */,
 				58A5F26D24A5C85F007561E5 /* ViewWithTouchArea.swift in Sources */,
 				3291847D24CFFC7900C93A4D /* PreferenceEditProfileHeaderCellNode.swift in Sources */,

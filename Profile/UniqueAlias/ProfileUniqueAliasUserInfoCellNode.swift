@@ -178,6 +178,8 @@ final class ProfileUniqueAliasUserInfoCellNode: ASCellNode {
                    .alignment(.center)
            }
            activeSubscriptionNode.attributedText = NSAttributedString(string: "У вас уже есть активная подписка Anonym Premium", attributes: attributes.dictionary)
+        
+        
        }
     
     private func updateActiveButtonColor() {

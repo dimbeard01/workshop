@@ -166,7 +166,7 @@ class InitialViewController: UIViewController {
         updateAliasVC.modalTransitionStyle = .coverVertical
         
         //Profile Thanks View Cotroller with rounded progress view
-        let thanks: CGFloat = 5500
+        let thanks: CGFloat = 2250 + 4500
         let thanksLevel: CGFloat = thanks / 9000
         let remainedThanks: CGFloat = 8000
 
@@ -177,8 +177,9 @@ class InitialViewController: UIViewController {
         thanksVC.modalPresentationStyle = .popover
         thanksVC.modalTransitionStyle = .coverVertical
         
-        
-        let thanksCN = ThanksLevelProfileCollectionNodeController(thanksLevel: thanksLevel, remainedLevel: remainedThanks, gradientColors: [firstColor, lastColor])
+        let userThanksLevelModel = UserThanksLevelModel(image: UIImage(named: "photo2")!, level: .seventh, thanksCount: 8408)
+
+        let thanksCN = ThanksLevelProfileCollectionNodeController(model: userThanksLevelModel)
         thanksCN.modalPresentationStyle = .overCurrentContext
         thanksCN.modalTransitionStyle = .coverVertical
         
