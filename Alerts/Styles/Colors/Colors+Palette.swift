@@ -57,6 +57,27 @@ extension Styles.Colors {
         static let pink1: UIColor = #colorLiteral(red: 0.9294117647, green: 0.2980392157, blue: 0.4039215686, alpha: 1)
         static let purple1: UIColor = #colorLiteral(red: 0.7529411765, green: 0.4392156863, blue: 1, alpha: 1)
         static let orange1: UIColor = #colorLiteral(red: 0.9450980392, green: 0.5294117647, blue: 0.003921568627, alpha: 1)
+        
+        // UniqueAvatar
+        static let avatarPurple1: UIColor = #colorLiteral(red: 0.462745098, green: 0.1098039216, blue: 0.9176470588, alpha: 1)
+        static let avatarOrange1: UIColor = #colorLiteral(red: 0.9647058824, green: 0.3215686275, blue: 0.1803921569, alpha: 1)
+        
+        static let avatarPurple2: UIColor = #colorLiteral(red: 0.4705882353, green: 0.1843137255, blue: 0.937254902, alpha: 1)
+        static let avatarPink1: UIColor = #colorLiteral(red: 0.937254902, green: 0.1843137255, blue: 0.6352941176, alpha: 1)
+        static let avatarYellow1: UIColor = #colorLiteral(red: 0.9843137255, green: 1, blue: 0, alpha: 1)
+
+        
+        static let avatarBlue1: UIColor = #colorLiteral(red: 0, green: 0.4588235294, blue: 1, alpha: 1)
+        static let avatarGreen1: UIColor = #colorLiteral(red: 0, green: 1, blue: 0.6392156863, alpha: 1)
+        
+        static let avatarPink2: UIColor = #colorLiteral(red: 1, green: 0, blue: 0.5450980392, alpha: 1)
+
+        static let avatarGreen2: UIColor = #colorLiteral(red: 0.137254902, green: 0.5960784314, blue: 0.6705882353, alpha: 1)
+        static let avatarGreen3: UIColor = #colorLiteral(red: 0.2705882353, green: 0.8156862745, blue: 0.6196078431, alpha: 1)
+        
+        static let avatarGreen4: UIColor = #colorLiteral(red: 0.2941176471, green: 0.7058823529, blue: 0.3843137255, alpha: 1)
+        static let avatarGreen5: UIColor = #colorLiteral(red: 0.3568627451, green: 1, blue: 0.3843137255, alpha: 1)
+
     }
 }
 

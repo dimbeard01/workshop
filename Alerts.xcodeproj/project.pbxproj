@@ -65,6 +65,7 @@
 		32AFD2DF24AB52CC002BF920 /* ShortProfileAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFD2DE24AB52CC002BF920 /* ShortProfileAlertViewController.swift */; };
 		32AFD2E124AB5544002BF920 /* ShortProfileAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFD2E024AB5544002BF920 /* ShortProfileAlertView.swift */; };
 		32AFD2E524AB69EB002BF920 /* UserAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFD2E424AB69EB002BF920 /* UserAnswerView.swift */; };
+		32BE6DDF24EEA738009E49A9 /* ProfileUniqueAvatarColorsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BE6DDE24EEA738009E49A9 /* ProfileUniqueAvatarColorsNode.swift */; };
 		32CBAF9C24B31814003395C1 /* BoostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CBAF9B24B31814003395C1 /* BoostViewController.swift */; };
 		32CBAFA024B32D59003395C1 /* ASDisplayNode+AddGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CBAF9F24B32D59003395C1 /* ASDisplayNode+AddGradient.swift */; };
 		32D3DA1424B6F0EC0013998E /* Images+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3DA1324B6F0EC0013998E /* Images+Defaults.swift */; };
@@ -202,6 +203,7 @@
 		32AFD2DE24AB52CC002BF920 /* ShortProfileAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortProfileAlertViewController.swift; sourceTree = "<group>"; };
 		32AFD2E024AB5544002BF920 /* ShortProfileAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortProfileAlertView.swift; sourceTree = "<group>"; };
 		32AFD2E424AB69EB002BF920 /* UserAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnswerView.swift; sourceTree = "<group>"; };
+		32BE6DDE24EEA738009E49A9 /* ProfileUniqueAvatarColorsNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUniqueAvatarColorsNode.swift; sourceTree = "<group>"; };
 		32CBAF9B24B31814003395C1 /* BoostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostViewController.swift; sourceTree = "<group>"; };
 		32CBAF9F24B32D59003395C1 /* ASDisplayNode+AddGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASDisplayNode+AddGradient.swift"; sourceTree = "<group>"; };
 		32D3DA1324B6F0EC0013998E /* Images+Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Images+Defaults.swift"; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 			children = (
 				3228BBA024C991B5005AFD51 /* ProfileUniqueAvatarNode.swift */,
 				3228BBA624C996F9005AFD51 /* ProfileUniqueAvatarController.swift */,
+				32BE6DDE24EEA738009E49A9 /* ProfileUniqueAvatarColorsNode.swift */,
 				3228BBA424C9944C005AFD51 /* UniqueAvatarCircleNodeModel.swift */,
 			);
 			path = UniqueAvatar;
@@ -769,6 +772,7 @@
 				3227E68524B6EAC5006E7763 /* Attributes.swift in Sources */,
 				3228BBA724C996F9005AFD51 /* ProfileUniqueAvatarController.swift in Sources */,
 				328C7B4D24C5F2DC00BF6B37 /* ProfileUniqueAliasPremiumCellNode.swift in Sources */,
+				32BE6DDF24EEA738009E49A9 /* ProfileUniqueAvatarColorsNode.swift in Sources */,
 				32863F3924C849B700E05C02 /* ProfileUniqueAliasHeaderCellNode.swift in Sources */,
 				32A05EDF24B4545600E755A8 /* BaseIconButtonProtocol.swift in Sources */,
 				32CBAF9C24B31814003395C1 /* BoostViewController.swift in Sources */,

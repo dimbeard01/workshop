@@ -61,12 +61,13 @@ import AsyncDisplayKit
 final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
     
     // MARK: - Properties
-
+    
     private let thanksLevelCountNode = ASTextNode()
     private let thanksLevelTextNode = ASTextNode()
     private let remaindedLevelCountNode = ASTextNode()
     private let remaindedLevelTextNode = ASTextNode()
-    private let levelTextNode = ASTextNode()
+    private let levelIconTextNode = ASTextNode()
+    private let levelIconWrapperNode = ASDisplayNode()
     private let levelInfoOffset: CGFloat = 25
     
     private let trackNode: ShapeNode<CAShapeLayer> = {
@@ -80,7 +81,6 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
                 clockwise: true
             )
             track.path = trackPath.cgPath
-            track.strokeColor = Styles.Colors.Palette.gray3.cgColor
             track.lineWidth = 2
             track.lineCap = .round
             track.fillColor = UIColor.clear.cgColor
@@ -129,12 +129,6 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
         return gradientNodeBox
     }()
     
-    private let levelIconWrapperNode: ASDisplayNode = {
-        let wrapper = ASDisplayNode()
-        wrapper.style.height = ASDimensionMake(24)
-        return wrapper
-    }()
-    
     private let userPhotoNode: ASImageNode = {
         let node = ASImageNode()
         node.style.preferredSize = CGSize(width: 129,
@@ -143,7 +137,7 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
         return node
     }()
     
-    private let levelIconNode: ASImageNode = {
+    private let levelIconImageNode: ASImageNode = {
         let node = ASImageNode()
         node.style.preferredSize = CGSize(width: 18,
                                           height: 18)
@@ -162,53 +156,55 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
     private let model: UserThanksLevelModel
     
     // MARK: - Init
-
+    
     init(model: UserThanksLevelModel) {
         self.model = model
         super.init()
         
         automaticallyManagesSubnodes = true
+        updateTrackNode()
         updateThanksCount()
-        updateUserPhotNode()
+        updateUserPhotoNode()
         updateThanksText()
         updateRemainedThanksCount()
         updateRemainedText()
-        updateLevelText()
-        updateLevelIcon()
+        updateLevelIconText()
+        updateLevelIconImage()
+        
+        ThemeManager.add(self)
     }
     
     // MARK: - Layout
-
+    
     override func layoutDidFinish() {
         setupGradientNode()
         userPhotoNode.cornerRadius = userPhotoNode.style.height.value / 2
         animateRoundNode()
-        updateWrapperColor()
+        updateLevelIconWrapperColor()
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        
-        func makeRoundGradientSpec() -> ASOverlayLayoutSpec {
+        func makeRoundGradientOverlaySpec() -> ASOverlayLayoutSpec {
             return ASOverlayLayoutSpec(child: roundNode, overlay: gradientNode)
         }
         
-        func makeProgressSpec() -> ASBackgroundLayoutSpec {
-            return ASBackgroundLayoutSpec(child: makeRoundGradientSpec(), background: trackNode )
+        func makeRoundProgressBackgroundSpec() -> ASBackgroundLayoutSpec {
+            return ASBackgroundLayoutSpec(child: makeRoundGradientOverlaySpec(), background: trackNode )
         }
         
-        func makeMainProgressSpec() -> ASBackgroundLayoutSpec {
-            let insets = UIEdgeInsets(
-                top: Styles.Sizes.VPaddingMedium,
-                left: Styles.Sizes.HPaddingMedium,
-                bottom: Styles.Sizes.VPaddingMedium,
-                right: Styles.Sizes.HPaddingMedium
-            )
+        func makeUserProgressBackgroundSpec() -> ASBackgroundLayoutSpec {
+            let userPhotoInsetSpec = ASInsetLayoutSpec(
+                insets: UIEdgeInsets(
+                    top: Styles.Sizes.VPaddingMedium,
+                    left: Styles.Sizes.HPaddingMedium,
+                    bottom: Styles.Sizes.VPaddingMedium,
+                    right: Styles.Sizes.HPaddingMedium),
+                child: userPhotoNode)
             
-            let userPhotoInsetSpec = ASInsetLayoutSpec(insets: insets, child: userPhotoNode)
-            return ASBackgroundLayoutSpec(child: makeProgressSpec(), background: userPhotoInsetSpec)
+            return ASBackgroundLayoutSpec(child: makeRoundProgressBackgroundSpec(), background: userPhotoInsetSpec)
         }
         
-        func makeLevelVStackInsetSpec() -> ASInsetLayoutSpec {
+        func makeUserLevelInfoVStackInsetSpec() -> ASInsetLayoutSpec {
             var children = [ASLayoutElement]()
             children.append(thanksLevelCountNode)
             children.append(thanksLevelTextNode)
@@ -218,7 +214,6 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
             vStack.justifyContent = .center
             vStack.alignItems = .center
             vStack.children = children
-            vStack.style.flexShrink = 0
             
             let vStackWidth = (UIScreen.main.bounds.width - roundNode.style.width.value) / 2
             vStack.style.width = ASDimensionMake(vStackWidth - (Styles.Sizes.HPaddingBase * 2))
@@ -233,7 +228,7 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
             return ASInsetLayoutSpec(insets: insets, child: vStack)
         }
         
-        func makeRamainedLevelVStackInsetSpec() -> ASInsetLayoutSpec {
+        func makeUserRamainedLevelInfoVStackInsetSpec() -> ASInsetLayoutSpec {
             var children = [ASLayoutElement]()
             children.append(remaindedLevelCountNode)
             children.append(remaindedLevelTextNode)
@@ -263,15 +258,14 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
                     top: 4,
                     left: 4,
                     bottom: 4,
-                    right: 4
-                ),
-                child: makeMainProgressSpec()
+                    right: 4),
+                child: makeUserProgressBackgroundSpec()
             )
             
             var children = [ASLayoutElement]()
-            children.append(makeLevelVStackInsetSpec())
+            children.append(makeUserLevelInfoVStackInsetSpec())
             children.append(circleProgressInsetSpec)
-            children.append(makeRamainedLevelVStackInsetSpec())
+            children.append(makeUserRamainedLevelInfoVStackInsetSpec())
             
             let hStack = ASStackLayoutSpec.horizontal()
             hStack.spacing = 0
@@ -282,15 +276,11 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
             return hStack
         }
         
-        func makeWrapperHStackInsetSpec() -> ASStackLayoutSpec {
+        func makeLevelIconHStackInsetSpec() -> ASStackLayoutSpec {
             var children = [ASLayoutElement]()
             
-            if levelIconNode.image != nil {
-                children.append(levelIconNode)
-                children.append(levelTextNode)
-            } else {
-                children.append(levelTextNode)
-            }
+            if levelIconImageNode.image != nil { children.append(levelIconImageNode) }
+            children.append(levelIconTextNode)
             
             let hStack = ASStackLayoutSpec.horizontal()
             hStack.spacing = 5
@@ -303,16 +293,16 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
             return hStack
         }
         
-        func makeWrapperBackgroundInsetSpec() -> ASBackgroundLayoutSpec {
-            var leftOffset: CGFloat {
-                if levelIconNode.image == nil {
-                    return 8
-                } else {
-                    return 3
-                }
-            }
-            
-            let levelTextInset = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: leftOffset, bottom: 0, right: 8), child: makeWrapperHStackInsetSpec())
+        func makeLevelIconBackgroundInsetSpec() -> ASBackgroundLayoutSpec {
+            let leftOffset: CGFloat = levelIconImageNode.image == nil ? Styles.Sizes.HPaddingMedium : Styles.Sizes.HPaddingVerySmall
+            let levelTextInset = ASInsetLayoutSpec(
+                insets: UIEdgeInsets(
+                    top: 0,
+                    left: leftOffset,
+                    bottom: 0,
+                    right: Styles.Sizes.HPaddingMedium),
+                child: makeLevelIconHStackInsetSpec()
+            )
             
             return ASBackgroundLayoutSpec(child: levelTextInset, background: levelIconWrapperNode)
         }
@@ -320,7 +310,7 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
         func makeMainVStackInsetSpec() -> ASStackLayoutSpec {
             var children = [ASLayoutElement]()
             children.append(makeMainHStackInsetSpec())
-            children.append(makeWrapperBackgroundInsetSpec())
+            children.append(makeLevelIconBackgroundInsetSpec())
             
             let vStack = ASStackLayoutSpec.vertical()
             vStack.spacing = 8
@@ -330,17 +320,15 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
             
             return vStack
         }
-        
-        let insets = UIEdgeInsets(
-            top: 24,
-            left: 0,
-            bottom: 0,
-            right: 0
-        )
-        return ASInsetLayoutSpec(insets: insets, child: makeMainVStackInsetSpec())
+                
+        return ASInsetLayoutSpec(insets: UIEdgeInsets.top(24), child: makeMainVStackInsetSpec())
     }
     
     // MARK: - Helpers
+    
+    private func updateTrackNode() {
+        trackNode.value?.strokeColor = trackColor
+    }
     
     private func animateRoundNode() {
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
@@ -348,24 +336,24 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
         basicAnimation.duration = 0.7
         basicAnimation.fillMode = .forwards
         basicAnimation.isRemovedOnCompletion = false
-        roundNode.value?.add(basicAnimation, forKey: "urSoBasic")
+        roundNode.value?.add(basicAnimation, forKey: nil)
     }
     
     private func setupGradientNode() {
-        gradientNode.value?.startPoint = CGPoint(x: 0.485, y: 0.5)
+        gradientNode.value?.startPoint = CGPoint(x: 0.482, y: 0.5)
         gradientNode.value?.endPoint = CGPoint(x: 0.5, y: -1)
         gradientNode.value?.colors = model.level.colors.map { $0.cgColor }
         gradientNode.layer.frame = view.frame
         gradientNode.layer.mask = roundNode.layer
     }
     
-    private func updateUserPhotNode() {
+    private func updateUserPhotoNode() {
         userPhotoNode.image = model.image
     }
     
     private func updateThanksCount() {
         let attributes = Attributes {
-            return $0.foreground(color: Styles.Colors.Palette.white0)
+            return $0.foreground(color: thanksCountColor)
                 .font(Styles.Fonts.Title)
                 .alignment(.center)
         }
@@ -384,7 +372,7 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
     
     private func updateRemainedThanksCount() {
         let attributes = Attributes {
-            return $0.foreground(color: Styles.Colors.Palette.white0)
+            return $0.foreground(color: thanksCountColor)
                 .font(Styles.Fonts.Title)
                 .alignment(.center)
         }
@@ -401,16 +389,16 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
         remaindedLevelTextNode.attributedText = NSAttributedString(string: "Осталось получить", attributes: attributes.dictionary)
     }
     
-    private func updateLevelText() {
+    private func updateLevelIconText() {
         let attributes = Attributes {
-            return $0.foreground(color: Styles.Colors.Palette.white0)
+            return $0.foreground(color: Styles.Colors.Palette.white)
                 .font(Styles.Fonts.Caption1)
                 .alignment(.center)
         }
-        levelTextNode.attributedText = NSAttributedString(string: model.level.title, attributes: attributes.dictionary)
+        levelIconTextNode.attributedText = NSAttributedString(string: model.level.title, attributes: attributes.dictionary)
     }
     
-    private func updateWrapperColor() {
+    private func updateLevelIconWrapperColor() {
         let startPoint = CGPoint(x: 1, y: 1)
         let endPoint = CGPoint(x: 0, y: 1)
         
@@ -420,8 +408,34 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
         levelIconWrapperNode.clipsToBounds = true
     }
     
-    private func updateLevelIcon() {
-        levelIconNode.image = model.level.iconImage
+    private func updateLevelIconImage() {
+        levelIconImageNode.image = model.level.iconImage
+    }
+}
+
+    // MARK: - Themeable
+
+extension ThanksLevelHeaderCollectionCellNode: Themeable {
+    func updateTheme() {
+        backgroundColor = UIColor.clear
+    }
+    
+    var thanksCountColor: UIColor {
+        switch theme {
+        case .light:
+            return Styles.Colors.Palette.gray3
+        case .dark:
+            return Styles.Colors.Palette.white0
+        }
+    }
+    
+    var trackColor: CGColor {
+        switch theme {
+        case .light:
+            return Styles.Colors.Palette.white0.cgColor
+        case .dark:
+            return Styles.Colors.Palette.gray3.cgColor
+        }
     }
 }
 

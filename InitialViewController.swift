@@ -177,12 +177,12 @@ class InitialViewController: UIViewController {
         thanksVC.modalPresentationStyle = .popover
         thanksVC.modalTransitionStyle = .coverVertical
         
-        let userThanksLevelModel = UserThanksLevelModel(image: UIImage(named: "photo2")!, level: .seventh, thanksCount: 8408)
+        let userThanksLevelModel = UserThanksLevelModel(image: UIImage(named: "photo2")!, level: .seventh, thanksCount: 5408)
 
         let thanksCN = ThanksLevelProfileCollectionNodeController(model: userThanksLevelModel)
         thanksCN.modalPresentationStyle = .overCurrentContext
         thanksCN.modalTransitionStyle = .coverVertical
         
-        present(thanksCN, animated: true, completion: nil)
+        present(avatarProfileVC, animated: true, completion: nil)
     }
 }

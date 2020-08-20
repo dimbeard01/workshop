@@ -24,7 +24,7 @@ final class ThanksLevelProfileCollectionNodeController: ASViewController<ASColle
     }()
 
     private let collectionNode: ASCollectionNode
-    private let model: UserThanksLevelModel
+    private var model: UserThanksLevelModel
     
     // MARK: - Init
     
@@ -99,6 +99,7 @@ extension ThanksLevelProfileCollectionNodeController: ASCollectionDelegateFlowLa
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
+        model = UserThanksLevelModel(image: UIImage(named: "photo")!, level: .fourth, thanksCount: 1341)
         collectionNode.reloadData()
     }
 }
