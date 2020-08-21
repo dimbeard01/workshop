@@ -354,4 +354,16 @@ extension Styles.Images {
     static let sixthThankslevelImage: UIImage = #imageLiteral(resourceName: "6")
     static let seventhThankslevelImage: UIImage = #imageLiteral(resourceName: "7")
     static let eighthThankslevelImage: UIImage = #imageLiteral(resourceName: "8")
+    
+    //ProfileReward
+    static let brainExplosion: UIImage = #imageLiteral(resourceName: "Brain")
+    static let superLike: UIImage = #imageLiteral(resourceName: "SuperLike")
+    static let gold: UIImage = #imageLiteral(resourceName: "Gold")
+    static let silver: UIImage = #imageLiteral(resourceName: "Silver")
+    static let platinum: UIImage = #imageLiteral(resourceName: "Platinum")
+    static let epicFail: UIImage = #imageLiteral(resourceName: "Epicfail")
+    static let sorry: UIImage = #imageLiteral(resourceName: "Sorry")
+    static let top: UIImage = #imageLiteral(resourceName: "Top")
+    static let bravo: UIImage = #imageLiteral(resourceName: "Bravo")
+    
 }

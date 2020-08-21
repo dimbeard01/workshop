@@ -97,7 +97,7 @@ extension MainEditProfileTableViewController: ASTableDataSource {
     }
     
     func tableNode(_ tableNode: ASTableNode, constrainedSizeForRowAt indexPath: IndexPath) -> ASSizeRange {
-        let width = UIScreen.main.bounds.width * 0.96
+        let width = UIScreen.main.bounds.width 
         return ASSizeRange(min: CGSize(width: width, height: .zero), max: CGSize(width: width, height: .infinity))
     }
 }

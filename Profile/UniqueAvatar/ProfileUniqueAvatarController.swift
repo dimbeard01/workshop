@@ -9,10 +9,6 @@
 import AsyncDisplayKit
 
 final class ProfileUniqueAvatarController: UIViewController {
-    let node1 = ProfileUniqueAvatarNode(model: UniqueAvatarCircleNodeModel(circleColor: .red, internalCircleColor: .green))
-    let node2 = ProfileUniqueAvatarNode(model: UniqueAvatarCircleNodeModel(circleColor: .blue, internalCircleColor: .yellow))
-    let node3 = ProfileUniqueAvatarNode(model: UniqueAvatarCircleNodeModel(circleColor: .white, internalCircleColor: .blue))
-    let node4 = ProfileUniqueAvatarNode(model: UniqueAvatarCircleNodeModel(circleColor: .black, internalCircleColor: .green))
 
     override func viewDidLoad() {
         super.viewDidLoad()

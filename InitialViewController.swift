@@ -35,12 +35,12 @@ class InitialViewController: UIViewController {
         let isOnline = true
         
         let userAlertVC = ShortProfileAlertViewController(userPhoto: userPhoto,
-                                                                 userName: userName,
-                                                                 isOnline: isOnline,
-                                                                 colorStyle: colorStyle,
-                                                                 timeWasOnline: timeWasOnline,
-                                                                 userAnswerList: userAnswerList,
-                                                                 theme: Theme.dark)
+                                                          userName: userName,
+                                                          isOnline: isOnline,
+                                                          colorStyle: colorStyle,
+                                                          timeWasOnline: timeWasOnline,
+                                                          userAnswerList: userAnswerList,
+                                                          theme: Theme.dark)
         
         userAlertVC.modalPresentationStyle = .overCurrentContext
         userAlertVC.modalTransitionStyle = .crossDissolve
@@ -85,7 +85,7 @@ class InitialViewController: UIViewController {
         }
         
         let boostVC = BoostViewController()
-    
+        
         boostVC.onAction = { [weak self] in
             self?.dismiss(animated: true, completion: nil)
         }
@@ -105,7 +105,7 @@ class InitialViewController: UIViewController {
         let avatarProfileVC = ProfileUniqueAvatarController()
         avatarProfileVC.modalPresentationStyle = .overFullScreen
         avatarProfileVC.modalTransitionStyle = .coverVertical
-
+        
         //Profile Lisened/Liseners Table View Controller
         let model: [PreferenceEditProfileCellViewModel] = [
             PreferenceEditProfileCellViewModel(userPhoto: UIImage(named: "photo")!, title: "asfasf123"),
@@ -169,7 +169,7 @@ class InitialViewController: UIViewController {
         let thanks: CGFloat = 2250 + 4500
         let thanksLevel: CGFloat = thanks / 9000
         let remainedThanks: CGFloat = 8000
-
+        
         let firstColor = #colorLiteral(red: 0.9843098521, green: 0.5569050908, blue: 0.8704888225, alpha: 1).cgColor
         let lastColor = #colorLiteral(red: 0.3289796412, green: 0.9686762691, blue: 0.6704984307, alpha: 1).cgColor
         
@@ -178,11 +178,65 @@ class InitialViewController: UIViewController {
         thanksVC.modalTransitionStyle = .coverVertical
         
         let userThanksLevelModel = UserThanksLevelModel(image: UIImage(named: "photo2")!, level: .seventh, thanksCount: 5408)
-
+        
         let thanksCN = ThanksLevelProfileCollectionNodeController(model: userThanksLevelModel)
         thanksCN.modalPresentationStyle = .overCurrentContext
         thanksCN.modalTransitionStyle = .coverVertical
         
-        present(avatarProfileVC, animated: true, completion: nil)
+        //Profile Rewards tabeView Controller
+        
+        let users: [UserRewardsModel] = [
+            UserRewardsModel(name: "Bobick Sobachkin",
+                             photo: UIImage(named: "photo2")!,
+                             event: UserEvent.comment,
+                             timeWasOnline: "13",
+                             reward: Reward.superLike),
+            UserRewardsModel(name: "Kotick Kisulkin",
+                             photo: UIImage(named: "photo")!,
+                             event: UserEvent.live,
+                             timeWasOnline: "13",
+                             reward: Reward.bravo),
+            UserRewardsModel(name: "Dildo Swaggins",
+                             photo: UIImage(named: "photo2")!,
+                             event: UserEvent.comment,
+                             timeWasOnline: "13",
+                             reward: Reward.platinum),
+            UserRewardsModel(name: "Masha Poterasho",
+                             photo: UIImage(named: "photo2")!,
+                             event: UserEvent.live,
+                             timeWasOnline: "13",
+                             reward: Reward.gold),
+            UserRewardsModel(name: "Putin Loh",
+                             photo: UIImage(named: "photo")!,
+                             event: UserEvent.comment,
+                             timeWasOnline: "13",
+                             reward: Reward.sorry),
+            UserRewardsModel(name: "Simon Nomis",
+                             photo: UIImage(named: "photo")!,
+                             event: UserEvent.comment,
+                             timeWasOnline: "13",
+                             reward: Reward.silver),
+            UserRewardsModel(name: "Sick Bastard",
+                             photo: UIImage(named: "photo")!,
+                             event: UserEvent.post,
+                             timeWasOnline: "9",
+                             reward: Reward.epicFail),
+            UserRewardsModel(name: "Geniy Filtvoyrot Playboy",
+                             photo: UIImage(named: "photo2")!,
+                             event: UserEvent.post,
+                             timeWasOnline: "10",
+                             reward: Reward.brainExplosion),
+            UserRewardsModel(name: "Mister Poper",
+                             photo: UIImage(named: "photo2")!,
+                             event: UserEvent.comment,
+                             timeWasOnline: "12",
+                             reward: Reward.top)
+        ]
+        
+        let rewardsTN = RewardsTableViewController(model: users)
+        rewardsTN.modalPresentationStyle = .overCurrentContext
+        rewardsTN.modalTransitionStyle = .coverVertical
+        
+        present(rewardsTN, animated: true, completion: nil)
     }
 }

@@ -25,11 +25,7 @@ final class PreferenceEditProfileCellNode: ASCellNode {
           return node
       }()
     
-    private let titleNode: ASTextNode = {
-        let node = ASTextNode()
-        node.style.preferredSize = CGSize(width: UIScreen.main.bounds.width * 0.6, height: 22)  //change this later
-        return node
-    }()
+    private let titleNode = ASTextNode()
     
     private lazy var detailButtonNode: BaseNodeViewBox<BaseIconButton> = {
         let boxNode = BaseNodeViewBox<BaseIconButton> { () -> UIView in
@@ -68,19 +64,19 @@ final class PreferenceEditProfileCellNode: ASCellNode {
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         func makeHorizontalInsetSpec() -> ASStackLayoutSpec {
-            let userPhotoInsetSpec =  ASInsetLayoutSpec(insets: .zero, child: userPhotoNode)
-            let titleInsetSpec =  ASInsetLayoutSpec(insets: .zero, child: titleNode)
-            
+            titleNode.style.flexShrink = 0.1
+
             var children = [ASLayoutElement]()
-            children.append(userPhotoInsetSpec)
-            children.append(titleInsetSpec)
+            children.append(userPhotoNode)
+            children.append(titleNode)
             
             let hStack = ASStackLayoutSpec.horizontal()
             hStack.spacing = Styles.Sizes.HPaddingBase
             hStack.justifyContent = .center
-            hStack.alignItems = .center
+            hStack.alignItems = .start
             hStack.children = children
-    
+            hStack.style.flexShrink = 0.1
+            
             return hStack
         }
         
@@ -94,7 +90,7 @@ final class PreferenceEditProfileCellNode: ASCellNode {
             hStack.justifyContent = .spaceBetween
             hStack.alignItems = .center
             hStack.children = children
-            
+
             let insets = UIEdgeInsets(
                 top: Styles.Sizes.VPaddingMedium,
                 left: Styles.Sizes.HPaddingBase,

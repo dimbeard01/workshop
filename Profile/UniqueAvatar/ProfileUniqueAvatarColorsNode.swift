@@ -9,13 +9,20 @@
 import AsyncDisplayKit
 
 final class ProfileUniqueAvatarColorsNode: ASDisplayNode {
-    let node1 = ProfileUniqueAvatarNode(model: UniqueAvatarCircleNodeModel(circleColor: Styles.Colors.Palette.avatarPurple1, internalCircleColor: Styles.Colors.Palette.avatarOrange1))
-    let node2 = ProfileUniqueAvatarNode(model: UniqueAvatarCircleNodeModel(circleColor: Styles.Colors.Palette.avatarPurple2, internalCircleColor: Styles.Colors.Palette.avatarPink1))
-    let node3 = ProfileUniqueAvatarNode(model: UniqueAvatarCircleNodeModel(circleColor: Styles.Colors.Palette.avatarPurple1, internalCircleColor: Styles.Colors.Palette.avatarYellow1))
-    let node4 = ProfileUniqueAvatarNode(model: UniqueAvatarCircleNodeModel(circleColor: Styles.Colors.Palette.avatarBlue1, internalCircleColor: Styles.Colors.Palette.avatarGreen1))
-    let node5 = ProfileUniqueAvatarNode(model: UniqueAvatarCircleNodeModel(circleColor: Styles.Colors.Palette.avatarPink2, internalCircleColor: Styles.Colors.Palette.avatarOrange1))
-    let node6 = ProfileUniqueAvatarNode(model: UniqueAvatarCircleNodeModel(circleColor: Styles.Colors.Palette.avatarGreen2, internalCircleColor: Styles.Colors.Palette.avatarGreen3))
-    let node7 = ProfileUniqueAvatarNode(model: UniqueAvatarCircleNodeModel(circleColor: Styles.Colors.Palette.avatarGreen4, internalCircleColor: Styles.Colors.Palette.avatarGreen5))
+    let node1 = ProfileUniqueAvatarNode(model: UniqueAvatarCircleNodeModel(circleColor: Styles.Colors.Palette.avatarPurple1,
+                                                                           internalCircleColor: Styles.Colors.Palette.avatarOrange1))
+    let node2 = ProfileUniqueAvatarNode(model: UniqueAvatarCircleNodeModel(circleColor: Styles.Colors.Palette.avatarPurple2,
+                                                                           internalCircleColor: Styles.Colors.Palette.avatarPink1))
+    let node3 = ProfileUniqueAvatarNode(model: UniqueAvatarCircleNodeModel(circleColor: Styles.Colors.Palette.avatarPurple1,
+                                                                           internalCircleColor: Styles.Colors.Palette.avatarYellow1))
+    let node4 = ProfileUniqueAvatarNode(model: UniqueAvatarCircleNodeModel(circleColor: Styles.Colors.Palette.avatarBlue1,
+                                                                           internalCircleColor: Styles.Colors.Palette.avatarGreen1))
+    let node5 = ProfileUniqueAvatarNode(model: UniqueAvatarCircleNodeModel(circleColor: Styles.Colors.Palette.avatarPink2,
+                                                                           internalCircleColor: Styles.Colors.Palette.avatarOrange1))
+    let node6 = ProfileUniqueAvatarNode(model: UniqueAvatarCircleNodeModel(circleColor: Styles.Colors.Palette.avatarGreen2,
+                                                                           internalCircleColor: Styles.Colors.Palette.avatarGreen3))
+    let node7 = ProfileUniqueAvatarNode(model: UniqueAvatarCircleNodeModel(circleColor: Styles.Colors.Palette.avatarGreen4,
+                                                                           internalCircleColor: Styles.Colors.Palette.avatarGreen5))
     
     override init() {
         super.init()

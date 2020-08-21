@@ -59,8 +59,6 @@ final class ProfileUniqueAvatarNode: ASDisplayNode {
         }
         
         func makeHorizontalInsetSpec() -> ASStackLayoutSpec {
-            let circleNodeSpec =  ASInsetLayoutSpec(insets: .zero, child: circleNode)
-            let internalCircleNodeSpec =  ASInsetLayoutSpec(insets: .zero, child: internalCircleNode)
             
             var children = [ASLayoutElement]()
             children.append(makeMainWrapperBackgroundInsetSpec())
