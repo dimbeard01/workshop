@@ -12,9 +12,9 @@ import AsyncDisplayKit
 enum Reward {
     case brainExplosion
     case superLike
+    case platinum
     case gold
     case silver
-    case platinum
     case epicFail
     case sorry
     case top
@@ -42,7 +42,7 @@ enum Reward {
             return "Браво".uppercased()
         }
     }
-
+    
     var image: UIImage {
         switch self {
         case .brainExplosion:
@@ -82,7 +82,7 @@ final class RewardsTableNodeCell: ASCellNode {
     private let rewardTitleNode = ASTextNode()
     private let userDescriptionTitleNode = ASTextNode()
     private let userDescriptionTitleNode2 = ASTextNode()
-
+    
     private let userPhotoNode: ASImageNode = {
         let node = ASImageNode()
         node.style.preferredSize = CGSize(width: Styles.Sizes.buttonLarge,
@@ -117,7 +117,7 @@ final class RewardsTableNodeCell: ASCellNode {
     }
     
     // MARK: - Layout
-
+    
     override func layoutDidFinish() {
         wrapperNode.cornerRadius = Styles.Sizes.cornerRadiusMedium
         userPhotoNode.cornerRadius = userPhotoNode.style.width.value / 2
@@ -135,7 +135,7 @@ final class RewardsTableNodeCell: ASCellNode {
             vStack.alignItems = .start
             vStack.children = children
             vStack.style.flexShrink = 0.1
-
+            
             return vStack
         }
         
@@ -150,7 +150,7 @@ final class RewardsTableNodeCell: ASCellNode {
             hStack.alignItems = .center
             hStack.children = children
             hStack.style.flexShrink = 0.1
-
+            
             return hStack
         }
         
@@ -178,13 +178,14 @@ final class RewardsTableNodeCell: ASCellNode {
             hStack.justifyContent = .spaceBetween
             hStack.alignItems = .center
             hStack.children = children
-
+            
             let insets = UIEdgeInsets(
                 top: Styles.Sizes.VPaddingMedium,
                 left: Styles.Sizes.HPaddingMedium,
                 bottom: Styles.Sizes.VPaddingMedium,
                 right: Styles.Sizes.HPaddingMedium
             )
+            
             return ASInsetLayoutSpec(insets: insets, child: hStack)
         }
         
@@ -198,6 +199,7 @@ final class RewardsTableNodeCell: ASCellNode {
             bottom: Styles.Sizes.VPaddingMedium / 2,
             right: Styles.Sizes.HPaddingMedium
         )
+        
         return ASInsetLayoutSpec(insets: insets, child: makeBackgroundInsetSpec())
     }
     
@@ -225,18 +227,19 @@ final class RewardsTableNodeCell: ASCellNode {
             return $0.foreground(color: Styles.Colors.Palette.gray4)
                 .font(Styles.Fonts.Caption3)
                 .alignment(.center)
+                .strokeWidth(5)
         }
         
         let mutableString = NSMutableAttributedString(string: model.event.rawValue, attributes: attributes.dictionary)
         
         mutableString.append(
             NSAttributedString(
-                string: " • ",
+                string: " \u{00B7} ", // " • " - a possible symbol
                 attributes: dotSpacerAttributes.dictionary
             )
         )
-         
-        let awardReceivingTime = RewardTimeFormatter().convertedDate(with: 1597921643) ?? ""
+        
+        let awardReceivingTime = RewardTimeFormatter().convertedDate(with: 1598247712) ?? ""
         mutableString.append(
             NSAttributedString(
                 string: awardReceivingTime,
@@ -253,6 +256,7 @@ final class RewardsTableNodeCell: ASCellNode {
                 .font(Styles.Fonts.Tagline3)
                 .alignment(.left)
         }
+        
         rewardTitleNode.attributedText = NSAttributedString(string: model.reward.title, attributes: attributes.dictionary)
     }
     

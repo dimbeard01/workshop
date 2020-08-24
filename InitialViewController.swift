@@ -166,17 +166,6 @@ class InitialViewController: UIViewController {
         updateAliasVC.modalTransitionStyle = .coverVertical
         
         //Profile Thanks View Cotroller with rounded progress view
-        let thanks: CGFloat = 2250 + 4500
-        let thanksLevel: CGFloat = thanks / 9000
-        let remainedThanks: CGFloat = 8000
-        
-        let firstColor = #colorLiteral(red: 0.9843098521, green: 0.5569050908, blue: 0.8704888225, alpha: 1).cgColor
-        let lastColor = #colorLiteral(red: 0.3289796412, green: 0.9686762691, blue: 0.6704984307, alpha: 1).cgColor
-        
-        let thanksVC = ThanksLevelProfileController(thanksLevel: thanksLevel, remainedLevel: remainedThanks, gradientColors: [firstColor, lastColor])
-        thanksVC.modalPresentationStyle = .popover
-        thanksVC.modalTransitionStyle = .coverVertical
-        
         let userThanksLevelModel = UserThanksLevelModel(image: UIImage(named: "photo2")!, level: .seventh, thanksCount: 5408)
         
         let thanksCN = ThanksLevelProfileCollectionNodeController(model: userThanksLevelModel)
@@ -184,7 +173,6 @@ class InitialViewController: UIViewController {
         thanksCN.modalTransitionStyle = .coverVertical
         
         //Profile Rewards tabeView Controller
-        
         let users: [UserRewardsModel] = [
             UserRewardsModel(name: "Bobick Sobachkin",
                              photo: UIImage(named: "photo2")!,

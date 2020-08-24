@@ -48,7 +48,7 @@ final class ShortProfileAlertView: UIView {
         return label
     }()
     
-    let dateDigits: Int
+    private let dateDigits: Int
     
     private let timeWasOnlineLabel: UILabel = {
         let label = UILabel()

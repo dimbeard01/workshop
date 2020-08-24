@@ -188,20 +188,16 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
             return ASOverlayLayoutSpec(child: roundNode, overlay: gradientNode)
         }
         
-        func makeRoundProgressBackgroundSpec() -> ASBackgroundLayoutSpec {
-            return ASBackgroundLayoutSpec(child: makeRoundGradientOverlaySpec(), background: trackNode )
+        func makeRoundProgressOverlaySpec() -> ASOverlayLayoutSpec {
+            return ASOverlayLayoutSpec(child: trackNode, overlay: makeRoundGradientOverlaySpec())
         }
         
-        func makeUserProgressBackgroundSpec() -> ASBackgroundLayoutSpec {
+        func makeUserProgressBackgroundSpec() -> ASOverlayLayoutSpec {
             let userPhotoInsetSpec = ASInsetLayoutSpec(
-                insets: UIEdgeInsets(
-                    top: Styles.Sizes.VPaddingMedium,
-                    left: Styles.Sizes.HPaddingMedium,
-                    bottom: Styles.Sizes.VPaddingMedium,
-                    right: Styles.Sizes.HPaddingMedium),
+                insets: .allInfinity(),
                 child: userPhotoNode)
             
-            return ASBackgroundLayoutSpec(child: makeRoundProgressBackgroundSpec(), background: userPhotoInsetSpec)
+            return ASOverlayLayoutSpec(child: makeRoundProgressOverlaySpec(), overlay: userPhotoInsetSpec)
         }
         
         func makeUserLevelInfoVStackInsetSpec() -> ASInsetLayoutSpec {
@@ -225,6 +221,7 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
                 bottom: 0,
                 right: Styles.Sizes.HPaddingBase
             )
+            
             return ASInsetLayoutSpec(insets: insets, child: vStack)
         }
         
@@ -249,6 +246,7 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
                 bottom: 0,
                 right: Styles.Sizes.HPaddingBase
             )
+            
             return ASInsetLayoutSpec(insets: insets, child: vStack)
         }
         
@@ -320,7 +318,7 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
             
             return vStack
         }
-                
+        
         return ASInsetLayoutSpec(insets: UIEdgeInsets.top(24), child: makeMainVStackInsetSpec())
     }
     
@@ -402,7 +400,6 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
         let startPoint = CGPoint(x: 1, y: 1)
         let endPoint = CGPoint(x: 0, y: 1)
         
-        levelIconWrapperNode.alpha = 1
         levelIconWrapperNode.addGradient(colors: model.level.colors, locations: [0, 1], startPoint: startPoint, endPoint: endPoint)
         levelIconWrapperNode.cornerRadius = 12
         levelIconWrapperNode.clipsToBounds = true
@@ -450,4 +447,3 @@ class GradientNode<T: CAGradientLayer>: ASDisplayNode {
         return self.layer as? T
     }
 }
-

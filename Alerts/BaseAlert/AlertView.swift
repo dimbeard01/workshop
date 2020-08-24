@@ -41,7 +41,7 @@ enum AlertType {
     case noProfile
     case emptyFields
     case removeProfile
-    
+
     var title: String {
         switch self {
         case .message: return "Вы достигли лимита на отправку запросов на общение"
@@ -143,7 +143,7 @@ final class AlertView: UIView {
         label.textAlignment = .center
         return label
     }()
-    
+        
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = Styles.Colors.Palette.gray4

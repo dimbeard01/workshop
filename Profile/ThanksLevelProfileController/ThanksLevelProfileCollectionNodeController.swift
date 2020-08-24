@@ -22,7 +22,7 @@ final class ThanksLevelProfileCollectionNodeController: ASViewController<ASColle
         layout.scrollDirection = .vertical
         return layout
     }()
-
+    
     private let collectionNode: ASCollectionNode
     private var model: UserThanksLevelModel
     
@@ -53,7 +53,7 @@ final class ThanksLevelProfileCollectionNodeController: ASViewController<ASColle
     }
 }
 
-// MARK: - Collection Data Source
+    // MARK: - Collection Data Source
 
 extension ThanksLevelProfileCollectionNodeController: ASCollectionDataSource {
     func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
@@ -61,7 +61,6 @@ extension ThanksLevelProfileCollectionNodeController: ASCollectionDataSource {
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> ASCellNode {
-        
         let cellNode = ThanksLevelHeaderCollectionCellNode(model: model)
         return cellNode
     }
@@ -72,6 +71,7 @@ extension ThanksLevelProfileCollectionNodeController: ASCollectionDataSource {
             let cellNode = ProfileUniqueAliasPremiumCellNode(model: model)
             return cellNode
         }
+        
         return cellNodeBlock
     }
     
@@ -86,7 +86,7 @@ extension ThanksLevelProfileCollectionNodeController: ASCollectionDataSource {
     }
 }
 
-// MARK: - Collection Delegate FlowLayout
+    // MARK: - Collection Delegate FlowLayout
 
 extension ThanksLevelProfileCollectionNodeController: ASCollectionDelegateFlowLayout {
     func collectionNode(_ collectionNode: ASCollectionNode, constrainedSizeForItemAt indexPath: IndexPath) -> ASSizeRange {

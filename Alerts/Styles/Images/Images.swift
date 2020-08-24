@@ -356,14 +356,16 @@ extension Styles.Images {
     static let eighthThankslevelImage: UIImage = #imageLiteral(resourceName: "8")
     
     //ProfileReward
-    static let brainExplosion: UIImage = #imageLiteral(resourceName: "Brain")
-    static let superLike: UIImage = #imageLiteral(resourceName: "SuperLike")
-    static let gold: UIImage = #imageLiteral(resourceName: "Gold")
-    static let silver: UIImage = #imageLiteral(resourceName: "Silver")
-    static let platinum: UIImage = #imageLiteral(resourceName: "Platinum")
-    static let epicFail: UIImage = #imageLiteral(resourceName: "Epicfail")
-    static let sorry: UIImage = #imageLiteral(resourceName: "Sorry")
-    static let top: UIImage = #imageLiteral(resourceName: "Top")
-    static let bravo: UIImage = #imageLiteral(resourceName: "Bravo")
-    
+    static let brainExplosion: UIImage = #imageLiteral(resourceName: "brain")
+    static let superLike: UIImage = #imageLiteral(resourceName: "superLike")
+    static let gold: UIImage = #imageLiteral(resourceName: "gold")
+    static let silver: UIImage = #imageLiteral(resourceName: "silver")
+    static let platinum: UIImage = #imageLiteral(resourceName: "platinum")
+    static let epicFail: UIImage = #imageLiteral(resourceName: "epicfail")
+    static let sorry: UIImage = #imageLiteral(resourceName: "sorry")
+    static let top: UIImage = #imageLiteral(resourceName: "top")
+    static let bravo: UIImage = #imageLiteral(resourceName: "bravo")
+
+    static let rewardLightPlaceholder: UIImage = #imageLiteral(resourceName: "rewardLightPlacholder")
+    static let rewardDarkPlaceholder: UIImage = #imageLiteral(resourceName: "rewardDarkPlacholder")
 }

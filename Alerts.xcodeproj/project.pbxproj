@@ -64,7 +64,6 @@
 		32A05EDF24B4545600E755A8 /* BaseIconButtonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A05EDE24B4545600E755A8 /* BaseIconButtonProtocol.swift */; };
 		32A05EE124B4549200E755A8 /* BaseIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A05EE024B4549200E755A8 /* BaseIconButton.swift */; };
 		32A05EE324B4560F00E755A8 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A05EE224B4560F00E755A8 /* ImageManager.swift */; };
-		32AF355F24D41D4900DCD8D1 /* ThanksLevelProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF355E24D41D4900DCD8D1 /* ThanksLevelProfileController.swift */; };
 		32AFD2DD24AB0E2A002BF920 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFD2DC24AB0E2A002BF920 /* InitialViewController.swift */; };
 		32AFD2DF24AB52CC002BF920 /* ShortProfileAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFD2DE24AB52CC002BF920 /* ShortProfileAlertViewController.swift */; };
 		32AFD2E124AB5544002BF920 /* ShortProfileAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFD2E024AB5544002BF920 /* ShortProfileAlertView.swift */; };
@@ -76,6 +75,10 @@
 		32D3DA1624B6F0FE0013998E /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3DA1524B6F0FE0013998E /* Images.swift */; };
 		32D3DA1824B6F1670013998E /* FindsFeedBoostNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3DA1724B6F1670013998E /* FindsFeedBoostNode.swift */; };
 		32D3DA1A24B72D6B0013998E /* FindsFeedInactiveBoostNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3DA1924B72D6B0013998E /* FindsFeedInactiveBoostNode.swift */; };
+		32F7E50524F3B1A300ACF4EE /* UIEdgeInsets+AllInfinity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F7E50424F3B1A300ACF4EE /* UIEdgeInsets+AllInfinity.swift */; };
+		32F7E50D24F3C01E00ACF4EE /* RewardsPlaceholderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F7E50C24F3C01E00ACF4EE /* RewardsPlaceholderNode.swift */; };
+		32F7E51124F4030000ACF4EE /* RewardAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F7E51024F4030000ACF4EE /* RewardAlertViewController.swift */; };
+		32F7E51324F4033800ACF4EE /* RewardAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F7E51224F4033800ACF4EE /* RewardAlertView.swift */; };
 		58A5F26924A5C80C007561E5 /* BaseTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A5F26824A5C80C007561E5 /* BaseTextButton.swift */; };
 		58A5F26B24A5C83F007561E5 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A5F26A24A5C83F007561E5 /* BaseButton.swift */; };
 		58A5F26D24A5C85F007561E5 /* ViewWithTouchArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A5F26C24A5C85F007561E5 /* ViewWithTouchArea.swift */; };
@@ -206,7 +209,6 @@
 		32A05EDE24B4545600E755A8 /* BaseIconButtonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseIconButtonProtocol.swift; sourceTree = "<group>"; };
 		32A05EE024B4549200E755A8 /* BaseIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseIconButton.swift; sourceTree = "<group>"; };
 		32A05EE224B4560F00E755A8 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
-		32AF355E24D41D4900DCD8D1 /* ThanksLevelProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksLevelProfileController.swift; sourceTree = "<group>"; };
 		32AFD2DC24AB0E2A002BF920 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		32AFD2DE24AB52CC002BF920 /* ShortProfileAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortProfileAlertViewController.swift; sourceTree = "<group>"; };
 		32AFD2E024AB5544002BF920 /* ShortProfileAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortProfileAlertView.swift; sourceTree = "<group>"; };
@@ -218,6 +220,10 @@
 		32D3DA1524B6F0FE0013998E /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		32D3DA1724B6F1670013998E /* FindsFeedBoostNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FindsFeedBoostNode.swift; path = /Users/dima/Documents/work/Alerts/Alerts/BoostAlert/FindsFeedBoostNode.swift; sourceTree = "<absolute>"; };
 		32D3DA1924B72D6B0013998E /* FindsFeedInactiveBoostNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindsFeedInactiveBoostNode.swift; sourceTree = "<group>"; };
+		32F7E50424F3B1A300ACF4EE /* UIEdgeInsets+AllInfinity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+AllInfinity.swift"; sourceTree = "<group>"; };
+		32F7E50C24F3C01E00ACF4EE /* RewardsPlaceholderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsPlaceholderNode.swift; sourceTree = "<group>"; };
+		32F7E51024F4030000ACF4EE /* RewardAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardAlertViewController.swift; sourceTree = "<group>"; };
+		32F7E51224F4033800ACF4EE /* RewardAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardAlertView.swift; sourceTree = "<group>"; };
 		58A5F26824A5C80C007561E5 /* BaseTextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTextButton.swift; sourceTree = "<group>"; };
 		58A5F26A24A5C83F007561E5 /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		58A5F26C24A5C85F007561E5 /* ViewWithTouchArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewWithTouchArea.swift; sourceTree = "<group>"; };
@@ -422,6 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				3282833D24C6E3E60082A0D9 /* ProfileCellNode+Touches.swift */,
+				32F7E50424F3B1A300ACF4EE /* UIEdgeInsets+AllInfinity.swift */,
 				32863F3624C8426200E05C02 /* ProfilePremiumCellNode+Touches.swift */,
 				3291847E24D0230800C93A4D /* PreferenceEditProfileHeaderCellNode+Touches.swift */,
 				3228BB9A24C9697F005AFD51 /* String+PriceFormatter.swift */,
@@ -433,9 +440,11 @@
 			isa = PBXGroup;
 			children = (
 				32857A2C24EFAB2900E35728 /* RewardsTableViewController.swift */,
-				32857A2E24EFABDF00E35728 /* UserRewardsModel.swift */,
 				32857A3024EFAC4D00E35728 /* RewardsTableNodeCell.swift */,
+				32857A2E24EFABDF00E35728 /* UserRewardsModel.swift */,
 				32857A3224F0031B00E35728 /* RewardTimeFormatter.swift */,
+				32F7E50C24F3C01E00ACF4EE /* RewardsPlaceholderNode.swift */,
+				32F7E51424F4034400ACF4EE /* AlertViewController */,
 			);
 			path = RewardsTableController;
 			sourceTree = "<group>";
@@ -528,7 +537,6 @@
 		32AF355D24D41CFE00DCD8D1 /* ThanksLevelProfileController */ = {
 			isa = PBXGroup;
 			children = (
-				32AF355E24D41D4900DCD8D1 /* ThanksLevelProfileController.swift */,
 				3251846324E65D7800200031 /* ThanksLevelHeaderCollectionCellNode.swift */,
 				328710AB24DA902600DE8158 /* ThanksLevelProfileCollectionNodeController.swift */,
 				3289379F24ED73AD00617153 /* UserThanksLevelModel.swift */,
@@ -543,6 +551,15 @@
 				32D3DA1524B6F0FE0013998E /* Images.swift */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		32F7E51424F4034400ACF4EE /* AlertViewController */ = {
+			isa = PBXGroup;
+			children = (
+				32F7E51024F4030000ACF4EE /* RewardAlertViewController.swift */,
+				32F7E51224F4033800ACF4EE /* RewardAlertView.swift */,
+			);
+			path = AlertViewController;
 			sourceTree = "<group>";
 		};
 		58A5F27224A5C8FA007561E5 /* Styles */ = {
@@ -805,6 +822,7 @@
 				328C3A2624CEC0D300A4F38D /* PreferenceEditProfileCellNode.swift in Sources */,
 				328F1C8C24BC56FE0054EC02 /* FindsFeedPlaceholderNode.swift in Sources */,
 				3214803824A5CDD1005DAECA /* CGRect+HitFrame.swift in Sources */,
+				32F7E50524F3B1A300ACF4EE /* UIEdgeInsets+AllInfinity.swift in Sources */,
 				58A5F29024A5C8FA007561E5 /* Colors.swift in Sources */,
 				58A5F26F24A5C876007561E5 /* BaseButtonActionProtocol.swift in Sources */,
 				3285598D24BDE63200EFC5F7 /* Header.swift in Sources */,
@@ -836,18 +854,19 @@
 				3289233224A4D1B80050BD8A /* AlertView.swift in Sources */,
 				32863F3724C8426200E05C02 /* ProfilePremiumCellNode+Touches.swift in Sources */,
 				58A5F28E24A5C8FA007561E5 /* Colors+Palette.swift in Sources */,
+				32F7E50D24F3C01E00ACF4EE /* RewardsPlaceholderNode.swift in Sources */,
 				328C3A2824CEC2BD00A4F38D /* PreferenceEditProfileCellViewModel.swift in Sources */,
 				3282833E24C6E3E60082A0D9 /* ProfileCellNode+Touches.swift in Sources */,
 				58A5F28D24A5C8FA007561E5 /* Sizes.swift in Sources */,
 				322E774124C04A960027000F /* BlurTest.swift in Sources */,
 				3235521224A73ACB00D97F0D /* UIView+AddGradient.swift in Sources */,
 				58A5F29324A5C8FA007561E5 /* ThemeStyle.swift in Sources */,
+				32F7E51124F4030000ACF4EE /* RewardAlertViewController.swift in Sources */,
 				32AFD2DF24AB52CC002BF920 /* ShortProfileAlertViewController.swift in Sources */,
 				32A05EDD24B453BF00E755A8 /* BorderView.swift in Sources */,
 				58A5F29E24A5C9BF007561E5 /* ActivityIndicatorProtocol.swift in Sources */,
 				328F1C9524BCAB120054EC02 /* FindsFeedCellNode.swift in Sources */,
 				3227E68024B6EA74006E7763 /* ThemeManager.swift in Sources */,
-				32AF355F24D41D4900DCD8D1 /* ThanksLevelProfileController.swift in Sources */,
 				3225DD7224D966B70091F6F0 /* ProfileUniqueAliasUserInfoCellNode.swift in Sources */,
 				3228BB9B24C9697F005AFD51 /* String+PriceFormatter.swift in Sources */,
 				327629CB24A4BDFA001A0CFF /* SceneDelegate.swift in Sources */,
@@ -865,6 +884,7 @@
 				3227E69724B6EDFC006E7763 /* UIView+Corners.swift in Sources */,
 				3227E68E24B6EC38006E7763 /* UIButtonHitTestInset.swift in Sources */,
 				3227E69424B6ED3F006E7763 /* WeakReferences.swift in Sources */,
+				32F7E51324F4033800ACF4EE /* RewardAlertView.swift in Sources */,
 				328937A024ED73AD00617153 /* UserThanksLevelModel.swift in Sources */,
 				32D3DA1A24B72D6B0013998E /* FindsFeedInactiveBoostNode.swift in Sources */,
 				58A5F26D24A5C85F007561E5 /* ViewWithTouchArea.swift in Sources */,
