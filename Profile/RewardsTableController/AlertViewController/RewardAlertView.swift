@@ -47,11 +47,11 @@ final class RewardAlertView: UIView {
     }()
     
     private let buttonTypes: [ButtonType] 
-    private let model: UserRewardModel
+    private let model: RewardModel
     
     // MARK: - Init
     
-    init(model: UserRewardModel, buttons: [ButtonType]) {
+    init(model: RewardModel, buttons: [ButtonType]) {
         self.model = model
         self.buttonTypes = buttons
         

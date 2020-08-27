@@ -111,7 +111,6 @@ final class RewardsHistoryTableNodeCell: ASCellNode {
     private let userNameTitleNode = ASTextNode()
     private let rewardTitleNode = ASTextNode()
     private let userDescriptionTitleNode = ASTextNode()
-    private let userDescriptionTitleNode2 = ASTextNode()
     
     private let userPhotoNode: ASImageNode = {
         let node = ASImageNode()
@@ -129,11 +128,11 @@ final class RewardsHistoryTableNodeCell: ASCellNode {
         return node
     }()
     
-    private var model: UserRewardModel
+    private var model: RewardModel
     
     // MARK: - Init
     
-    init(model: UserRewardModel) {
+    init(model: RewardModel) {
         self.model = model
         super.init()
         

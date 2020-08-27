@@ -40,7 +40,7 @@
 		328536D124D2CB08001F8F7B /* ProfileUniqueAliasUserInfoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328536D024D2CB08001F8F7B /* ProfileUniqueAliasUserInfoNode.swift */; };
 		3285598D24BDE63200EFC5F7 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285598C24BDE63200EFC5F7 /* Header.swift */; };
 		32857A2D24EFAB2900E35728 /* RewardsHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32857A2C24EFAB2900E35728 /* RewardsHistoryTableViewController.swift */; };
-		32857A2F24EFABDF00E35728 /* UserRewardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32857A2E24EFABDF00E35728 /* UserRewardModel.swift */; };
+		32857A2F24EFABDF00E35728 /* RewardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32857A2E24EFABDF00E35728 /* RewardModel.swift */; };
 		32857A3124EFAC4D00E35728 /* RewardsHistoryTableNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32857A3024EFAC4D00E35728 /* RewardsHistoryTableNodeCell.swift */; };
 		32857A3324F0031B00E35728 /* RewardTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32857A3224F0031B00E35728 /* RewardTimeFormatter.swift */; };
 		32863F3724C8426200E05C02 /* ProfilePremiumCellNode+Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32863F3624C8426200E05C02 /* ProfilePremiumCellNode+Touches.swift */; };
@@ -185,7 +185,7 @@
 		328536D024D2CB08001F8F7B /* ProfileUniqueAliasUserInfoNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUniqueAliasUserInfoNode.swift; sourceTree = "<group>"; };
 		3285598C24BDE63200EFC5F7 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		32857A2C24EFAB2900E35728 /* RewardsHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsHistoryTableViewController.swift; sourceTree = "<group>"; };
-		32857A2E24EFABDF00E35728 /* UserRewardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRewardModel.swift; sourceTree = "<group>"; };
+		32857A2E24EFABDF00E35728 /* RewardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardModel.swift; sourceTree = "<group>"; };
 		32857A3024EFAC4D00E35728 /* RewardsHistoryTableNodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsHistoryTableNodeCell.swift; sourceTree = "<group>"; };
 		32857A3224F0031B00E35728 /* RewardTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardTimeFormatter.swift; sourceTree = "<group>"; };
 		32863F3624C8426200E05C02 /* ProfilePremiumCellNode+Touches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfilePremiumCellNode+Touches.swift"; sourceTree = "<group>"; };
@@ -445,7 +445,7 @@
 				32857A2C24EFAB2900E35728 /* RewardsHistoryTableViewController.swift */,
 				32857A3024EFAC4D00E35728 /* RewardsHistoryTableNodeCell.swift */,
 				32F7E50C24F3C01E00ACF4EE /* RewardsHistoryPlaceholderNode.swift */,
-				32857A2E24EFABDF00E35728 /* UserRewardModel.swift */,
+				32857A2E24EFABDF00E35728 /* RewardModel.swift */,
 				32857A3224F0031B00E35728 /* RewardTimeFormatter.swift */,
 				32F7E51424F4034400ACF4EE /* AlertViewController */,
 			);
@@ -896,7 +896,7 @@
 				58A5F26924A5C80C007561E5 /* BaseTextButton.swift in Sources */,
 				3228BBA124C991B5005AFD51 /* ProfileUniqueAvatarNode.swift in Sources */,
 				58A5F28F24A5C8FA007561E5 /* Colors+Gradients.swift in Sources */,
-				32857A2F24EFABDF00E35728 /* UserRewardModel.swift in Sources */,
+				32857A2F24EFABDF00E35728 /* RewardModel.swift in Sources */,
 				32AFD2DD24AB0E2A002BF920 /* InitialViewController.swift in Sources */,
 				3227E67E24B6EA53006E7763 /* ThemeProtocols.swift in Sources */,
 				3227E68224B6EA94006E7763 /* ThemeManager+Appearance.swift in Sources */,

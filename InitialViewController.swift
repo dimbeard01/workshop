@@ -173,58 +173,56 @@ class InitialViewController: UIViewController {
         thanksCN.modalTransitionStyle = .coverVertical
         
         //Profile Rewards tabeView Controller
-        let users: [UserRewardModel] = [
-            UserRewardModel(name: "Bobick Sobachkin",
+        let users: [RewardModel] = [
+            UserReward(name: "Bobick Sobachkin",
                              photo: UIImage(named: "photo2")!,
-                             event: UserEvent.comment,
+                             event: .comment,
                              rewardTimeReceiving: 1598247712,
-                             reward: Reward.superLike),
-            UserRewardModel(name: "Kotick Kisulkin",
+                             reward: .superLike),
+            UserReward(name: "Kotick Kisulkin",
                              photo: UIImage(named: "photo")!,
-                             event: UserEvent.live,
+                             event: .live,
                              rewardTimeReceiving: 1598247712,
-                             reward: Reward.bravo),
-            UserRewardModel(name: "Dildo Swaggins",
+                             reward: .bravo),
+            UserReward(name: "Dildo Swaggins",
                              photo: UIImage(named: "photo2")!,
-                             event: UserEvent.comment,
+                             event: .comment,
                              rewardTimeReceiving: 1598247712,
-                             reward: Reward.platinum),
-            UserRewardModel(name: "Masha Poterasho",
+                             reward: .platinum),
+            UserReward(name: "Masha Poterasho",
                              photo: UIImage(named: "photo2")!,
-                             event: UserEvent.live,
+                             event: .live,
                              rewardTimeReceiving: 1598247712,
-                             reward: Reward.gold),
-            UserRewardModel(name: "Putin Loh",
+                             reward: .gold),
+            UserReward(name: "Putin Loh",
                              photo: UIImage(named: "photo")!,
-                             event: UserEvent.comment,
+                             event: .comment,
                              rewardTimeReceiving: 1598247712,
-                             reward: Reward.sorry),
-            UserRewardModel(name: "Simon Nomis",
+                             reward: .sorry),
+            UserReward(name: "Simon Nomis",
                              photo: UIImage(named: "photo")!,
-                             event: UserEvent.comment,
+                             event: .comment,
                              rewardTimeReceiving: 1598247712,
-                             reward: Reward.silver),
-            UserRewardModel(name: "Sick Bastard",
+                             reward: .silver),
+            UserReward(name: "Sick Bastard",
                              photo: UIImage(named: "photo")!,
-                             event: UserEvent.post,
+                             event: .post,
                              rewardTimeReceiving: 1598247712,
-                             reward: Reward.epicFail),
-            UserRewardModel(name: "Geniy Filtvoyrot Playbo1116wededwwedwewef66516ywww",
+                             reward: .epicFail),
+            UserReward(name: "Geniy Filtvoyrot Playbo1116wededwwedwewef66516ywww",
                              photo: UIImage(named: "photo2")!,
-                             event: UserEvent.post,
+                             event: .post,
                              rewardTimeReceiving: 1598247712,
-                             reward: Reward.brainExplosion),
-            UserRewardModel(name: "Mister Poper",
-                             photo: UIImage(named: "photo2")!,
-                             event: UserEvent.comment,
-                             rewardTimeReceiving: 1598247712,
-                             reward: Reward.top)
+                             reward: .brainExplosion),
+            AnonUserReward(event: .live,
+                                rewardTimeReceiving: 1598247712,
+                                reward: .bravo)
         ]
         
         let rewardsTN = RewardsHistoryTableViewController(model: users)
         rewardsTN.modalPresentationStyle = .overFullScreen
         rewardsTN.modalTransitionStyle = .crossDissolve
-        
+
         present(rewardsTN, animated: true, completion: nil)
     }
 }

@@ -13,11 +13,11 @@ final class RewardsHistoryTableViewController: ASViewController<ASTableNode> {
     // MARK: - Properties
 
     private let tableNode: ASTableNode = ASTableNode()
-    private let model: [UserRewardModel]?
+    private let model: [RewardModel]?
     
     // MARK: - Init
-    
-    init(model: [UserRewardModel]){
+   
+    init(model: [RewardModel]){
         self.model = model
         
         super.init(node: tableNode)
@@ -34,7 +34,6 @@ final class RewardsHistoryTableViewController: ASViewController<ASTableNode> {
         
         view.backgroundColor = Styles.Colors.Palette.bgDark
         tableNode.dataSource = self
-        tableNode.delegate = self
         tableNode.allowsSelection = false
         tableNode.view.separatorStyle = .none
         tableNode.view.showsVerticalScrollIndicator = false
@@ -57,6 +56,8 @@ extension RewardsHistoryTableViewController: ASTableDataSource {
             
             cellNode.onTapEnded = { [weak self] in
                 let alert = RewardAlertViewController(model: model)
+                alert.modalPresentationStyle = .overFullScreen
+                alert.modalTransitionStyle = .crossDissolve
                 self?.present(alert, animated: true, completion: nil)
             }
             
@@ -69,16 +70,5 @@ extension RewardsHistoryTableViewController: ASTableDataSource {
     func tableNode(_ tableNode: ASTableNode, constrainedSizeForRowAt indexPath: IndexPath) -> ASSizeRange {
         let width = UIScreen.main.bounds.width
         return ASSizeRange(min: CGSize(width: width, height: .zero), max: CGSize(width: width, height: .infinity))
-    }
-}
-
-    // MARK: - Table Delegate
-
-extension RewardsHistoryTableViewController: ASTableDelegate {
-    func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
-        guard let model = model?[indexPath.row] else { return }
-        let alert = RewardAlertViewController(model: model)
-        
-        present(alert, animated: true, completion: nil)
     }
 }
