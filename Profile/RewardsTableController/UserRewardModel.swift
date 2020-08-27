@@ -1,5 +1,5 @@
 //
-//  UserRewardsModel.swift
+//  UserRewardModel.swift
 //  Alerts
 //
 //  Created by Dima on 21.08.2020.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-struct UserRewardsModel {
+struct UserRewardModel {
     var name: String
     var photo: UIImage
     var event: UserEvent
-    var timeWasOnline: String
+    var rewardTimeReceiving: Int
     var reward: Reward
 }

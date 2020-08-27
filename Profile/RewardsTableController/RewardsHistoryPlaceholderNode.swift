@@ -1,5 +1,5 @@
 //
-//  RewardsPlaceholderNode.swift
+//  RewardsHistoryPlaceholderNode.swift
 //  Alerts
 //
 //  Created by Dima on 24.08.2020.
@@ -8,7 +8,7 @@
 
 import AsyncDisplayKit
 
-final class RewardsPlaceholderNode: ASDisplayNode {
+final class RewardsHistoryPlaceholderNode: ASDisplayNode {
     
     // MARK: - Properties
 
@@ -39,16 +39,8 @@ final class RewardsPlaceholderNode: ASDisplayNode {
     // MARK: - Layout
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        func makeMainHStacInsetSpec() -> ASStackLayoutSpec {
-            let imageInsetSpec = ASInsetLayoutSpec(
-                insets: UIEdgeInsets(top: 0,
-                                     left: 0,
-                                     bottom: 11,
-                                     right: 0),
-                child: placeholderImageNode)
-            
+        func makeHStackInsetSpec() -> ASStackLayoutSpec {
             var children = [ASLayoutElement]()
-            children.append(imageInsetSpec)
             children.append(placholderTitleNode)
             children.append(placholderDescriptionNode)
             
@@ -58,15 +50,29 @@ final class RewardsPlaceholderNode: ASDisplayNode {
             vStack.alignItems = .center
             vStack.children = children
             
-            vStack.style.width = ASDimensionMake(263)
             return vStack
         }
         
-        func center() -> ASCenterLayoutSpec {
-            return ASCenterLayoutSpec(centeringOptions: .XY, sizingOptions: [], child: makeMainHStacInsetSpec())
+        func makeMainHStackInsetSpec() -> ASStackLayoutSpec {
+            var children = [ASLayoutElement]()
+            children.append(placeholderImageNode)
+            children.append(makeHStackInsetSpec())
+            
+            let vStack = ASStackLayoutSpec.vertical()
+            vStack.spacing = 16
+            vStack.justifyContent = .center
+            vStack.alignItems = .center
+            vStack.children = children
+            vStack.style.width = ASDimensionMake(263)
+            
+            return vStack
         }
         
-        return center()
+        func makeMainCenterLayoutSpec() -> ASCenterLayoutSpec {
+            return ASCenterLayoutSpec(centeringOptions: .XY, sizingOptions: [], child: makeMainHStackInsetSpec())
+        }
+        
+        return makeMainCenterLayoutSpec()
     }
     
     private func updateTitle() {
@@ -92,7 +98,7 @@ final class RewardsPlaceholderNode: ASDisplayNode {
 
     // MARK: - Themeable
 
-extension RewardsPlaceholderNode: Themeable {
+extension RewardsHistoryPlaceholderNode: Themeable {
     func updateTheme() {
         switch theme {
         case .light:

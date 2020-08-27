@@ -1,5 +1,5 @@
 //
-//  RewardsTableViewController.swift
+//  RewardsHistoryTableViewController.swift
 //  Alerts
 //
 //  Created by Dima on 21.08.2020.
@@ -8,17 +8,18 @@
 
 import AsyncDisplayKit
 
-final class RewardsTableViewController: ASViewController<ASTableNode> {
+final class RewardsHistoryTableViewController: ASViewController<ASTableNode> {
     
     // MARK: - Properties
 
     private let tableNode: ASTableNode = ASTableNode()
-    private let model: [UserRewardsModel]?
+    private let model: [UserRewardModel]?
     
     // MARK: - Init
     
-    init(model: [UserRewardsModel]){
+    init(model: [UserRewardModel]){
         self.model = model
+        
         super.init(node: tableNode)
     }
     
@@ -34,7 +35,7 @@ final class RewardsTableViewController: ASViewController<ASTableNode> {
         view.backgroundColor = Styles.Colors.Palette.bgDark
         tableNode.dataSource = self
         tableNode.delegate = self
-        //tableNode.allowsSelection = false
+        tableNode.allowsSelection = false
         tableNode.view.separatorStyle = .none
         tableNode.view.showsVerticalScrollIndicator = false
     }
@@ -42,7 +43,7 @@ final class RewardsTableViewController: ASViewController<ASTableNode> {
 
     // MARK: - Table Data Source
 
-extension RewardsTableViewController: ASTableDataSource {
+extension RewardsHistoryTableViewController: ASTableDataSource {
     
     func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
         return model?.count ?? 0
@@ -52,9 +53,16 @@ extension RewardsTableViewController: ASTableDataSource {
         guard let model = model?[indexPath.row] else { return {ASCellNode()} }
         
         let cellNodeBlock = { () -> ASCellNode in
-            let cellNode = RewardsTableNodeCell(model: model)
+            let cellNode = RewardsHistoryTableNodeCell(model: model)
+            
+            cellNode.onTapEnded = { [weak self] in
+                let alert = RewardAlertViewController(model: model)
+                self?.present(alert, animated: true, completion: nil)
+            }
+            
             return cellNode
         }
+        
         return cellNodeBlock
     }
     
@@ -64,11 +72,13 @@ extension RewardsTableViewController: ASTableDataSource {
     }
 }
 
-extension RewardsTableViewController: ASTableDelegate {
+    // MARK: - Table Delegate
+
+extension RewardsHistoryTableViewController: ASTableDelegate {
     func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
         guard let model = model?[indexPath.row] else { return }
-        let a = AlertViewController(type: .boostActivated, theme: .dark)
-        present(a, animated: true, completion: nil)
-        print("ss")
+        let alert = RewardAlertViewController(model: model)
+        
+        present(alert, animated: true, completion: nil)
     }
 }

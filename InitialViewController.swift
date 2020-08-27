@@ -173,57 +173,57 @@ class InitialViewController: UIViewController {
         thanksCN.modalTransitionStyle = .coverVertical
         
         //Profile Rewards tabeView Controller
-        let users: [UserRewardsModel] = [
-            UserRewardsModel(name: "Bobick Sobachkin",
+        let users: [UserRewardModel] = [
+            UserRewardModel(name: "Bobick Sobachkin",
                              photo: UIImage(named: "photo2")!,
                              event: UserEvent.comment,
-                             timeWasOnline: "13",
+                             rewardTimeReceiving: 1598247712,
                              reward: Reward.superLike),
-            UserRewardsModel(name: "Kotick Kisulkin",
+            UserRewardModel(name: "Kotick Kisulkin",
                              photo: UIImage(named: "photo")!,
                              event: UserEvent.live,
-                             timeWasOnline: "13",
+                             rewardTimeReceiving: 1598247712,
                              reward: Reward.bravo),
-            UserRewardsModel(name: "Dildo Swaggins",
+            UserRewardModel(name: "Dildo Swaggins",
                              photo: UIImage(named: "photo2")!,
                              event: UserEvent.comment,
-                             timeWasOnline: "13",
+                             rewardTimeReceiving: 1598247712,
                              reward: Reward.platinum),
-            UserRewardsModel(name: "Masha Poterasho",
+            UserRewardModel(name: "Masha Poterasho",
                              photo: UIImage(named: "photo2")!,
                              event: UserEvent.live,
-                             timeWasOnline: "13",
+                             rewardTimeReceiving: 1598247712,
                              reward: Reward.gold),
-            UserRewardsModel(name: "Putin Loh",
+            UserRewardModel(name: "Putin Loh",
                              photo: UIImage(named: "photo")!,
                              event: UserEvent.comment,
-                             timeWasOnline: "13",
+                             rewardTimeReceiving: 1598247712,
                              reward: Reward.sorry),
-            UserRewardsModel(name: "Simon Nomis",
+            UserRewardModel(name: "Simon Nomis",
                              photo: UIImage(named: "photo")!,
                              event: UserEvent.comment,
-                             timeWasOnline: "13",
+                             rewardTimeReceiving: 1598247712,
                              reward: Reward.silver),
-            UserRewardsModel(name: "Sick Bastard",
+            UserRewardModel(name: "Sick Bastard",
                              photo: UIImage(named: "photo")!,
                              event: UserEvent.post,
-                             timeWasOnline: "9",
+                             rewardTimeReceiving: 1598247712,
                              reward: Reward.epicFail),
-            UserRewardsModel(name: "Geniy Filtvoyrot Playboy",
+            UserRewardModel(name: "Geniy Filtvoyrot Playbo1116wededwwedwewef66516ywww",
                              photo: UIImage(named: "photo2")!,
                              event: UserEvent.post,
-                             timeWasOnline: "10",
+                             rewardTimeReceiving: 1598247712,
                              reward: Reward.brainExplosion),
-            UserRewardsModel(name: "Mister Poper",
+            UserRewardModel(name: "Mister Poper",
                              photo: UIImage(named: "photo2")!,
                              event: UserEvent.comment,
-                             timeWasOnline: "12",
+                             rewardTimeReceiving: 1598247712,
                              reward: Reward.top)
         ]
         
-        let rewardsTN = RewardsTableViewController(model: users)
-        rewardsTN.modalPresentationStyle = .overCurrentContext
-        rewardsTN.modalTransitionStyle = .coverVertical
+        let rewardsTN = RewardsHistoryTableViewController(model: users)
+        rewardsTN.modalPresentationStyle = .overFullScreen
+        rewardsTN.modalTransitionStyle = .crossDissolve
         
         present(rewardsTN, animated: true, completion: nil)
     }

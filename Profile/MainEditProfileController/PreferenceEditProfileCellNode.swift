@@ -73,7 +73,7 @@ final class PreferenceEditProfileCellNode: ASCellNode {
             let hStack = ASStackLayoutSpec.horizontal()
             hStack.spacing = Styles.Sizes.HPaddingBase
             hStack.justifyContent = .center
-            hStack.alignItems = .start
+            hStack.alignItems = .center
             hStack.children = children
             hStack.style.flexShrink = 0.1
             

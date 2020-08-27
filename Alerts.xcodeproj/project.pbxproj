@@ -27,6 +27,7 @@
 		322E774124C04A960027000F /* BlurTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E774024C04A960027000F /* BlurTest.swift */; };
 		322E774324C09F4A0027000F /* LastSeenDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E774224C09F4A0027000F /* LastSeenDateFormatter.swift */; };
 		3235521224A73ACB00D97F0D /* UIView+AddGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3235521124A73ACB00D97F0D /* UIView+AddGradient.swift */; };
+		3239170B24F65773003A23E5 /* ProfileRewardsTableCellNode+Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3239170A24F65773003A23E5 /* ProfileRewardsTableCellNode+Touches.swift */; };
 		3251846424E65D7800200031 /* ThanksLevelHeaderCollectionCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3251846324E65D7800200031 /* ThanksLevelHeaderCollectionCellNode.swift */; };
 		327629C924A4BDFA001A0CFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327629C824A4BDFA001A0CFF /* AppDelegate.swift */; };
 		327629CB24A4BDFA001A0CFF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327629CA24A4BDFA001A0CFF /* SceneDelegate.swift */; };
@@ -38,9 +39,9 @@
 		328536CF24D2C93F001F8F7B /* UniqueAliasUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328536CE24D2C93F001F8F7B /* UniqueAliasUserModel.swift */; };
 		328536D124D2CB08001F8F7B /* ProfileUniqueAliasUserInfoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328536D024D2CB08001F8F7B /* ProfileUniqueAliasUserInfoNode.swift */; };
 		3285598D24BDE63200EFC5F7 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285598C24BDE63200EFC5F7 /* Header.swift */; };
-		32857A2D24EFAB2900E35728 /* RewardsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32857A2C24EFAB2900E35728 /* RewardsTableViewController.swift */; };
-		32857A2F24EFABDF00E35728 /* UserRewardsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32857A2E24EFABDF00E35728 /* UserRewardsModel.swift */; };
-		32857A3124EFAC4D00E35728 /* RewardsTableNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32857A3024EFAC4D00E35728 /* RewardsTableNodeCell.swift */; };
+		32857A2D24EFAB2900E35728 /* RewardsHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32857A2C24EFAB2900E35728 /* RewardsHistoryTableViewController.swift */; };
+		32857A2F24EFABDF00E35728 /* UserRewardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32857A2E24EFABDF00E35728 /* UserRewardModel.swift */; };
+		32857A3124EFAC4D00E35728 /* RewardsHistoryTableNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32857A3024EFAC4D00E35728 /* RewardsHistoryTableNodeCell.swift */; };
 		32857A3324F0031B00E35728 /* RewardTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32857A3224F0031B00E35728 /* RewardTimeFormatter.swift */; };
 		32863F3724C8426200E05C02 /* ProfilePremiumCellNode+Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32863F3624C8426200E05C02 /* ProfilePremiumCellNode+Touches.swift */; };
 		32863F3924C849B700E05C02 /* ProfileUniqueAliasHeaderCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32863F3824C849B700E05C02 /* ProfileUniqueAliasHeaderCellNode.swift */; };
@@ -76,7 +77,7 @@
 		32D3DA1824B6F1670013998E /* FindsFeedBoostNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3DA1724B6F1670013998E /* FindsFeedBoostNode.swift */; };
 		32D3DA1A24B72D6B0013998E /* FindsFeedInactiveBoostNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3DA1924B72D6B0013998E /* FindsFeedInactiveBoostNode.swift */; };
 		32F7E50524F3B1A300ACF4EE /* UIEdgeInsets+AllInfinity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F7E50424F3B1A300ACF4EE /* UIEdgeInsets+AllInfinity.swift */; };
-		32F7E50D24F3C01E00ACF4EE /* RewardsPlaceholderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F7E50C24F3C01E00ACF4EE /* RewardsPlaceholderNode.swift */; };
+		32F7E50D24F3C01E00ACF4EE /* RewardsHistoryPlaceholderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F7E50C24F3C01E00ACF4EE /* RewardsHistoryPlaceholderNode.swift */; };
 		32F7E51124F4030000ACF4EE /* RewardAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F7E51024F4030000ACF4EE /* RewardAlertViewController.swift */; };
 		32F7E51324F4033800ACF4EE /* RewardAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F7E51224F4033800ACF4EE /* RewardAlertView.swift */; };
 		58A5F26924A5C80C007561E5 /* BaseTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A5F26824A5C80C007561E5 /* BaseTextButton.swift */; };
@@ -169,6 +170,7 @@
 		322E774024C04A960027000F /* BlurTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurTest.swift; sourceTree = "<group>"; };
 		322E774224C09F4A0027000F /* LastSeenDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastSeenDateFormatter.swift; sourceTree = "<group>"; };
 		3235521124A73ACB00D97F0D /* UIView+AddGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddGradient.swift"; sourceTree = "<group>"; };
+		3239170A24F65773003A23E5 /* ProfileRewardsTableCellNode+Touches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileRewardsTableCellNode+Touches.swift"; sourceTree = "<group>"; };
 		3251846324E65D7800200031 /* ThanksLevelHeaderCollectionCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksLevelHeaderCollectionCellNode.swift; sourceTree = "<group>"; };
 		327629C524A4BDFA001A0CFF /* Alerts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alerts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		327629C824A4BDFA001A0CFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -182,9 +184,9 @@
 		328536CE24D2C93F001F8F7B /* UniqueAliasUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueAliasUserModel.swift; sourceTree = "<group>"; };
 		328536D024D2CB08001F8F7B /* ProfileUniqueAliasUserInfoNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUniqueAliasUserInfoNode.swift; sourceTree = "<group>"; };
 		3285598C24BDE63200EFC5F7 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
-		32857A2C24EFAB2900E35728 /* RewardsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsTableViewController.swift; sourceTree = "<group>"; };
-		32857A2E24EFABDF00E35728 /* UserRewardsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRewardsModel.swift; sourceTree = "<group>"; };
-		32857A3024EFAC4D00E35728 /* RewardsTableNodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsTableNodeCell.swift; sourceTree = "<group>"; };
+		32857A2C24EFAB2900E35728 /* RewardsHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsHistoryTableViewController.swift; sourceTree = "<group>"; };
+		32857A2E24EFABDF00E35728 /* UserRewardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRewardModel.swift; sourceTree = "<group>"; };
+		32857A3024EFAC4D00E35728 /* RewardsHistoryTableNodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsHistoryTableNodeCell.swift; sourceTree = "<group>"; };
 		32857A3224F0031B00E35728 /* RewardTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardTimeFormatter.swift; sourceTree = "<group>"; };
 		32863F3624C8426200E05C02 /* ProfilePremiumCellNode+Touches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfilePremiumCellNode+Touches.swift"; sourceTree = "<group>"; };
 		32863F3824C849B700E05C02 /* ProfileUniqueAliasHeaderCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUniqueAliasHeaderCellNode.swift; sourceTree = "<group>"; };
@@ -221,7 +223,7 @@
 		32D3DA1724B6F1670013998E /* FindsFeedBoostNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FindsFeedBoostNode.swift; path = /Users/dima/Documents/work/Alerts/Alerts/BoostAlert/FindsFeedBoostNode.swift; sourceTree = "<absolute>"; };
 		32D3DA1924B72D6B0013998E /* FindsFeedInactiveBoostNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindsFeedInactiveBoostNode.swift; sourceTree = "<group>"; };
 		32F7E50424F3B1A300ACF4EE /* UIEdgeInsets+AllInfinity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+AllInfinity.swift"; sourceTree = "<group>"; };
-		32F7E50C24F3C01E00ACF4EE /* RewardsPlaceholderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsPlaceholderNode.swift; sourceTree = "<group>"; };
+		32F7E50C24F3C01E00ACF4EE /* RewardsHistoryPlaceholderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsHistoryPlaceholderNode.swift; sourceTree = "<group>"; };
 		32F7E51024F4030000ACF4EE /* RewardAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardAlertViewController.swift; sourceTree = "<group>"; };
 		32F7E51224F4033800ACF4EE /* RewardAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardAlertView.swift; sourceTree = "<group>"; };
 		58A5F26824A5C80C007561E5 /* BaseTextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTextButton.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				3282833D24C6E3E60082A0D9 /* ProfileCellNode+Touches.swift */,
+				3239170A24F65773003A23E5 /* ProfileRewardsTableCellNode+Touches.swift */,
 				32F7E50424F3B1A300ACF4EE /* UIEdgeInsets+AllInfinity.swift */,
 				32863F3624C8426200E05C02 /* ProfilePremiumCellNode+Touches.swift */,
 				3291847E24D0230800C93A4D /* PreferenceEditProfileHeaderCellNode+Touches.swift */,
@@ -439,11 +442,11 @@
 		32857A2524EFAADB00E35728 /* RewardsTableController */ = {
 			isa = PBXGroup;
 			children = (
-				32857A2C24EFAB2900E35728 /* RewardsTableViewController.swift */,
-				32857A3024EFAC4D00E35728 /* RewardsTableNodeCell.swift */,
-				32857A2E24EFABDF00E35728 /* UserRewardsModel.swift */,
+				32857A2C24EFAB2900E35728 /* RewardsHistoryTableViewController.swift */,
+				32857A3024EFAC4D00E35728 /* RewardsHistoryTableNodeCell.swift */,
+				32F7E50C24F3C01E00ACF4EE /* RewardsHistoryPlaceholderNode.swift */,
+				32857A2E24EFABDF00E35728 /* UserRewardModel.swift */,
 				32857A3224F0031B00E35728 /* RewardTimeFormatter.swift */,
-				32F7E50C24F3C01E00ACF4EE /* RewardsPlaceholderNode.swift */,
 				32F7E51424F4034400ACF4EE /* AlertViewController */,
 			);
 			path = RewardsTableController;
@@ -817,7 +820,7 @@
 				32A05EE324B4560F00E755A8 /* ImageManager.swift in Sources */,
 				58A5F28924A5C8FA007561E5 /* Styles.swift in Sources */,
 				32D3DA1824B6F1670013998E /* FindsFeedBoostNode.swift in Sources */,
-				32857A2D24EFAB2900E35728 /* RewardsTableViewController.swift in Sources */,
+				32857A2D24EFAB2900E35728 /* RewardsHistoryTableViewController.swift in Sources */,
 				328C7B4924C5D74C00BF6B37 /* UniqueAliasCellModel.swift in Sources */,
 				328C3A2624CEC0D300A4F38D /* PreferenceEditProfileCellNode.swift in Sources */,
 				328F1C8C24BC56FE0054EC02 /* FindsFeedPlaceholderNode.swift in Sources */,
@@ -854,7 +857,8 @@
 				3289233224A4D1B80050BD8A /* AlertView.swift in Sources */,
 				32863F3724C8426200E05C02 /* ProfilePremiumCellNode+Touches.swift in Sources */,
 				58A5F28E24A5C8FA007561E5 /* Colors+Palette.swift in Sources */,
-				32F7E50D24F3C01E00ACF4EE /* RewardsPlaceholderNode.swift in Sources */,
+				32F7E50D24F3C01E00ACF4EE /* RewardsHistoryPlaceholderNode.swift in Sources */,
+				3239170B24F65773003A23E5 /* ProfileRewardsTableCellNode+Touches.swift in Sources */,
 				328C3A2824CEC2BD00A4F38D /* PreferenceEditProfileCellViewModel.swift in Sources */,
 				3282833E24C6E3E60082A0D9 /* ProfileCellNode+Touches.swift in Sources */,
 				58A5F28D24A5C8FA007561E5 /* Sizes.swift in Sources */,
@@ -872,7 +876,7 @@
 				327629CB24A4BDFA001A0CFF /* SceneDelegate.swift in Sources */,
 				58A5F28C24A5C8FA007561E5 /* Constants.swift in Sources */,
 				32A05EE124B4549200E755A8 /* BaseIconButton.swift in Sources */,
-				32857A3124EFAC4D00E35728 /* RewardsTableNodeCell.swift in Sources */,
+				32857A3124EFAC4D00E35728 /* RewardsHistoryTableNodeCell.swift in Sources */,
 				32D3DA1624B6F0FE0013998E /* Images.swift in Sources */,
 				58A5F29724A5C8FA007561E5 /* Fonts.swift in Sources */,
 				58A5F29524A5C8FA007561E5 /* Theme.swift in Sources */,
@@ -892,7 +896,7 @@
 				58A5F26924A5C80C007561E5 /* BaseTextButton.swift in Sources */,
 				3228BBA124C991B5005AFD51 /* ProfileUniqueAvatarNode.swift in Sources */,
 				58A5F28F24A5C8FA007561E5 /* Colors+Gradients.swift in Sources */,
-				32857A2F24EFABDF00E35728 /* UserRewardsModel.swift in Sources */,
+				32857A2F24EFABDF00E35728 /* UserRewardModel.swift in Sources */,
 				32AFD2DD24AB0E2A002BF920 /* InitialViewController.swift in Sources */,
 				3227E67E24B6EA53006E7763 /* ThemeProtocols.swift in Sources */,
 				3227E68224B6EA94006E7763 /* ThemeManager+Appearance.swift in Sources */,

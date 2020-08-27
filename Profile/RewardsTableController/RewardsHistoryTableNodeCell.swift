@@ -1,5 +1,5 @@
 //
-//  RewardsTableNodeCell.swift
+//  RewardsHistoryTableNodeCell.swift
 //  Alerts
 //
 //  Created by Dima on 21.08.2020.
@@ -7,7 +7,6 @@
 //
 
 import AsyncDisplayKit
-
 
 enum Reward {
     case brainExplosion
@@ -65,18 +64,49 @@ enum Reward {
             return Styles.Images.bravo
         }
     }
+    
+    var rewardCoins: [RewardCoins] {
+        switch self {
+        case .brainExplosion:
+            return [RewardCoins(image: Styles.Images.rewardLikeIcon, count: 40000),
+                    RewardCoins(image: Styles.Images.rewardVoiceIcon, count: 3000),
+                    RewardCoins(image: Styles.Images.rewardLikeIcon, count: 4000),
+                    RewardCoins(image: Styles.Images.rewardVoiceIcon, count: 3000)]
+        default:
+            return [RewardCoins(image: Styles.Images.rewardLikeIcon, count: 40000),
+                    RewardCoins(image: Styles.Images.rewardVoiceIcon, count: 1000)]
+        }
+    }
+}
+ 
+struct RewardCoins {
+    var image: UIImage
+    var count: Int
 }
 
 enum UserEvent: String {
     case post = "Пост"
     case comment = "Комментарий"
     case live = "Прямой эфир"
+    
+    var localizedType: String {
+        switch self {
+        case .post:
+            return "Посту"
+        case .comment:
+            return "Комментарию"
+        case .live:
+            return "Эфиру"
+        }
+    }
 }
 
-final class RewardsTableNodeCell: ASCellNode {
+final class RewardsHistoryTableNodeCell: ASCellNode {
     
     // MARK: - Properties
     
+    var onTapEnded: (() -> Void)?
+
     private let wrapperNode = ASDisplayNode()
     private let userNameTitleNode = ASTextNode()
     private let rewardTitleNode = ASTextNode()
@@ -99,11 +129,11 @@ final class RewardsTableNodeCell: ASCellNode {
         return node
     }()
     
-    private var model: UserRewardsModel
+    private var model: UserRewardModel
     
     // MARK: - Init
     
-    init(model: UserRewardsModel) {
+    init(model: UserRewardModel) {
         self.model = model
         super.init()
         
@@ -212,6 +242,7 @@ final class RewardsTableNodeCell: ASCellNode {
                 .alignment(.left)
                 .lineBreakMode(.byTruncatingTail)
         }
+        
         userNameTitleNode.attributedText = NSAttributedString(string: model.name, attributes: attributes.dictionary)
     }
     
@@ -227,19 +258,18 @@ final class RewardsTableNodeCell: ASCellNode {
             return $0.foreground(color: Styles.Colors.Palette.gray4)
                 .font(Styles.Fonts.Caption3)
                 .alignment(.center)
-                .strokeWidth(5)
         }
         
         let mutableString = NSMutableAttributedString(string: model.event.rawValue, attributes: attributes.dictionary)
         
         mutableString.append(
             NSAttributedString(
-                string: " \u{00B7} ", // " • " - a possible symbol
+                string: " • ", // " \u{00B7} " - a possible symbol
                 attributes: dotSpacerAttributes.dictionary
             )
         )
         
-        let awardReceivingTime = RewardTimeFormatter().convertedDate(with: 1598247712) ?? ""
+        let awardReceivingTime = RewardTimeFormatter().convertedDate(with: model.rewardTimeReceiving) ?? ""
         mutableString.append(
             NSAttributedString(
                 string: awardReceivingTime,
@@ -255,7 +285,7 @@ final class RewardsTableNodeCell: ASCellNode {
             return $0.foreground(color: titleColor)
                 .font(Styles.Fonts.Tagline3)
                 .alignment(.left)
-        }
+            }
         
         rewardTitleNode.attributedText = NSAttributedString(string: model.reward.title, attributes: attributes.dictionary)
     }
@@ -268,7 +298,7 @@ final class RewardsTableNodeCell: ASCellNode {
 
     // MARK: - Themeable
 
-extension RewardsTableNodeCell: Themeable {
+extension RewardsHistoryTableNodeCell: Themeable {
     func updateTheme() {
         switch theme {
         case .light:

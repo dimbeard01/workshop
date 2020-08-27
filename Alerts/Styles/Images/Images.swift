@@ -368,4 +368,9 @@ extension Styles.Images {
 
     static let rewardLightPlaceholder: UIImage = #imageLiteral(resourceName: "rewardLightPlacholder")
     static let rewardDarkPlaceholder: UIImage = #imageLiteral(resourceName: "rewardDarkPlacholder")
+    
+    static let rewardLikeIcon: UIImage = #imageLiteral(resourceName: "like")
+    static let rewardThanksIcon: UIImage = #imageLiteral(resourceName: "thanks")
+    static let rewardVoiceIcon: UIImage = #imageLiteral(resourceName: "voice")
+    static let rewardAnonCoinIcon: UIImage = #imageLiteral(resourceName: "anonCoin")
 }
