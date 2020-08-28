@@ -209,7 +209,7 @@ class InitialViewController: UIViewController {
                              event: .post,
                              rewardTimeReceiving: 1598247712,
                              reward: .epicFail),
-            UserReward(name: "Geniy Filtvoyrot Playbo1116wededwwedwewef66516ywww",
+            UserReward(name: "Geniy Filtvoyrot-TrubaShatal Playboyev",
                              photo: UIImage(named: "photo2")!,
                              event: .post,
                              rewardTimeReceiving: 1598247712,

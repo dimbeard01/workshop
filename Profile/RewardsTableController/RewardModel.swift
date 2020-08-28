@@ -9,25 +9,25 @@
 import UIKit
 
 protocol RewardModel {
-    var name: String { get set }
-    var photo: UIImage { get set }
-    var event: UserEvent { get set }
-    var rewardTimeReceiving: Int { get set }
-    var reward: Reward { get set }
+    var name: String { get }
+    var photo: UIImage { get }
+    var event: UserEvent { get }
+    var rewardTimeReceiving: Int { get }
+    var reward: Reward { get }
 }
 
 struct UserReward: RewardModel {
-    var name: String
-    var photo: UIImage
-    var event: UserEvent
-    var rewardTimeReceiving: Int
-    var reward: Reward
+    let name: String
+    let photo: UIImage
+    let event: UserEvent
+    let rewardTimeReceiving: Int
+    let reward: Reward
 }
 
 struct AnonUserReward: RewardModel {
-    var name: String = "Anonym"
-    var photo: UIImage = UIImage(named: "anonCoin")!.withTintColor(Styles.Colors.Palette.gray4) //change this later!
-    var event: UserEvent
-    var rewardTimeReceiving: Int
-    var reward: Reward
+    let name: String = "Anonym"
+    let photo: UIImage = UIImage(named: "anonCoin")!.withTintColor(Styles.Colors.Palette.gray4) //change this later!
+    let event: UserEvent
+    let rewardTimeReceiving: Int
+    let reward: Reward
 }

@@ -26,7 +26,7 @@ final class RewardAlertViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - LifeCycle
+    // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ final class RewardAlertViewController: UIViewController {
         view.addSubview(userAlert)
     }
     
-    // MARK: - Support
+    // MARK: - Helpers
     
     private func makeButtons() -> ([ButtonType]) {
         switch model {

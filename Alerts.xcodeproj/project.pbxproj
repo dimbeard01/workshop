@@ -406,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				32A05EE624B46F2C00E755A8 /* BaseAlert */,
+				327629DC24A4C9B8001A0CFF /* AlertViewController.swift */,
 				32A05EE524B46F0D00E755A8 /* ShortProfileAlert */,
 				32A05EE424B46EDA00E755A8 /* BoostAlert */,
 				328F1C8D24BC775D0054EC02 /* FeedPlaceholder */,
@@ -532,7 +533,6 @@
 			isa = PBXGroup;
 			children = (
 				3289233124A4D1B80050BD8A /* AlertView.swift */,
-				327629DC24A4C9B8001A0CFF /* AlertViewController.swift */,
 			);
 			path = BaseAlert;
 			sourceTree = "<group>";

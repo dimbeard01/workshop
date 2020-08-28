@@ -78,11 +78,6 @@ enum Reward {
         }
     }
 }
- 
-struct RewardCoins {
-    var image: UIImage
-    var count: Int
-}
 
 enum UserEvent: String {
     case post = "Пост"
@@ -101,12 +96,17 @@ enum UserEvent: String {
     }
 }
 
+struct RewardCoins {
+    let image: UIImage
+    let count: Int
+}
+
 final class RewardsHistoryTableNodeCell: ASCellNode {
     
     // MARK: - Properties
     
     var onTapEnded: (() -> Void)?
-
+    
     private let wrapperNode = ASDisplayNode()
     private let userNameTitleNode = ASTextNode()
     private let rewardTitleNode = ASTextNode()
@@ -140,7 +140,7 @@ final class RewardsHistoryTableNodeCell: ASCellNode {
         updateUserNameTitle()
         updateUserDescriprionTitle()
         updateRewardTitle()
-        updateImage()
+        updateImages()
         
         ThemeManager.add(self)
     }
@@ -263,7 +263,7 @@ final class RewardsHistoryTableNodeCell: ASCellNode {
         
         mutableString.append(
             NSAttributedString(
-                string: " • ", // " \u{00B7} " - a possible symbol
+                string: " \u{2022} ",
                 attributes: dotSpacerAttributes.dictionary
             )
         )
@@ -284,12 +284,12 @@ final class RewardsHistoryTableNodeCell: ASCellNode {
             return $0.foreground(color: titleColor)
                 .font(Styles.Fonts.Tagline3)
                 .alignment(.left)
-            }
+        }
         
         rewardTitleNode.attributedText = NSAttributedString(string: model.reward.title, attributes: attributes.dictionary)
     }
     
-    private func updateImage() {
+    private func updateImages() {
         userPhotoNode.image = model.photo
         rewardImageNode.image = model.reward.image
     }

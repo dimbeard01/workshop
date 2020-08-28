@@ -11,7 +11,7 @@ import UIKit
 final class RewardAlertView: UIView {
     
     // MARK: - Properties
-
+    
     private let rewardImageView = UIImageView()
     private let titelLabel = UILabel()
     private let userNameLabel = UILabel()
@@ -73,7 +73,7 @@ final class RewardAlertView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-        
+    
     //MARK: - Layout
     
     private func setupStackButtons() {
@@ -95,8 +95,8 @@ final class RewardAlertView: UIView {
             
             let coinIconImage = UIImageView()
             coinIconImage.image = updateCoinImage(image: coin.image)
-            coinIconImage.height(16)
-            coinIconImage.width(16)
+            coinIconImage.height(Styles.Sizes.iconSmall)
+            coinIconImage.width(Styles.Sizes.iconSmall)
             
             rewardCoinsHStackView.addArrangedSubview(coinsLabel)
             rewardCoinsHStackView.addArrangedSubview(coinIconImage)
@@ -160,18 +160,18 @@ final class RewardAlertView: UIView {
         
         userInfoHContainerView.addSubview(userPhotoImageView)
         userInfoHContainerView.addSubview(userInfoVContainerView)
-
+        
         let sizeUserPhoto: CGFloat = 40
         userPhotoImageView.width(sizeUserPhoto)
         userPhotoImageView.height(sizeUserPhoto)
         userPhotoImageView.topToSuperview()
         userPhotoImageView.leftToSuperview()
         userPhotoImageView.bottomToSuperview()
-            
+        
         userInfoVContainerView.leftToRight(of: userPhotoImageView, offset: Styles.Sizes.HPaddingMedium)
         userInfoVContainerView.rightToSuperview()
         userInfoVContainerView.centerYToSuperview()
-       
+        
         containerView.addSubview(buttonStackView)
         
         buttonStackView.topToBottom(of: userInfoHContainerView, offset: 15)
@@ -183,18 +183,18 @@ final class RewardAlertView: UIView {
     //MARK: - Helpers
     
     private func makeStackButton(_ type: ButtonType) -> BaseTextButton {
-           switch type {
-           case .base(let title, let action):
-               let button = BaseTextButton()
-                   .setTitle(title: title)
-                   .setTextColor(color: buttonTextColor)
-                   .setButtonColor(color: buttonColor)
-                   .setTitleFont(font: Styles.Fonts.Tagline1)
-               button.action = action
-               return button
-           default: return BaseTextButton()
-           }
-       }
+        switch type {
+        case .base(let title, let action):
+            let button = BaseTextButton()
+                .setTitle(title: title)
+                .setTextColor(color: buttonTextColor)
+                .setButtonColor(color: buttonColor)
+                .setTitleFont(font: Styles.Fonts.Tagline1)
+            button.action = action
+            return button
+        default: return BaseTextButton()
+        }
+    }
     
     private func updateTitle() {
         let attributes = Attributes {
@@ -217,10 +217,6 @@ final class RewardAlertView: UIView {
         return NSAttributedString(string: text, attributes: attributes.dictionary)
     }
     
-    private func updateCoinImage(image: UIImage) -> UIImage {
-        return image.withTintColor(Styles.Colors.Palette.gray4, renderingMode: .automatic)
-    }
-    
     private func updateUserNameTitle() {
         let attributes = Attributes {
             return $0.foreground(color: titleColor)
@@ -240,6 +236,12 @@ final class RewardAlertView: UIView {
                 .lineBreakMode(.byTruncatingTail)
         }
         
+        let dotSpacerAttributes = Attributes {
+            return $0.foreground(color: Styles.Colors.Palette.gray4)
+                .font(Styles.Fonts.Caption3)
+                .alignment(.center)
+        }
+        
         let rewardReceivingAttributes = Attributes {
             return $0.foreground(color: descriptionTitleColor)
                 .font(Styles.Fonts.Caption3)
@@ -249,10 +251,17 @@ final class RewardAlertView: UIView {
         
         let mutableString = NSMutableAttributedString(string: model.event.rawValue, attributes: attributes.dictionary)
         
+        mutableString.append(
+            NSAttributedString(
+                string: " \u{2022} ",
+                attributes: dotSpacerAttributes.dictionary
+            )
+        )
+        
         let rewardReceivingTime = RewardTimeFormatter().convertedDate(with: model.rewardTimeReceiving) ?? ""
         mutableString.append(
             NSAttributedString(
-                string: " • \(rewardReceivingTime)",
+                string: "\(rewardReceivingTime)",
                 attributes: rewardReceivingAttributes.dictionary
             )
         )
@@ -267,9 +276,13 @@ final class RewardAlertView: UIView {
     private func updateUserPhotoImage() {
         userPhotoImageView.image = model.photo
     }
+    
+    private func updateCoinImage(image: UIImage) -> UIImage {
+        return image.withTintColor(Styles.Colors.Palette.gray4, renderingMode: .automatic)
+    }
 }
 
-// MARK: - Themeable
+    // MARK: - Themeable
 
 extension RewardAlertView: Themeable {
     func updateTheme() {

@@ -11,12 +11,12 @@ import AsyncDisplayKit
 final class RewardsHistoryTableViewController: ASViewController<ASTableNode> {
     
     // MARK: - Properties
-
+    
     private let tableNode: ASTableNode = ASTableNode()
     private let model: [RewardModel]?
     
     // MARK: - Init
-   
+    
     init(model: [RewardModel]){
         self.model = model
         
@@ -43,7 +43,6 @@ final class RewardsHistoryTableViewController: ASViewController<ASTableNode> {
     // MARK: - Table Data Source
 
 extension RewardsHistoryTableViewController: ASTableDataSource {
-    
     func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
         return model?.count ?? 0
     }
@@ -58,6 +57,7 @@ extension RewardsHistoryTableViewController: ASTableDataSource {
                 let alert = RewardAlertViewController(model: model)
                 alert.modalPresentationStyle = .overFullScreen
                 alert.modalTransitionStyle = .crossDissolve
+                
                 self?.present(alert, animated: true, completion: nil)
             }
             

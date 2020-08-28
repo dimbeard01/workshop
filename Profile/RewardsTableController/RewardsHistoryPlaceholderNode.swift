@@ -11,11 +11,11 @@ import AsyncDisplayKit
 final class RewardsHistoryPlaceholderNode: ASDisplayNode {
     
     // MARK: - Properties
-
+    
     private let placeholderImageNode: ASImageNode = {
         let node = ASImageNode()
-        node.style.preferredSize = CGSize(width: 160,
-                                          height: 160)
+        node.style.preferredSize = CGSize(width: Styles.Sizes.placeholderIconBase,
+                                          height: Styles.Sizes.placeholderIconBase)
         node.contentMode = .scaleAspectFill
         return node
     }()
@@ -24,7 +24,7 @@ final class RewardsHistoryPlaceholderNode: ASDisplayNode {
     private let placholderDescriptionNode = ASTextNode()
     
     // MARK: - Init
-
+    
     override init() {
         super.init()
         
@@ -37,7 +37,7 @@ final class RewardsHistoryPlaceholderNode: ASDisplayNode {
     }
     
     // MARK: - Layout
-
+    
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         func makeHStackInsetSpec() -> ASStackLayoutSpec {
             var children = [ASLayoutElement]()
@@ -75,6 +75,8 @@ final class RewardsHistoryPlaceholderNode: ASDisplayNode {
         return makeMainCenterLayoutSpec()
     }
     
+    // MARK: - Helpers
+    
     private func updateTitle() {
         let attributes = Attributes {
             return $0.foreground(color: titleColor)
@@ -102,9 +104,9 @@ extension RewardsHistoryPlaceholderNode: Themeable {
     func updateTheme() {
         switch theme {
         case .light:
-            backgroundColor = Styles.Colors.Palette.white0
+            backgroundColor = Styles.Colors.Palette.white
         case .dark:
-            backgroundColor = Styles.Colors.Palette.gray2
+            backgroundColor = Styles.Colors.Palette.bgDark
         }
     }
     
