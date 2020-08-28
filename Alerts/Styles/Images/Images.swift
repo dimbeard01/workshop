@@ -373,4 +373,12 @@ extension Styles.Images {
     static let rewardThanksIcon: UIImage = #imageLiteral(resourceName: "thanks")
     static let rewardVoiceIcon: UIImage = #imageLiteral(resourceName: "voice")
     static let rewardAnonCoinIcon: UIImage = #imageLiteral(resourceName: "anonCoin")
+    
+    //ProfileSubscriptions
+    static let premiumSubscriptionIcon: UIImage = #imageLiteral(resourceName: "premiumSubscription")
+    static let findsPlusSubscriptionIcon: UIImage = #imageLiteral(resourceName: "findsPlusSubscription")
+    static let uniqueAliasSubscriptionIcon: UIImage = #imageLiteral(resourceName: "uniqueAliasSubscription")
+    
+    static let subscriptionDetailedIcon: UIImage = #imageLiteral(resourceName: "subscriptionDetailedIcon")
+
 }

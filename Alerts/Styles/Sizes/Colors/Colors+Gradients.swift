@@ -33,6 +33,14 @@ extension Styles.Colors {
         
         static let eighthLevelColors = [UIColor(red: 0.047, green: 0.078, blue: 0.118, alpha: 1),
                                         UIColor(red: 0.298, green: 0.341, blue: 0.451, alpha: 1)]
+        //ProfileThanksLevel
+        static let premiumColors = [UIColor(red: 0.976, green: 0.831, blue: 0.137, alpha: 1),
+                                    UIColor(red: 0.973, green: 0.212, blue: 0, alpha: 1)]
         
+        static let findsPlusColors = [UIColor(red: 0.071, green: 0.796, blue: 0.769, alpha: 1),
+                                      UIColor(red: 0.067, green: 0.75, blue: 0.586, alpha: 1)]
+        
+        static let uniqueAliasColors = [UIColor(red: 0.439, green: 0.631, blue: 1, alpha: 1),
+                                        UIColor(red: 0.263, green: 0.461, blue: 0.842, alpha: 1)]
     }
 }

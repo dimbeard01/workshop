@@ -222,7 +222,17 @@ class InitialViewController: UIViewController {
         let rewardsTN = RewardsHistoryTableViewController(model: users)
         rewardsTN.modalPresentationStyle = .overFullScreen
         rewardsTN.modalTransitionStyle = .crossDissolve
-
-        present(rewardsTN, animated: true, completion: nil)
+        
+        
+        //Profile Subscriptions tabeView Controller
+        let subscritions = [Subscriptions.premium(isActive: false),
+                            Subscriptions.findsPlus(isActive: false),
+                            Subscriptions.uniqueAlias(isActive: true)]
+        
+        let subscriptionsTN = SubscriptionsTableViewController(model: subscritions)
+        subscriptionsTN.modalPresentationStyle = .overFullScreen
+        subscriptionsTN.modalTransitionStyle = .crossDissolve
+        
+        present(subscriptionsTN, animated: true, completion: nil)
     }
 }
