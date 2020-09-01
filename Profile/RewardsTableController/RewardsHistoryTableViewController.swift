@@ -19,7 +19,6 @@ final class RewardsHistoryTableViewController: ASViewController<ASTableNode> {
     
     init(model: [RewardModel]){
         self.model = model
-        
         super.init(node: tableNode)
     }
     

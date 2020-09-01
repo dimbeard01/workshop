@@ -233,6 +233,13 @@ class InitialViewController: UIViewController {
         subscriptionsTN.modalPresentationStyle = .overFullScreen
         subscriptionsTN.modalTransitionStyle = .crossDissolve
         
-        present(subscriptionsTN, animated: true, completion: nil)
+        //Profile Wallet collectionView Controller
+        let anonCoinsModel: [AnonCoins] = AnonCoins.allValues
+        
+        let walletCV = WalletCollectionViewController(model: anonCoinsModel)
+        subscriptionsTN.modalPresentationStyle = .overFullScreen
+        subscriptionsTN.modalTransitionStyle = .crossDissolve
+        
+        present(walletCV, animated: true, completion: nil)
     }
 }

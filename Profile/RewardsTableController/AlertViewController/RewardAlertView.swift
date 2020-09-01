@@ -54,7 +54,6 @@ final class RewardAlertView: UIView {
     init(model: RewardModel, buttons: [ButtonType]) {
         self.model = model
         self.buttonTypes = buttons
-        
         super.init(frame: UIScreen.main.bounds)
         
         updateRewardImage()

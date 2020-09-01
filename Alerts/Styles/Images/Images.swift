@@ -381,4 +381,19 @@ extension Styles.Images {
     
     static let subscriptionDetailedIcon: UIImage = #imageLiteral(resourceName: "subscriptionDetailedIcon")
 
+    //ProfileWallet
+    static let priceImage_1: UIImage = #imageLiteral(resourceName: "price1")
+    static let priceImage_2: UIImage = #imageLiteral(resourceName: "price2")
+    static let priceImage_3: UIImage = #imageLiteral(resourceName: "price3")
+    static let priceImage_4: UIImage = #imageLiteral(resourceName: "price4")
+    static let priceImage_5: UIImage = #imageLiteral(resourceName: "price5")
+    static let priceImage_6: UIImage = #imageLiteral(resourceName: "price6")
+    
+    static let walletCellBacklightDark: UIImage = #imageLiteral(resourceName: "backlightBlack")
+    static let walletCellBacklightLight: UIImage = #imageLiteral(resourceName: "backlightWhite")
+    static let anonCoinImage: UIImage = #imageLiteral(resourceName: "anonCoinImage")
+    
+    static let walletBackgroundDark: UIImage = #imageLiteral(resourceName: "walletBackgroundBlack")
+    static let walletBackgroundLight: UIImage = #imageLiteral(resourceName: "walletBackgroundWhite")
 }
+

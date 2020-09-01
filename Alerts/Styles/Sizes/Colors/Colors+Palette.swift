@@ -35,7 +35,7 @@ extension Styles.Colors {
         // Gray
         static let gray1: UIColor = #colorLiteral(red: 0.106, green: 0.125, blue: 0.169, alpha: 1)
         static let gray2: UIColor = #colorLiteral(red: 0.161, green: 0.192, blue: 0.263, alpha: 1)
-        static let gray3: UIColor = #colorLiteral(red: 0.173, green: 0.282, blue: 0.373, alpha: 1)
+        static let gray3: UIColor = #colorLiteral(red: 0.2352941176, green: 0.2941176471, blue: 0.3803921569, alpha: 1)
         static let gray4: UIColor = #colorLiteral(red: 0.369, green: 0.463, blue: 0.592, alpha: 1)
         static let gray5: UIColor = #colorLiteral(red: 0.62, green: 0.675, blue: 0.761, alpha: 1)
         static let gray6: UIColor = #colorLiteral(red: 0.812, green: 0.835, blue: 0.878, alpha: 1)

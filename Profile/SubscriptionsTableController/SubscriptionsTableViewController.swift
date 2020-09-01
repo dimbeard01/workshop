@@ -80,7 +80,6 @@ final class SubscriptionsTableViewController: ASViewController<ASTableNode> {
     
     init(model: [Subscriptions]){
         self.model = model
-        
         super.init(node: tableNode)
         
         ThemeManager.add(self)
