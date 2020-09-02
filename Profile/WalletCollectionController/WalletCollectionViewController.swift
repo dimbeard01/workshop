@@ -106,6 +106,13 @@ extension WalletCollectionViewController: ASCollectionDataSource {
         case 1:
             let cellNodeBlock = { () -> ASCellNode in
                 let cellNode = WalletCellNode(model: coinsModel)
+                
+                cellNode.onTapEnded = { [weak self] in
+                    let alertVC = WalletAlertViewController(model: coinsModel.amount)
+                    alertVC.modalPresentationStyle = .overFullScreen
+                    alertVC.modalTransitionStyle = .crossDissolve
+                    self?.present(alertVC, animated: true, completion: nil)
+                }
                 return cellNode
             }
             

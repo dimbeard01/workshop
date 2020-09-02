@@ -40,7 +40,7 @@ final class MainEditProfileTableViewController: ASViewController<ASTableNode> {
     }
 }
 
-// MARK: - Table data source
+    // MARK: - Table data source
 extension MainEditProfileTableViewController: ASTableDataSource {
     func numberOfSections(in tableNode: ASTableNode) -> Int {
         return 2

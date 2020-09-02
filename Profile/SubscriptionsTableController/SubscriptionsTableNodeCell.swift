@@ -33,6 +33,7 @@ final class SubscriptionsTableNodeCell: ASCellNode {
                 .setImage(image: Styles.Images.subscriptionDetailedIcon)
                 .setIconColor(color: self.model.colors.first!)
             button.action = self.onDetailed
+            
             return button
         }
         
@@ -58,7 +59,7 @@ final class SubscriptionsTableNodeCell: ASCellNode {
         return boxNode
     }()
     
-    private var model: Subscriptions
+    private let model: Subscriptions
     
     // MARK: - Init
     init(model: Subscriptions) {
@@ -173,8 +174,7 @@ final class SubscriptionsTableNodeCell: ASCellNode {
             top: Styles.Sizes.VPaddingBase / 2,
             left: Styles.Sizes.HPaddingMedium,
             bottom: Styles.Sizes.VPaddingBase / 2,
-            right: Styles.Sizes.HPaddingMedium
-        )
+            right: Styles.Sizes.HPaddingMedium)
         
         return ASInsetLayoutSpec(insets: insets, child: mainBackgroundLayoutSpec())
     }

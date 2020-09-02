@@ -237,9 +237,9 @@ class InitialViewController: UIViewController {
         let anonCoinsModel: [AnonCoins] = AnonCoins.allValues
         
         let walletCV = WalletCollectionViewController(model: anonCoinsModel)
-        subscriptionsTN.modalPresentationStyle = .overFullScreen
-        subscriptionsTN.modalTransitionStyle = .crossDissolve
+        walletCV.modalPresentationStyle = .overFullScreen
+        walletCV.modalTransitionStyle = .crossDissolve
         
-        present(rewardsTN, animated: true, completion: nil)
+        present(walletCV, animated: true, completion: nil)
     }
 }

@@ -395,5 +395,10 @@ extension Styles.Images {
     
     static let walletBackgroundDark: UIImage = #imageLiteral(resourceName: "walletBackgroundBlack")
     static let walletBackgroundLight: UIImage = #imageLiteral(resourceName: "walletBackgroundWhite")
+
+    static let walletSuccessPaymentImage: UIImage = #imageLiteral(resourceName: "successPaymentImage")
+    static let walletPaymentCoinImage: UIImage = #imageLiteral(resourceName: "paymentCoinImage")
+
+
 }
 

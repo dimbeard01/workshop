@@ -30,6 +30,7 @@ final class PreferenceEditProfileCellNode: ASCellNode {
             let button = BaseIconButton()
                 .setImage(image: Styles.Images.detailIcon)
             button.action = self.onDetailed
+            
             return button
         }
         
@@ -90,8 +91,8 @@ final class PreferenceEditProfileCellNode: ASCellNode {
                 top: Styles.Sizes.VPaddingMedium,
                 left: Styles.Sizes.HPaddingBase,
                 bottom: Styles.Sizes.VPaddingMedium,
-                right: Styles.Sizes.HPaddingBase
-            )
+                right: Styles.Sizes.HPaddingBase)
+            
             return ASInsetLayoutSpec(insets: insets, child: hStack)
         }
         
@@ -103,8 +104,8 @@ final class PreferenceEditProfileCellNode: ASCellNode {
             top: Styles.Sizes.VPaddingSmall,
             left: Styles.Sizes.HPaddingMedium,
             bottom: Styles.Sizes.VPaddingSmall,
-            right: Styles.Sizes.HPaddingMedium
-        )
+            right: Styles.Sizes.HPaddingMedium)
+        
         return ASInsetLayoutSpec(insets: insets, child: makeBackgroundInsetSpec())
     }
     

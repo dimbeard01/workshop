@@ -98,19 +98,19 @@ final class WalletCellNode: ASCellNode {
             let mainWrapperInsetSpec = ASInsetLayoutSpec(
                 insets: .init(
                     top: anonCoinsImageNode.style.height.value / 2,
-                    left: 0,
-                    bottom: 0,
-                    right: 0),
+                    left: .zero,
+                    bottom: .zero,
+                    right: .zero),
                 child: makeBacklightBackgroundLayoutSpec())
             
             let mainVStackInsetSpec = ASInsetLayoutSpec(
                 insets: .init(
-                    top: 0,
+                    top: .zero,
                     left: Styles.Sizes.HPaddingMedium,
                     bottom: Styles.Sizes.VPaddingMedium,
                     right: Styles.Sizes.HPaddingMedium),
                 child: makeMainVStackInsetSpec())
-            
+
             return ASBackgroundLayoutSpec(child: mainVStackInsetSpec, background: mainWrapperInsetSpec)
         }
         

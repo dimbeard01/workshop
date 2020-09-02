@@ -41,6 +41,9 @@
 		3282833E24C6E3E60082A0D9 /* ProfileCellNode+Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3282833D24C6E3E60082A0D9 /* ProfileCellNode+Touches.swift */; };
 		32828F6824F900B9007FD16E /* SubscriptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32828F6724F900B9007FD16E /* SubscriptionsTableViewController.swift */; };
 		32828F6A24F90423007FD16E /* SubscriptionsTableNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32828F6924F90423007FD16E /* SubscriptionsTableNodeCell.swift */; };
+		3283181224FF81F400918CE6 /* WalletAlertNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3283181124FF81F400918CE6 /* WalletAlertNode.swift */; };
+		3283181424FF872200918CE6 /* WalletAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3283181324FF872200918CE6 /* WalletAlertViewController.swift */; };
+		3283181624FFBBA300918CE6 /* WalletErrorAlertNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3283181524FFBBA300918CE6 /* WalletErrorAlertNode.swift */; };
 		328536CD24D2BE96001F8F7B /* ProfileUniqueAliasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328536CC24D2BE96001F8F7B /* ProfileUniqueAliasViewController.swift */; };
 		328536CF24D2C93F001F8F7B /* UniqueAliasUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328536CE24D2C93F001F8F7B /* UniqueAliasUserModel.swift */; };
 		328536D124D2CB08001F8F7B /* ProfileUniqueAliasUserInfoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328536D024D2CB08001F8F7B /* ProfileUniqueAliasUserInfoNode.swift */; };
@@ -196,6 +199,9 @@
 		3282833D24C6E3E60082A0D9 /* ProfileCellNode+Touches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCellNode+Touches.swift"; sourceTree = "<group>"; };
 		32828F6724F900B9007FD16E /* SubscriptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsTableViewController.swift; sourceTree = "<group>"; };
 		32828F6924F90423007FD16E /* SubscriptionsTableNodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsTableNodeCell.swift; sourceTree = "<group>"; };
+		3283181124FF81F400918CE6 /* WalletAlertNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAlertNode.swift; sourceTree = "<group>"; };
+		3283181324FF872200918CE6 /* WalletAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAlertViewController.swift; sourceTree = "<group>"; };
+		3283181524FFBBA300918CE6 /* WalletErrorAlertNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletErrorAlertNode.swift; sourceTree = "<group>"; };
 		328536CC24D2BE96001F8F7B /* ProfileUniqueAliasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUniqueAliasViewController.swift; sourceTree = "<group>"; };
 		328536CE24D2C93F001F8F7B /* UniqueAliasUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueAliasUserModel.swift; sourceTree = "<group>"; };
 		328536D024D2CB08001F8F7B /* ProfileUniqueAliasUserInfoNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUniqueAliasUserInfoNode.swift; sourceTree = "<group>"; };
@@ -391,6 +397,7 @@
 		3228BB9F24C9916E005AFD51 /* UniqueAvatar */ = {
 			isa = PBXGroup;
 			children = (
+				327629CA24A4BDFA001A0CFF /* SceneDelegate.swift */,
 				3228BBA024C991B5005AFD51 /* ProfileUniqueAvatarNode.swift */,
 				3228BBA624C996F9005AFD51 /* ProfileUniqueAvatarController.swift */,
 				32BE6DDE24EEA738009E49A9 /* ProfileUniqueAvatarColorsNode.swift */,
@@ -403,7 +410,6 @@
 			isa = PBXGroup;
 			children = (
 				327629C824A4BDFA001A0CFF /* AppDelegate.swift */,
-				327629CA24A4BDFA001A0CFF /* SceneDelegate.swift */,
 				32AFD2DC24AB0E2A002BF920 /* InitialViewController.swift */,
 				328C7B4524C5CC0700BF6B37 /* Profile */,
 				327629C724A4BDFA001A0CFF /* Alerts */,
@@ -469,6 +475,16 @@
 				32828F6924F90423007FD16E /* SubscriptionsTableNodeCell.swift */,
 			);
 			path = SubscriptionsTableController;
+			sourceTree = "<group>";
+		};
+		3283180824FF817A00918CE6 /* WalletAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				3283181124FF81F400918CE6 /* WalletAlertNode.swift */,
+				3283181524FFBBA300918CE6 /* WalletErrorAlertNode.swift */,
+				3283181324FF872200918CE6 /* WalletAlertViewController.swift */,
+			);
+			path = WalletAlertController;
 			sourceTree = "<group>";
 		};
 		32857A2524EFAADB00E35728 /* RewardsTableController */ = {
@@ -589,6 +605,7 @@
 				328052EB24FE3B8F000A040D /* UserInfoWalletCellNode.swift */,
 				328052E324FE390A000A040D /* WalletHeaderCellNode.swift */,
 				328052ED24FE4C93000A040D /* WalletFooterCellNode.swift */,
+				3283180824FF817A00918CE6 /* WalletAlertController */,
 			);
 			path = WalletCollectionController;
 			sourceTree = "<group>";
@@ -870,6 +887,7 @@
 				32A05EE324B4560F00E755A8 /* ImageManager.swift in Sources */,
 				58A5F28924A5C8FA007561E5 /* Styles.swift in Sources */,
 				32D3DA1824B6F1670013998E /* FindsFeedBoostNode.swift in Sources */,
+				3283181224FF81F400918CE6 /* WalletAlertNode.swift in Sources */,
 				32857A2D24EFAB2900E35728 /* RewardsHistoryTableViewController.swift in Sources */,
 				328C7B4924C5D74C00BF6B37 /* UniqueAliasCellModel.swift in Sources */,
 				328C3A2624CEC0D300A4F38D /* PreferenceEditProfileCellNode.swift in Sources */,
@@ -892,6 +910,7 @@
 				328052EE24FE4C93000A040D /* WalletFooterCellNode.swift in Sources */,
 				322E774324C09F4A0027000F /* LastSeenDateFormatter.swift in Sources */,
 				3251846424E65D7800200031 /* ThanksLevelHeaderCollectionCellNode.swift in Sources */,
+				3283181624FFBBA300918CE6 /* WalletErrorAlertNode.swift in Sources */,
 				58A5F29824A5C8FA007561E5 /* Font.swift in Sources */,
 				3214803F24A5CEFA005DAECA /* UIView+ScaleDown.swift in Sources */,
 				328C3A2424CEBF5A00A4F38D /* MainEditProfileTableViewController.swift in Sources */,
@@ -919,6 +938,7 @@
 				322E774124C04A960027000F /* BlurTest.swift in Sources */,
 				3235521224A73ACB00D97F0D /* UIView+AddGradient.swift in Sources */,
 				58A5F29324A5C8FA007561E5 /* ThemeStyle.swift in Sources */,
+				3283181424FF872200918CE6 /* WalletAlertViewController.swift in Sources */,
 				32F7E51124F4030000ACF4EE /* RewardAlertViewController.swift in Sources */,
 				32AFD2DF24AB52CC002BF920 /* ShortProfileAlertViewController.swift in Sources */,
 				32A05EDD24B453BF00E755A8 /* BorderView.swift in Sources */,

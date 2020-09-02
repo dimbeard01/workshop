@@ -27,6 +27,7 @@ final class WalletHeaderCellNode: ASCellNode {
         func makeCenterLayoutSpec() -> ASCenterLayoutSpec {
             return ASCenterLayoutSpec(centeringOptions: .X, sizingOptions: [], child: titleNode)
         }
+        
         return makeCenterLayoutSpec()
     }
     
