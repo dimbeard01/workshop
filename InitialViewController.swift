@@ -240,6 +240,12 @@ class InitialViewController: UIViewController {
         walletCV.modalPresentationStyle = .overFullScreen
         walletCV.modalTransitionStyle = .crossDissolve
         
-        present(walletCV, animated: true, completion: nil)
+        //Profile Voices Wallet collectionView Controller
+        
+        let voicesWalletCV = VoicesCoinViewController()
+        voicesWalletCV.modalPresentationStyle = .overFullScreen
+        voicesWalletCV.modalTransitionStyle = .crossDissolve
+        
+        present(voicesWalletCV, animated: true, completion: nil)
     }
 }

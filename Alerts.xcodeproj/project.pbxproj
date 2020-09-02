@@ -44,6 +44,9 @@
 		3283181224FF81F400918CE6 /* WalletAlertNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3283181124FF81F400918CE6 /* WalletAlertNode.swift */; };
 		3283181424FF872200918CE6 /* WalletAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3283181324FF872200918CE6 /* WalletAlertViewController.swift */; };
 		3283181624FFBBA300918CE6 /* WalletErrorAlertNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3283181524FFBBA300918CE6 /* WalletErrorAlertNode.swift */; };
+		3283181A24FFC93C00918CE6 /* VoicesCoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3283181924FFC93C00918CE6 /* VoicesCoinViewController.swift */; };
+		3283181E24FFCBB400918CE6 /* VoicesUserInfoCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3283181D24FFCBB400918CE6 /* VoicesUserInfoCellNode.swift */; };
+		3283182024FFCD4400918CE6 /* VoicesWalletCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3283181F24FFCD4400918CE6 /* VoicesWalletCellNode.swift */; };
 		328536CD24D2BE96001F8F7B /* ProfileUniqueAliasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328536CC24D2BE96001F8F7B /* ProfileUniqueAliasViewController.swift */; };
 		328536CF24D2C93F001F8F7B /* UniqueAliasUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328536CE24D2C93F001F8F7B /* UniqueAliasUserModel.swift */; };
 		328536D124D2CB08001F8F7B /* ProfileUniqueAliasUserInfoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328536D024D2CB08001F8F7B /* ProfileUniqueAliasUserInfoNode.swift */; };
@@ -202,6 +205,9 @@
 		3283181124FF81F400918CE6 /* WalletAlertNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAlertNode.swift; sourceTree = "<group>"; };
 		3283181324FF872200918CE6 /* WalletAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAlertViewController.swift; sourceTree = "<group>"; };
 		3283181524FFBBA300918CE6 /* WalletErrorAlertNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletErrorAlertNode.swift; sourceTree = "<group>"; };
+		3283181924FFC93C00918CE6 /* VoicesCoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicesCoinViewController.swift; sourceTree = "<group>"; };
+		3283181D24FFCBB400918CE6 /* VoicesUserInfoCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicesUserInfoCellNode.swift; sourceTree = "<group>"; };
+		3283181F24FFCD4400918CE6 /* VoicesWalletCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicesWalletCellNode.swift; sourceTree = "<group>"; };
 		328536CC24D2BE96001F8F7B /* ProfileUniqueAliasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUniqueAliasViewController.swift; sourceTree = "<group>"; };
 		328536CE24D2C93F001F8F7B /* UniqueAliasUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueAliasUserModel.swift; sourceTree = "<group>"; };
 		328536D024D2CB08001F8F7B /* ProfileUniqueAliasUserInfoNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUniqueAliasUserInfoNode.swift; sourceTree = "<group>"; };
@@ -487,6 +493,30 @@
 			path = WalletAlertController;
 			sourceTree = "<group>";
 		};
+		3283181724FFC86C00918CE6 /* AnonCoinController */ = {
+			isa = PBXGroup;
+			children = (
+				32CA002124FD063400D2E001 /* AnonCoins.swift */,
+				32CA002324FD0A3D00D2E001 /* WalletCollectionViewController.swift */,
+				32CA002524FD0CF900D2E001 /* WalletCellNode.swift */,
+				328052EB24FE3B8F000A040D /* UserInfoWalletCellNode.swift */,
+				328052E324FE390A000A040D /* WalletHeaderCellNode.swift */,
+				328052ED24FE4C93000A040D /* WalletFooterCellNode.swift */,
+				3283180824FF817A00918CE6 /* WalletAlertController */,
+			);
+			path = AnonCoinController;
+			sourceTree = "<group>";
+		};
+		3283181824FFC89700918CE6 /* VoicesCoinController */ = {
+			isa = PBXGroup;
+			children = (
+				3283181924FFC93C00918CE6 /* VoicesCoinViewController.swift */,
+				3283181F24FFCD4400918CE6 /* VoicesWalletCellNode.swift */,
+				3283181D24FFCBB400918CE6 /* VoicesUserInfoCellNode.swift */,
+			);
+			path = VoicesCoinController;
+			sourceTree = "<group>";
+		};
 		32857A2524EFAADB00E35728 /* RewardsTableController */ = {
 			isa = PBXGroup;
 			children = (
@@ -599,13 +629,8 @@
 		32CA001A24FD04D600D2E001 /* WalletCollectionController */ = {
 			isa = PBXGroup;
 			children = (
-				32CA002124FD063400D2E001 /* AnonCoins.swift */,
-				32CA002324FD0A3D00D2E001 /* WalletCollectionViewController.swift */,
-				32CA002524FD0CF900D2E001 /* WalletCellNode.swift */,
-				328052EB24FE3B8F000A040D /* UserInfoWalletCellNode.swift */,
-				328052E324FE390A000A040D /* WalletHeaderCellNode.swift */,
-				328052ED24FE4C93000A040D /* WalletFooterCellNode.swift */,
-				3283180824FF817A00918CE6 /* WalletAlertController */,
+				3283181824FFC89700918CE6 /* VoicesCoinController */,
+				3283181724FFC86C00918CE6 /* AnonCoinController */,
 			);
 			path = WalletCollectionController;
 			sourceTree = "<group>";
@@ -881,13 +906,16 @@
 				32BE6DDF24EEA738009E49A9 /* ProfileUniqueAvatarColorsNode.swift in Sources */,
 				32863F3924C849B700E05C02 /* ProfileUniqueAliasHeaderCellNode.swift in Sources */,
 				32A05EDF24B4545600E755A8 /* BaseIconButtonProtocol.swift in Sources */,
+				3283181E24FFCBB400918CE6 /* VoicesUserInfoCellNode.swift in Sources */,
 				32CBAF9C24B31814003395C1 /* BoostViewController.swift in Sources */,
 				32CA002424FD0A3D00D2E001 /* WalletCollectionViewController.swift in Sources */,
 				328536D124D2CB08001F8F7B /* ProfileUniqueAliasUserInfoNode.swift in Sources */,
 				32A05EE324B4560F00E755A8 /* ImageManager.swift in Sources */,
 				58A5F28924A5C8FA007561E5 /* Styles.swift in Sources */,
+				3283182024FFCD4400918CE6 /* VoicesWalletCellNode.swift in Sources */,
 				32D3DA1824B6F1670013998E /* FindsFeedBoostNode.swift in Sources */,
 				3283181224FF81F400918CE6 /* WalletAlertNode.swift in Sources */,
+				3283181A24FFC93C00918CE6 /* VoicesCoinViewController.swift in Sources */,
 				32857A2D24EFAB2900E35728 /* RewardsHistoryTableViewController.swift in Sources */,
 				328C7B4924C5D74C00BF6B37 /* UniqueAliasCellModel.swift in Sources */,
 				328C3A2624CEC0D300A4F38D /* PreferenceEditProfileCellNode.swift in Sources */,
