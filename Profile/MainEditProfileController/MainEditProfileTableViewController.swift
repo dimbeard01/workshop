@@ -9,9 +9,7 @@
 import AsyncDisplayKit
 
 final class MainEditProfileTableViewController: ASViewController<ASTableNode> {
-    
     // MARK: - Properties
-    
     var onCancelAction: (() -> Void)?
     var onDetailedAction: (() -> Void)?
     
@@ -19,7 +17,6 @@ final class MainEditProfileTableViewController: ASViewController<ASTableNode> {
     let model: Listeners!
     
     // MARK: - Init
-
     init(model: Listeners){
         let tableNode = ASTableNode()
         self.tableNode = tableNode
@@ -32,7 +29,6 @@ final class MainEditProfileTableViewController: ASViewController<ASTableNode> {
     }
     
     // MARK: - Life cycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,8 +40,7 @@ final class MainEditProfileTableViewController: ASViewController<ASTableNode> {
     }
 }
 
-    // MARK: - Table data source
-
+// MARK: - Table data source
 extension MainEditProfileTableViewController: ASTableDataSource {
     func numberOfSections(in tableNode: ASTableNode) -> Int {
         return 2

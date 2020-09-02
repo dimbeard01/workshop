@@ -9,9 +9,7 @@
 import AsyncDisplayKit
 
 final class PreferenceEditProfileCellNode: ASCellNode {
-    
     // MARK: - Properties
-    
     var onDetailed: (() -> Void)?
     
     private let wrapperNode = ASDisplayNode()
@@ -41,7 +39,6 @@ final class PreferenceEditProfileCellNode: ASCellNode {
     }()
     
     // MARK: - Init
-    
     init(model: PreferenceEditProfileCellViewModel) {
         self.model = model
         super.init()
@@ -54,14 +51,12 @@ final class PreferenceEditProfileCellNode: ASCellNode {
     }
     
     // MARK: - Life cycle
-    
     override func layoutDidFinish() {
         wrapperNode.cornerRadius = Styles.Sizes.cornerRadiusMedium
         userPhotoNode.cornerRadius = userPhotoNode.style.width.value / 2
     }
     
     // MARK: - Layout
-    
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         func makeHorizontalInsetSpec() -> ASStackLayoutSpec {
             titleNode.style.flexShrink = 0.1
@@ -114,7 +109,6 @@ final class PreferenceEditProfileCellNode: ASCellNode {
     }
     
     // MARK: - Helpers
-    
     private func updateTitle() {
         let attributes = Attributes {
             return $0.foreground(color: titleColor)
@@ -130,8 +124,7 @@ final class PreferenceEditProfileCellNode: ASCellNode {
     }
 }
 
-    // MARK: - Themeable
-
+// MARK: - Themeable
 extension PreferenceEditProfileCellNode: Themeable {
     func updateTheme() {
         switch theme {

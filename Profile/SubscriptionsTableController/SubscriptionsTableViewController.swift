@@ -70,14 +70,11 @@ enum Subscriptions {
 }
 
 final class SubscriptionsTableViewController: ASViewController<ASTableNode> {
-    
     // MARK: - Properties
-    
     private let tableNode: ASTableNode = ASTableNode()
     private let model: [Subscriptions]?
     
     // MARK: - Init
-    
     init(model: [Subscriptions]){
         self.model = model
         super.init(node: tableNode)
@@ -90,7 +87,6 @@ final class SubscriptionsTableViewController: ASViewController<ASTableNode> {
     }
     
     // MARK: - Life cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -113,8 +109,7 @@ final class SubscriptionsTableViewController: ASViewController<ASTableNode> {
     }
 }
 
-    // MARK: - Table Data Source
-
+// MARK: - Table Data Source
 extension SubscriptionsTableViewController: ASTableDataSource {
     func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
         return model?.count ?? 0
@@ -143,8 +138,7 @@ extension SubscriptionsTableViewController: ASTableDataSource {
     }
 }
 
-    // MARK: - Themeable
-
+// MARK: - Themeable
 extension SubscriptionsTableViewController: Themeable {
     func updateTheme() {
         switch theme {

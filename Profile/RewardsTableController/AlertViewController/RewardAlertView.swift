@@ -9,9 +9,7 @@
 import UIKit
 
 final class RewardAlertView: UIView {
-    
     // MARK: - Properties
-    
     private let rewardImageView = UIImageView()
     private let titelLabel = UILabel()
     private let userNameLabel = UILabel()
@@ -50,7 +48,6 @@ final class RewardAlertView: UIView {
     private let model: RewardModel
     
     // MARK: - Init
-    
     init(model: RewardModel, buttons: [ButtonType]) {
         self.model = model
         self.buttonTypes = buttons
@@ -74,7 +71,6 @@ final class RewardAlertView: UIView {
     }
     
     //MARK: - Layout
-    
     private func setupStackButtons() {
         let buttons = buttonTypes.map { makeStackButton($0) }
         buttons.forEach { button in
@@ -180,7 +176,6 @@ final class RewardAlertView: UIView {
     }
     
     //MARK: - Helpers
-    
     private func makeStackButton(_ type: ButtonType) -> BaseTextButton {
         switch type {
         case .base(let title, let action):
@@ -281,10 +276,13 @@ final class RewardAlertView: UIView {
     }
 }
 
-    // MARK: - Themeable
-
+// MARK: - Themeable
 extension RewardAlertView: Themeable {
     func updateTheme() {
+        if model is AnonUserReward {
+            containerView.backgroundColor = Styles.Colors.Palette.gray2
+            return
+        }
         switch theme {
         case .light:
             containerView.backgroundColor = Styles.Colors.Palette.white
@@ -312,6 +310,10 @@ extension RewardAlertView: Themeable {
     }
     
     var buttonColor: UIColor {
+        if model is AnonUserReward {
+            return Styles.Colors.Palette.gray3
+        }
+        
         switch theme {
         case .light:
             return Styles.Colors.Palette.white0

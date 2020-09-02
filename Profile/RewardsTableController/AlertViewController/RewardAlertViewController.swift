@@ -9,14 +9,11 @@
 import UIKit
 
 final class RewardAlertViewController: UIViewController {
-    
-    // MARK: - Properties
-    
     var onAction: ((ActionType) -> Void)?
+    
     private let model: RewardModel
     
     // MARK: - Init
-    
     init(model: RewardModel) {
         self.model = model  
         super.init(nibName: nil, bundle: nil)
@@ -27,7 +24,6 @@ final class RewardAlertViewController: UIViewController {
     }
     
     // MARK: - Life cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,7 +32,6 @@ final class RewardAlertViewController: UIViewController {
     }
     
     // MARK: - Helpers
-    
     private func makeButtons() -> ([ButtonType]) {
         switch model {
         case is AnonUserReward:

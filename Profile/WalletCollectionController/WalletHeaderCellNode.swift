@@ -9,13 +9,10 @@
 import AsyncDisplayKit
 
 final class WalletHeaderCellNode: ASCellNode {
-    
     // MARK: - Properties
-    
     private let titleNode = ASTextNode()
 
     // MARK: - Init
-    
     override init() {
         super.init()
         
@@ -26,7 +23,6 @@ final class WalletHeaderCellNode: ASCellNode {
     }
     
     // MARK: - Layout
-    
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         func makeCenterLayoutSpec() -> ASCenterLayoutSpec {
             return ASCenterLayoutSpec(centeringOptions: .X, sizingOptions: [], child: titleNode)
@@ -35,7 +31,6 @@ final class WalletHeaderCellNode: ASCellNode {
     }
     
     // MARK: - Helpers
-    
     private func updateTitleNode() {
         let attributes = Attributes {
             return $0.foreground(color: titleTextColor)
@@ -47,8 +42,7 @@ final class WalletHeaderCellNode: ASCellNode {
     }
 }
 
-    // MARK: - Themeable
-
+// MARK: - Themeable
 extension WalletHeaderCellNode: Themeable {
     func updateTheme() {
         backgroundColor = .clear

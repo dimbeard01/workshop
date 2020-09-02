@@ -9,9 +9,7 @@
 import AsyncDisplayKit
 
 final class WalletCollectionViewController: ASViewController<ASCollectionNode> {
-    
     // MARK: - Properties
-    
     private let flowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -29,7 +27,6 @@ final class WalletCollectionViewController: ASViewController<ASCollectionNode> {
     private var model: [AnonCoins]
 
     // MARK: - Init
-    
     init(model: [AnonCoins]) {
         self.model = model
         collectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
@@ -46,7 +43,6 @@ final class WalletCollectionViewController: ASViewController<ASCollectionNode> {
     }
     
     // MARK: - Life cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,8 +60,7 @@ final class WalletCollectionViewController: ASViewController<ASCollectionNode> {
     }
 }
 
-    // MARK: - Collection Data Source
-
+// MARK: - Collection Data Source
 extension WalletCollectionViewController: ASCollectionDataSource {
     func numberOfSections(in collectionNode: ASCollectionNode) -> Int {
         return 2
@@ -121,8 +116,7 @@ extension WalletCollectionViewController: ASCollectionDataSource {
     }
 }
 
-    // MARK: - Collection Delegate FlowLayout
-
+// MARK: - Collection Delegate FlowLayout
 extension WalletCollectionViewController: ASCollectionDelegateFlowLayout {
     func collectionNode(_ collectionNode: ASCollectionNode, sizeRangeForHeaderInSection section: Int) -> ASSizeRange {
         let width = collectionNode.bounds.width
@@ -159,8 +153,7 @@ extension WalletCollectionViewController: ASCollectionDelegateFlowLayout {
     }
 }
 
-    //MARK: - Themeable
-
+//MARK: - Themeable
 extension WalletCollectionViewController: Themeable {
     func updateTheme() {
         switch theme {

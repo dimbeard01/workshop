@@ -9,9 +9,7 @@
 import AsyncDisplayKit
 
 final class SubscriptionsTableNodeCell: ASCellNode {
-    
     //MARK: - Properties
-    
     var onDetailed: (() -> Void)?
     
     private let titleNode = ASTextNode()
@@ -63,7 +61,6 @@ final class SubscriptionsTableNodeCell: ASCellNode {
     private var model: Subscriptions
     
     // MARK: - Init
-    
     init(model: Subscriptions) {
         self.model = model
         super.init()
@@ -79,7 +76,6 @@ final class SubscriptionsTableNodeCell: ASCellNode {
     }
     
     // MARK: - Layout
-    
     override func layoutDidFinish() {
         updateWrapperNode()
         updatePaymentContainerNode()
@@ -184,7 +180,6 @@ final class SubscriptionsTableNodeCell: ASCellNode {
     }
     
     // MARK: - Helpers
-    
     private func updateTitleNode() {
         let attributes = Attributes {
             return $0.foreground(color: Styles.Colors.Palette.white)

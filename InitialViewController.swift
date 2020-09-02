@@ -240,6 +240,6 @@ class InitialViewController: UIViewController {
         subscriptionsTN.modalPresentationStyle = .overFullScreen
         subscriptionsTN.modalTransitionStyle = .crossDissolve
         
-        present(walletCV, animated: true, completion: nil)
+        present(rewardsTN, animated: true, completion: nil)
     }
 }

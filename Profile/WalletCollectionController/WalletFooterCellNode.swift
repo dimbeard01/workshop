@@ -6,20 +6,15 @@
 //  Copyright © 2020 Dima. All rights reserved.
 //
 
-import Foundation
-
 import AsyncDisplayKit
 
 final class WalletFooterCellNode: ASCellNode {
-    
     // MARK: - Properties
-    
     var onTapEnded: (() -> Void)?
     
     private let titleNode = ASTextNode()
     
     // MARK: - Init
-    
     override init() {
         super.init()
         
@@ -30,7 +25,6 @@ final class WalletFooterCellNode: ASCellNode {
     }
     
     // MARK: - Layout
-    
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         func makeCenterLayoutSpec() -> ASCenterLayoutSpec {
             return ASCenterLayoutSpec(centeringOptions: .X, sizingOptions: [], child: titleNode)
@@ -50,8 +44,7 @@ final class WalletFooterCellNode: ASCellNode {
     }
 }
 
-    // MARK: - Themeable
-
+// MARK: - Themeable
 extension WalletFooterCellNode: Themeable {
     func updateTheme() {
         backgroundColor = .clear

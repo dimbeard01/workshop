@@ -9,9 +9,7 @@
 import AsyncDisplayKit
 
 final class WalletCellNode: ASCellNode {
-    
     // MARK: - Properties
-
     var onTapEnded: (() -> Void)?
     
     private let anonCoinsPriceNode = ASTextNode()
@@ -31,7 +29,6 @@ final class WalletCellNode: ASCellNode {
     private let model: AnonCoins
     
     // MARK: - Init
-    
     init(model: AnonCoins) {
         self.model = model
         super.init()
@@ -46,7 +43,6 @@ final class WalletCellNode: ASCellNode {
     }
     
     // MARK: - Layout
-    
     override func layoutDidFinish() {
         updateCellWrapperNode()
         updateBacklightImageNode()
@@ -122,7 +118,6 @@ final class WalletCellNode: ASCellNode {
     }
     
     // MARK: - Helpers
-    
     private func updatePriceNode() {
         let attributes = Attributes {
             return $0.foreground(color: priceTextColor)
@@ -166,8 +161,7 @@ final class WalletCellNode: ASCellNode {
     }
 }
 
-    //MARK: - Themeable
-
+//MARK: - Themeable
 extension WalletCellNode: Themeable {
     func updateTheme() {
         switch theme {

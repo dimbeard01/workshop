@@ -9,9 +9,7 @@
 import AsyncDisplayKit
 
 final class PreferenceEditProfileHeaderCellNode: ASCellNode {
-    
     // MARK: - Properties
-    
     var onCancel: (() -> Void)?
     
     private let wrapperNode = ASDisplayNode()
@@ -41,7 +39,6 @@ final class PreferenceEditProfileHeaderCellNode: ASCellNode {
     }()
     
     // MARK: - Init
-    
     init(countModel: Listeners) {
         self.countModel = countModel
         super.init()
@@ -54,13 +51,11 @@ final class PreferenceEditProfileHeaderCellNode: ASCellNode {
     }
     
     // MARK: - Life cycle
-    
     override func layoutDidFinish() {
         wrapperNode.cornerRadius = 12
     }
     
     // MARK: - Layout
-    
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         func makeBackgroundInsetSpec() -> ASBackgroundLayoutSpec {
             let insets = UIEdgeInsets(
@@ -113,7 +108,6 @@ final class PreferenceEditProfileHeaderCellNode: ASCellNode {
     }
     
     // MARK: - Helpers
-    
     private func updateTitle() {
         let attributes = Attributes {
             return $0.foreground(color: titleColor)
@@ -134,8 +128,7 @@ final class PreferenceEditProfileHeaderCellNode: ASCellNode {
     }
 }
 
-    // MARK: - Themeable
-
+// MARK: - Themeable
 extension PreferenceEditProfileHeaderCellNode: Themeable {
     func updateTheme() {
         switch theme {

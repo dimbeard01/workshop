@@ -9,9 +9,7 @@
 import AsyncDisplayKit
 
 final class UserInfoWalletCellNode: ASCellNode {
-    
     // MARK: - Properties
-    
     private let titleNode = ASTextNode()
     private let anonCoinsCountNode = ASTextNode()
     
@@ -26,7 +24,6 @@ final class UserInfoWalletCellNode: ASCellNode {
     private let model: Int
     
     // MARK: - Init
-    
     init(model: Int) {
         self.model = model
         super.init()
@@ -41,7 +38,6 @@ final class UserInfoWalletCellNode: ASCellNode {
     }
     
     // MARK: - Layout
-    
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         func makeVStackLayoutSpec() -> ASStackLayoutSpec {
             var children = [ASLayoutElement]()
@@ -79,7 +75,6 @@ final class UserInfoWalletCellNode: ASCellNode {
     }
     
     // MARK: - Helpers
-    
     private func updateTitleNode() {
         let attributes = Attributes {
             return $0.foreground(color: titleTextColor)
@@ -105,8 +100,7 @@ final class UserInfoWalletCellNode: ASCellNode {
     }
 }
 
-    // MARK: - Themeable
-
+// MARK: - Themeable
 extension UserInfoWalletCellNode: Themeable {
     func updateTheme() {
         backgroundColor = .clear
