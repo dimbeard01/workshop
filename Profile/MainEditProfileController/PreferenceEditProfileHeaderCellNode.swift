@@ -52,6 +52,8 @@ final class PreferenceEditProfileHeaderCellNode: ASCellNode {
     
     // MARK: - Life cycle
     override func layoutDidFinish() {
+        super.layoutDidFinish()
+
         wrapperNode.cornerRadius = 12
     }
     

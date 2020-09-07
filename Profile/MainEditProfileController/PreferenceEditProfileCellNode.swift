@@ -53,6 +53,8 @@ final class PreferenceEditProfileCellNode: ASCellNode {
     
     // MARK: - Life cycle
     override func layoutDidFinish() {
+        super.layoutDidFinish()
+
         wrapperNode.cornerRadius = Styles.Sizes.cornerRadiusMedium
         userPhotoNode.cornerRadius = userPhotoNode.style.width.value / 2
     }

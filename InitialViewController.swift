@@ -241,11 +241,15 @@ class InitialViewController: UIViewController {
         walletCV.modalTransitionStyle = .crossDissolve
         
         //Profile Voices Wallet collectionView Controller
-        
         let voicesWalletCV = VoicesCoinViewController()
         voicesWalletCV.modalPresentationStyle = .overFullScreen
         voicesWalletCV.modalTransitionStyle = .crossDissolve
         
-        present(voicesWalletCV, animated: true, completion: nil)
+        //Profile Award LevelscollectionView Controller
+        let awardLevelsVC = AwardLevelsAlertController(model: AwardLevelsAlertModel.level_6)
+        awardLevelsVC.modalPresentationStyle = .overFullScreen
+        awardLevelsVC.modalTransitionStyle = .crossDissolve
+        
+        present(awardLevelsVC, animated: true, completion: nil)
     }
 }

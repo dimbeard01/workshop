@@ -47,7 +47,7 @@ final class WalletCollectionViewController: ASViewController<ASCollectionNode> {
         super.viewDidLoad()
         
         collectionNode.dataSource = self
-        collectionNode.delegate = self
+        //collectionNode.delegate = self
         flowLayout.scrollDirection = .vertical
         collectionNode.registerSupplementaryNode(ofKind: UICollectionView.elementKindSectionHeader)
         collectionNode.registerSupplementaryNode(ofKind: UICollectionView.elementKindSectionFooter)

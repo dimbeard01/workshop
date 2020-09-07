@@ -9,9 +9,7 @@
 import AsyncDisplayKit
 
 final class ThanksLevelProfileCollectionNodeController: ASViewController<ASCollectionNode> {
-    
     // MARK: - Properties
-    
     let premiumViewModel = PremiumAliasPriceCellModel(image: Styles.Images.premiumIcon,
                                                       title: "Anonym Premium",
                                                       additionalTitle: "Входит в подписку",
@@ -27,7 +25,6 @@ final class ThanksLevelProfileCollectionNodeController: ASViewController<ASColle
     private var model: UserThanksLevelModel
     
     // MARK: - Init
-    
     init(model: UserThanksLevelModel) {
         self.model = model
         collectionNode = ASCollectionNode(collectionViewLayout: flowLayout)
@@ -42,7 +39,6 @@ final class ThanksLevelProfileCollectionNodeController: ASViewController<ASColle
     }
     
     // MARK: - Life cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,8 +49,7 @@ final class ThanksLevelProfileCollectionNodeController: ASViewController<ASColle
     }
 }
 
-    // MARK: - Collection Data Source
-
+// MARK: - Collection Data Source
 extension ThanksLevelProfileCollectionNodeController: ASCollectionDataSource {
     func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
         return 9
@@ -86,8 +81,7 @@ extension ThanksLevelProfileCollectionNodeController: ASCollectionDataSource {
     }
 }
 
-    // MARK: - Collection Delegate FlowLayout
-
+// MARK: - Collection Delegate FlowLayout
 extension ThanksLevelProfileCollectionNodeController: ASCollectionDelegateFlowLayout {
     func collectionNode(_ collectionNode: ASCollectionNode, constrainedSizeForItemAt indexPath: IndexPath) -> ASSizeRange {
         let width = collectionNode.bounds.width - 24

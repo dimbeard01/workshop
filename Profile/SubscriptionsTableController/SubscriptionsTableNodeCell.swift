@@ -55,7 +55,7 @@ final class SubscriptionsTableNodeCell: ASCellNode {
         }
         
         boxNode.style.preferredSize = CGSize(width: UIScreen.main.bounds.width * 0.94,
-                                             height: 44)
+                                             height: Styles.Sizes.buttonMedium)
         return boxNode
     }()
     
@@ -76,12 +76,15 @@ final class SubscriptionsTableNodeCell: ASCellNode {
         updateImageNode()
     }
     
-    // MARK: - Layout
+    // MARK: - Life cycle
     override func layoutDidFinish() {
+        super.layoutDidFinish()
+
         updateWrapperNode()
         updatePaymentContainerNode()
     }
     
+    // MARK: - Layout
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         func makePaymentVStackInsetSpec() -> ASStackLayoutSpec {
             var children = [ASLayoutElement]()
@@ -94,6 +97,7 @@ final class SubscriptionsTableNodeCell: ASCellNode {
             vStack.alignItems = .start
             vStack.children = children
             vStack.style.flexShrink = 0.1
+            
             return vStack
         }
         
@@ -103,10 +107,11 @@ final class SubscriptionsTableNodeCell: ASCellNode {
             children.append(detailButtonNode)
             
             let hStack = ASStackLayoutSpec.horizontal()
-            hStack.spacing = 43
-            hStack.justifyContent = .center
+            hStack.spacing = 12
+            hStack.justifyContent = .spaceBetween
             hStack.alignItems = .center
             hStack.children = children
+            hStack.style.width = ASDimensionMake(constrainedSize.max.width)
             
             return hStack
         }
@@ -141,7 +146,7 @@ final class SubscriptionsTableNodeCell: ASCellNode {
             var children = [ASLayoutElement]()
             children.append(makeHStackInsetSpec())
             children.append(descriptionNode)
-            
+
             switch model {
             case .findsPlus(isActive: true), .premium(isActive: true), .uniqueAlias(isActive: true):
                 children.append(paymentBackgroundLayoutSpec())

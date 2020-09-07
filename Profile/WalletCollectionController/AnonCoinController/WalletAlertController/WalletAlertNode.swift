@@ -64,11 +64,14 @@ final class WalletAlertNode: ASDisplayNode {
         ThemeManager.add(self)
     }
     
-    // MARK: - Layout
+    // MARK: - Life cycle
     override func layoutDidFinish() {
+        super.layoutDidFinish()
+
         updateWrapperNode()
     }
     
+    // MARK: - Layout
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         func makeHStackInsetSpec() -> ASStackLayoutSpec {
             var children = [ASLayoutElement]()

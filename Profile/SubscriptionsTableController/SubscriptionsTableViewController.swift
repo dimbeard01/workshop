@@ -91,6 +91,7 @@ final class SubscriptionsTableViewController: ASViewController<ASTableNode> {
         super.viewDidLoad()
         
         tableNode.dataSource = self
+        tableNode.delegate = self
         tableNode.allowsSelection = false
         tableNode.view.separatorStyle = .none
         tableNode.view.showsVerticalScrollIndicator = false
@@ -131,7 +132,10 @@ extension SubscriptionsTableViewController: ASTableDataSource {
         
         return cellNodeBlock
     }
-    
+}
+
+// MARK: - Table Delegate
+extension SubscriptionsTableViewController: ASTableDelegate {
     func tableNode(_ tableNode: ASTableNode, constrainedSizeForRowAt indexPath: IndexPath) -> ASSizeRange {
         let width = UIScreen.main.bounds.width
         return ASSizeRange(min: CGSize(width: width, height: .zero), max: CGSize(width: width, height: .infinity))

@@ -34,13 +34,14 @@ final class MainEditProfileTableViewController: ASViewController<ASTableNode> {
         
         view.backgroundColor = Styles.Colors.Palette.bgDark
         tableNode.dataSource = self
+        tableNode.delegate = self
         tableNode.allowsSelection = false
         tableNode.view.separatorStyle = .none
         tableNode.view.showsVerticalScrollIndicator = false
     }
 }
 
-    // MARK: - Table data source
+// MARK: - Table Data Source
 extension MainEditProfileTableViewController: ASTableDataSource {
     func numberOfSections(in tableNode: ASTableNode) -> Int {
         return 2
@@ -60,7 +61,7 @@ extension MainEditProfileTableViewController: ASTableDataSource {
     func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
         guard let model = model else { return {ASCellNode()} }
         let cellModel = model.listenters[indexPath.row]
-
+        
         switch indexPath.section {
         case 0:
             let cellNodeBlock = { () -> ASCellNode in
@@ -85,14 +86,17 @@ extension MainEditProfileTableViewController: ASTableDataSource {
                 return cellNode
             }
             return cellNodeBlock
-        
+            
         default:
             return {ASCellNode()}
         }
     }
-    
+}
+
+// MARK: - Table Delegate
+extension MainEditProfileTableViewController: ASTableDelegate {
     func tableNode(_ tableNode: ASTableNode, constrainedSizeForRowAt indexPath: IndexPath) -> ASSizeRange {
-        let width = UIScreen.main.bounds.width 
+        let width = UIScreen.main.bounds.width
         return ASSizeRange(min: CGSize(width: width, height: .zero), max: CGSize(width: width, height: .infinity))
     }
 }

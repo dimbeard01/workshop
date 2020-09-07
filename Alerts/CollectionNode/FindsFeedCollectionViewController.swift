@@ -72,6 +72,8 @@ extension FindsFeddCollectionViewController: ASCollectionDataSource {
         
         switch indexPath.section {
         case 0:
+            collectionNode.view.backgroundView = UIImageView(image: UIImage(named: "photo")!)
+
             let cellNodeBlock = { () -> ASCellNode in
                 let cellNode = FindsFeedAlertCellNode(node: node)
                 return cellNode
@@ -79,6 +81,8 @@ extension FindsFeddCollectionViewController: ASCollectionDataSource {
             return cellNodeBlock
             
         case 1:
+            collectionNode.view.backgroundView = UIImageView(image: UIImage(named: "photo2")!)
+
             let cellNodeBlock = { () -> ASCellNode in
                 let cellNode = FindsFeedCellNode()
                 return cellNode
@@ -89,6 +93,7 @@ extension FindsFeddCollectionViewController: ASCollectionDataSource {
             return { ASCellNode() }
         }
     }
+    
 }
 
 // MARK: - Collection Delegate FlowLayout

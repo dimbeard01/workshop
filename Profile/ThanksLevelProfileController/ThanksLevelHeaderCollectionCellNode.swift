@@ -41,15 +41,15 @@ enum ProfileLevelIcon: Int {
     var colors: [UIColor] {
         switch self {
         case .fourth:
-            return Styles.Colors.Gradients.fourthLevelColors
+            return Styles.Colors.Gradients.levelColors_4
         case .fifth:
-            return Styles.Colors.Gradients.fifthLevelColors
+            return Styles.Colors.Gradients.levelColors_5
         case .sixth:
-            return Styles.Colors.Gradients.sixthLevelColors
+            return Styles.Colors.Gradients.levelColors_6
         case .seventh:
-            return Styles.Colors.Gradients.seventhLevelColors
+            return Styles.Colors.Gradients.levelColors_7
         case .eighth:
-            return Styles.Colors.Gradients.eighthLevelColors
+            return Styles.Colors.Gradients.levelColors_8
         default:
             return [Styles.Colors.Palette.gray3, Styles.Colors.Palette.gray3]
         }
@@ -59,9 +59,7 @@ enum ProfileLevelIcon: Int {
 import AsyncDisplayKit
 
 final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
-    
     // MARK: - Properties
-    
     private let thanksLevelCountNode = ASTextNode()
     private let thanksLevelTextNode = ASTextNode()
     private let remaindedLevelCountNode = ASTextNode()
@@ -156,7 +154,6 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
     private let model: UserThanksLevelModel
     
     // MARK: - Init
-    
     init(model: UserThanksLevelModel) {
         self.model = model
         super.init()
@@ -174,15 +171,17 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
         ThemeManager.add(self)
     }
     
-    // MARK: - Layout
-    
+    // MARK: - Life cycle
     override func layoutDidFinish() {
+        super.layoutDidFinish()
+        
         setupGradientNode()
         userPhotoNode.cornerRadius = userPhotoNode.style.height.value / 2
         animateRoundNode()
         updateLevelIconWrapperColor()
     }
     
+    // MARK: - Layout
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         func makeRoundGradientOverlaySpec() -> ASOverlayLayoutSpec {
             return ASOverlayLayoutSpec(child: roundNode, overlay: gradientNode)
@@ -323,7 +322,6 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
     }
     
     // MARK: - Helpers
-    
     private func updateTrackNode() {
         trackNode.value?.strokeColor = trackColor
     }
@@ -410,8 +408,7 @@ final class ThanksLevelHeaderCollectionCellNode: ASCellNode {
     }
 }
 
-    // MARK: - Themeable
-
+// MARK: - Themeable
 extension ThanksLevelHeaderCollectionCellNode: Themeable {
     func updateTheme() {
         backgroundColor = UIColor.clear

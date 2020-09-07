@@ -9,9 +9,7 @@
 import AsyncDisplayKit
 
 final class RewardsHistoryPlaceholderNode: ASDisplayNode {
-    
     // MARK: - Properties
-    
     private let placeholderImageNode: ASImageNode = {
         let node = ASImageNode()
         node.style.preferredSize = CGSize(width: Styles.Sizes.placeholderIconBase,
@@ -24,7 +22,6 @@ final class RewardsHistoryPlaceholderNode: ASDisplayNode {
     private let placholderDescriptionNode = ASTextNode()
     
     // MARK: - Init
-    
     override init() {
         super.init()
         
@@ -37,7 +34,6 @@ final class RewardsHistoryPlaceholderNode: ASDisplayNode {
     }
     
     // MARK: - Layout
-    
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         func makeHStackInsetSpec() -> ASStackLayoutSpec {
             var children = [ASLayoutElement]()
@@ -76,7 +72,6 @@ final class RewardsHistoryPlaceholderNode: ASDisplayNode {
     }
     
     // MARK: - Helpers
-    
     private func updateTitle() {
         let attributes = Attributes {
             return $0.foreground(color: titleColor)
@@ -98,8 +93,7 @@ final class RewardsHistoryPlaceholderNode: ASDisplayNode {
     }
 }
 
-    // MARK: - Themeable
-
+// MARK: - Themeable
 extension RewardsHistoryPlaceholderNode: Themeable {
     func updateTheme() {
         switch theme {

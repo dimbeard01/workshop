@@ -64,11 +64,14 @@ final class VoicesWalletCellNode: ASCellNode {
         automaticallyManagesSubnodes = true
     }
     
-    // MARK: - Layout
+    // MARK: - Life cycle
     override func layoutDidFinish() {
+        super.layoutDidFinish()
+
         updateWrapperNodes()
     }
     
+    // MARK: - Layout
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         func makeBackgroundSpec() -> ASBackgroundLayoutSpec {
             let wrapperInsetSpec = ASInsetLayoutSpec(

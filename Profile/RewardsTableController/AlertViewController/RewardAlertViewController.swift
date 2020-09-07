@@ -9,6 +9,7 @@
 import UIKit
 
 final class RewardAlertViewController: UIViewController {
+    // MARK: - Properties
     var onAction: ((ActionType) -> Void)?
     
     private let model: RewardModel

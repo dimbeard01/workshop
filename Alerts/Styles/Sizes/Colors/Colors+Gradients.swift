@@ -19,19 +19,19 @@ extension Styles.Colors {
 
         
         //ProfileThanksLevel
-        static let fourthLevelColors = [UIColor(red: 0.278, green: 1, blue: 0.655, alpha: 1),
+        static let levelColors_4 = [UIColor(red: 0.278, green: 1, blue: 0.655, alpha: 1),
                                         UIColor(red: 1, green: 0.545, blue: 0.875, alpha: 1)]
         
-        static let fifthLevelColors = [UIColor(red: 0.439, green: 0.631, blue: 1, alpha: 1),
+        static let levelColors_5 = [UIColor(red: 0.439, green: 0.631, blue: 1, alpha: 1),
                                         UIColor(red: 0.263, green: 0.461, blue: 0.842, alpha: 1)]
         
-        static let sixthLevelColors = [UIColor(red: 0.925, green: 0.549, blue: 0.412, alpha: 1),
+        static let levelColors_6 = [UIColor(red: 0.925, green: 0.549, blue: 0.412, alpha: 1),
                                         UIColor(red: 0.929, green: 0.431, blue: 0.627, alpha: 1)]
         
-        static let seventhLevelColors = [UIColor(red: 0.976, green: 0.831, blue: 0.137, alpha: 1),
+        static let levelColors_7 = [UIColor(red: 0.976, green: 0.831, blue: 0.137, alpha: 1),
                                           UIColor(red: 0.973, green: 0.212, blue: 0, alpha: 1)]
         
-        static let eighthLevelColors = [UIColor(red: 0.047, green: 0.078, blue: 0.118, alpha: 1),
+        static let levelColors_8 = [UIColor(red: 0.047, green: 0.078, blue: 0.118, alpha: 1),
                                         UIColor(red: 0.298, green: 0.341, blue: 0.451, alpha: 1)]
         //ProfileThanksLevel
         static let premiumColors = [UIColor(red: 0.976, green: 0.831, blue: 0.137, alpha: 1),

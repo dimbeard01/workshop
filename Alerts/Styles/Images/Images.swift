@@ -403,6 +403,12 @@ extension Styles.Images {
     static let walletSuccessPaymentImage: UIImage = #imageLiteral(resourceName: "successPaymentImage")
     static let walletPaymentCoinImage: UIImage = #imageLiteral(resourceName: "paymentCoinImage")
 
+    //ProfileAward
+    static let backLevelImage_4: UIImage = #imageLiteral(resourceName: "back_level_4")
+    static let backLevelImage_5: UIImage = #imageLiteral(resourceName: "back_level_5")
+    static let backLevelImage_6: UIImage = #imageLiteral(resourceName: "back_level_6")
+    static let backLevelImage_7: UIImage = #imageLiteral(resourceName: "back_level_7")
+    static let backLevelImage_8: UIImage = #imageLiteral(resourceName: "back_level_8")
 
 }
 

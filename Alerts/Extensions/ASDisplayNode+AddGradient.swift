@@ -16,12 +16,12 @@ extension ASDisplayNode {
                      endPoint: CGPoint = CGPoint(x: 0.0, y: 1.0)) -> CAGradientLayer {
         let gradientLayer: CAGradientLayer
         
-//        if let layer = self.layer.sublayers?.first(where: { $0 is CAGradientLayer}) as? CAGradientLayer {
-//            gradientLayer = layer
-//        } else {
+        if let layer = self.layer.sublayers?.first(where: { $0 is CAGradientLayer}) as? CAGradientLayer {
+            gradientLayer = layer
+        } else {
             gradientLayer = CAGradientLayer()
             self.layer.insertSublayer(gradientLayer, at: 0)
-//        }
+        }
         
         gradientLayer.colors = colors.compactMap({ $0.cgColor })
         gradientLayer.locations = locations

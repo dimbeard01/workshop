@@ -102,9 +102,7 @@ struct RewardCoins {
 }
 
 final class RewardsHistoryTableNodeCell: ASCellNode {
-    
     // MARK: - Properties
-    
     var onTapEnded: (() -> Void)?
     
     private let wrapperNode = ASDisplayNode()
@@ -131,7 +129,6 @@ final class RewardsHistoryTableNodeCell: ASCellNode {
     private var model: RewardModel
     
     // MARK: - Init
-    
     init(model: RewardModel) {
         self.model = model
         super.init()
@@ -145,13 +142,15 @@ final class RewardsHistoryTableNodeCell: ASCellNode {
         ThemeManager.add(self)
     }
     
-    // MARK: - Layout
-    
+    // MARK: - Life cycle
     override func layoutDidFinish() {
+        super.layoutDidFinish()
+        
         wrapperNode.cornerRadius = Styles.Sizes.cornerRadiusMedium
         userPhotoNode.cornerRadius = userPhotoNode.style.width.value / 2
     }
     
+    // MARK: - Layout
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         func makeVStackInsetSpec() -> ASStackLayoutSpec {
             var children = [ASLayoutElement]()
@@ -233,7 +232,6 @@ final class RewardsHistoryTableNodeCell: ASCellNode {
     }
     
     // MARK: - Helpers
-    
     private func updateUserNameTitle() {
         let attributes = Attributes {
             return $0.foreground(color: titleColor)
@@ -295,8 +293,7 @@ final class RewardsHistoryTableNodeCell: ASCellNode {
     }
 }
 
-    // MARK: - Themeable
-
+// MARK: - Themeable
 extension RewardsHistoryTableNodeCell: Themeable {
     func updateTheme() {
         switch theme {
